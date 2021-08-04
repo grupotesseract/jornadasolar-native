@@ -1,17 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Constants from 'expo-constants'
-import { Button, FAB } from 'react-native-paper'
+import { FAB } from 'react-native-paper'
 import Titulo from '../components/Titulo'
+import i18n from '../i18n'
 
 export default function Home() {
+  const { t } = i18n
   return (
     <View style={styles.container}>
-      <Titulo texto="Oi! Que bom te ver por aqui 😃" />
+      <Titulo texto={`${t('saudacao')}  😃`} />
       <FAB
         style={styles.fab}
         icon=""
-        label="Entrar"
+        label={t('entrar')}
         onPress={() => console.log('Pressed')}
       />
     </View>
