@@ -1,4 +1,5 @@
 import { DarkTheme } from 'react-native-paper'
+import { DarkTheme as navigationDarkTheme } from '@react-navigation/native'
 
 const nunito = {
   regular: {
@@ -23,13 +24,9 @@ const nunito = {
   },
   black: {
     fontFamily: 'NunitoSans_900Black',
-    fontWeight: '800' as '800'
+    fontWeight: '900' as '900'
   }
 }
-/**
-  NunitoSans_700Bold,
-  NunitoSans_800ExtraBold,
-  NunitoSans_900Black */
 
 export const fontConfig = {
   ios: nunito,
@@ -37,8 +34,10 @@ export const fontConfig = {
 }
 
 export const theme = {
+  ...navigationDarkTheme,
   ...DarkTheme,
   colors: {
+    ...navigationDarkTheme.colors,
     ...DarkTheme.colors,
     primary: '#F7C92A',
     accent: '#F7C92A',

@@ -1,5 +1,9 @@
 const en = {
-  saudacao: 'Hi! Nice to see you here',
-  entrar: 'log in'
+  login: {
+    saudacao: 'Hi! Nice to see you here',
+    email: 'E-mail',
+    senha: 'password',
+    entrar: 'log in'
+  }
 }
 export default en
