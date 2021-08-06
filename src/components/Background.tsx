@@ -1,16 +1,14 @@
 import React, { ReactNode } from 'react'
 import Constants from 'expo-constants'
-import { StyleSheet, View, ViewStyle } from 'react-native'
-import { StyleProp } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { theme } from '../../theme'
 
 interface Props {
   children: ReactNode
-  style?: StyleProp<ViewStyle>
 }
 
-const Background = ({ children, style }: Props) => {
-  return <View style={[styles.container, style]}>{children}</View>
+const Background = ({ children }: Props) => {
+  return <View style={styles.container}>{children}</View>
 }
 
 export default Background
