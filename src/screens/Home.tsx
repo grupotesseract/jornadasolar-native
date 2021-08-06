@@ -1,9 +1,12 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { View } from 'react-native'
-import { FAB } from 'react-native-paper'
+import { View, StyleSheet, Image } from 'react-native'
+import { Caption, Text, Title } from 'react-native-paper'
+import { appVersion } from '../utils/appVersion'
+import Button from '../components/Button'
+import Icone from '../../assets/icon.png'
+import { theme } from '../../theme'
 import i18n from '../i18n'
-import { Text } from 'react-native-paper'
 
 export default function Home() {
   const { t } = i18n
@@ -18,20 +21,59 @@ export default function Home() {
   }
 
   return (
-    <View>
-      <View>
-        <Text>{t('nomeApp')}</Text>
-        <Text>{t('home.versao')} 0.8.6</Text>
+    <View style={styles.container}>
+      <View style={styles.centralizado}>
+        <Title style={styles.cabecalho}>{t('nomeApp')}</Title>
+        <Caption style={styles.cabecalho}>
+          {t('home.versao')} {appVersion}
+        </Caption>
       </View>
-      <Text>{t('home.frase')}</Text>
-      <View>
-        <FAB
-          icon=""
-          label={t('home.comecarJornada')}
-          onPress={handleCadastro}
-        />
-        <FAB icon="" label={t('home.tenhoCadastro')} onPress={handleLogin} />
+      <View style={styles.centralizado}>
+        <Image source={Icone} style={styles.imagem} />
+        <Text style={styles.frase}>{t('home.frase')}</Text>
+      </View>
+      <View style={styles.botoes}>
+        <View style={styles.botao}>
+          <Button onPress={handleCadastro}>{t('home.comecarJornada')}</Button>
+        </View>
+        <View style={styles.botao}>
+          <Button mode="outlined" onPress={handleLogin}>
+            {t('home.tenhoCadastro')}
+          </Button>
+        </View>
       </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  centralizado: {
+    alignItems: 'center'
+  },
+  cabecalho: {
+    color: theme.colors.primary
+  },
+  imagem: {
+    width: 134,
+    height: 134
+  },
+  frase: {
+    fontWeight: '400',
+    fontSize: 20,
+    lineHeight: 28,
+    textAlign: 'center',
+    marginTop: 30
+  },
+  botao: {
+    marginBottom: 16
+  },
+  botoes: {
+    width: '90%'
+  }
+})
