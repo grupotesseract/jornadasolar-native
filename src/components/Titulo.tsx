@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
 
 interface Props {
-  texto: string
+  children: ReactNode
 }
 
-const Titulo = ({ texto }: Props) => {
+const Titulo = ({ children }: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{texto}</Text>
+      <Text style={styles.text}>{children}</Text>
     </View>
   )
 }
@@ -17,10 +17,9 @@ const Titulo = ({ texto }: Props) => {
 export default Titulo
 
 const styles = StyleSheet.create({
-  container: { padding: 36 },
+  container: { marginTop: 36 },
   text: {
     fontFamily: 'NunitoSans_800ExtraBold',
-    fontSize: 32,
-    paddingTop: 36
+    fontSize: 32
   }
 })

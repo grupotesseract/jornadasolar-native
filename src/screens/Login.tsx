@@ -1,25 +1,83 @@
-import React from 'react'
-import { View } from 'react-native'
-import { FAB, Text } from 'react-native-paper'
+import React, { useState } from 'react'
+import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Titulo from '../components/Titulo'
 import i18n from '../i18n'
+import TextInput from '../components/TextInput'
+import PasswordInput from '../components/PasswordInput'
+import Layout from '../components/Layout'
+import ButtonEsqueciSenha from '../components/ButtonEsqueciSenha'
+import { ScrollView } from 'react-native-gesture-handler'
+import Emoji from '../components/Emoji'
 
 const Login = () => {
   const { t } = i18n
   const navigation = useNavigation()
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [erros, setErros] = useState({ email: '', senha: '' })
 
   const handleLogin = () => {
+    if (!email.length) {
+      setErros({ ...erros, email: t('login.erroEmailVazio') })
+      return
+    }
+    if (!senha.length) {
+      setErros({ ...erros, senha: t('login.erroSenhaVazia') })
+      return
+    }
     navigation.navigate('Home')
   }
+
+  const handleChangeEmail = (input: string) => {
+    setEmail(input.trim().toLowerCase())
+    setErros({ ...erros, email: '' })
+  }
+
+  const handleChangeSenha = (input: string) => {
+    setSenha(input)
+    setErros({ ...erros, senha: '' })
+  }
+
   return (
-    <View>
-      <Titulo texto={`${t('login.saudacao')}  😃`} />
-      <Text>{t('login.email')}</Text>
-      <Text>{t('login.senha')}</Text>
-      <FAB icon="" label={t('login.entrar')} onPress={handleLogin} />
-    </View>
+    <Layout
+      exibirBotao
+      textoBotao={t('login.entrar')}
+      onButtonClick={handleLogin}
+    >
+      <KeyboardAvoidingView>
+        <ScrollView>
+          <Titulo>
+            {t('login.saudacao')} <Emoji nome="alegre" />
+          </Titulo>
+
+          <View style={styles.container}>
+            <TextInput
+              label={t('login.email')}
+              value={email}
+              erro={erros.email}
+              onChangeText={handleChangeEmail}
+              keyboardType="email-address"
+            />
+            <PasswordInput
+              label={t('login.senha')}
+              value={senha}
+              erro={erros.senha}
+              onChangeText={handleChangeSenha}
+            />
+            <ButtonEsqueciSenha />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </Layout>
   )
 }
 
 export default Login
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 16,
+    marginBottom: 80
+  }
+})

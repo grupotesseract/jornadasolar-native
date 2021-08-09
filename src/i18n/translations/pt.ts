@@ -7,6 +7,9 @@ const pt = {
     senha: 'Senha',
     entrar: 'Entrar',
     esqueciSenha: 'Esqueci minha senha',
+    erroEmailVazio: 'Email inválido',
+    erroSenhaVazia:
+      'Senha incorreta. Tente novamente ou clique em "Esqueci minha senha" para redefini-la'
   },
   home: {
     comecarJornada: 'Começar Jornada',
