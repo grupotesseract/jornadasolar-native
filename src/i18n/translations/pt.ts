@@ -17,6 +17,11 @@ const pt = {
     versao: 'versão',
     frase:
       'Embarque em uma jornada de autoconhecimento e monitore seus hábitos e emoções'
+  },
+  cadastro: {
+    parabens: 'Olá! Parabéns por começar sua jornada',
+    perguntaNome: 'Para começar, como gostaria de ser chamado?',
+    continuar: 'Continuar'
   }
 }
 export default pt

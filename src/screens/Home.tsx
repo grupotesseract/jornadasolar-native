@@ -13,7 +13,7 @@ export default function Home() {
   const navigation = useNavigation()
 
   const handleCadastro = () => {
-    navigation.navigate('Login')
+    navigation.navigate('Identificacao')
   }
 
   const handleLogin = () => {

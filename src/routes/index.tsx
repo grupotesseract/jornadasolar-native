@@ -6,6 +6,7 @@ import Background from '../components/Background'
 import Login from '../screens/Login'
 import Home from '../screens/Home'
 import EsqueciSenha from '../screens/EsqueciSenha'
+import Identificacao from '../screens/cadastro/Identificacao'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -17,6 +18,7 @@ export function Routes() {
           <Screen name="Home" component={Home} />
           <Screen name="Login" component={Login} />
           <Screen name="EsqueciSenha" component={EsqueciSenha} />
+          <Screen name="Identificacao" component={Identificacao} />
         </Navigator>
       </NavigationContainer>
     </Background>
