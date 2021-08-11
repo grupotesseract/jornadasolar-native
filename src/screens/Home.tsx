@@ -1,35 +1,37 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import Constants from 'expo-constants'
+import { useNavigation } from '@react-navigation/native'
+import { View } from 'react-native'
 import { FAB } from 'react-native-paper'
-import Titulo from '../components/Titulo'
 import i18n from '../i18n'
+import { Text } from 'react-native-paper'
 
 export default function Home() {
   const { t } = i18n
+  const navigation = useNavigation()
+
+  const handleCadastro = () => {
+    navigation.navigate('Login')
+  }
+
+  const handleLogin = () => {
+    navigation.navigate('Login')
+  }
+
   return (
-    <View style={styles.container}>
-      <Titulo texto={`${t('saudacao')}  😃`} />
-      <FAB
-        style={styles.fab}
-        icon=""
-        label={t('entrar')}
-        onPress={() => console.log('Pressed')}
-      />
+    <View>
+      <View>
+        <Text>{t('nomeApp')}</Text>
+        <Text>{t('home.versao')} 0.8.6</Text>
+      </View>
+      <Text>{t('home.frase')}</Text>
+      <View>
+        <FAB
+          icon=""
+          label={t('home.comecarJornada')}
+          onPress={handleCadastro}
+        />
+        <FAB icon="" label={t('home.tenhoCadastro')} onPress={handleLogin} />
+      </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#000000',
-    alignItems: 'center'
-  },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    bottom: 0
-  }
-})

@@ -12,8 +12,8 @@ import {
 } from '@expo-google-fonts/nunito-sans'
 import AppLoading from 'expo-app-loading'
 import { theme, fontConfig } from './theme'
-import Home from './src/screens/Home'
 import './src/i18n'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -33,7 +33,7 @@ export default function App() {
     return (
       <PaperProvider theme={themeWithFonts}>
         <StatusBar style="light" />
-        <Home />
+        <Routes />
       </PaperProvider>
     )
   }
