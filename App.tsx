@@ -13,6 +13,7 @@ import {
 import AppLoading from 'expo-app-loading'
 import { theme, fontConfig } from './theme'
 import Home from './src/screens/Home'
+import './src/i18n'
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -28,7 +29,6 @@ export default function App() {
     return <AppLoading />
   } else {
     const themeWithFonts = { ...theme, fonts: configureFonts(fontConfig) }
-    console.log('fonts', fontsLoaded)
 
     return (
       <PaperProvider theme={themeWithFonts}>
