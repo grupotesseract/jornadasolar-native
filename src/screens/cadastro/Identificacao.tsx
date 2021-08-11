@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { FAB, Text } from 'react-native-paper'
-import Background from '../../components/Background'
+import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 import Emoji from '../../components/Emoji'
 import Layout from '../../components/Layout'
 import TextInput from '../../components/TextInput'
@@ -15,7 +14,7 @@ const Identificacao = () => {
   const botaoVisivel = nome.length > 0
 
   const handleContinuar = () => {
-    navigator.navigate('Home')
+    navigator.navigate('Objetivos')
   }
 
   const handleChangeNome = (novoNome: string) => {
@@ -28,16 +27,17 @@ const Identificacao = () => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
     >
-      <Titulo>
-        {t('cadastro.parabens')}
-        <Emoji nome="alegre" />
-      </Titulo>
+      <ScrollView>
+        <Titulo>
+          {t('cadastro.parabens')} <Emoji nome="alegre" />
+        </Titulo>
 
-      <TextInput
-        label={t('cadastro.perguntaNome')}
-        value={nome}
-        onChangeText={handleChangeNome}
-      />
+        <TextInput
+          label={t('cadastro.perguntaNome')}
+          value={nome}
+          onChangeText={handleChangeNome}
+        />
+      </ScrollView>
     </Layout>
   )
 }

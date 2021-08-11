@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native'
 import Button from './Button'
 
 interface ILayoutProps {
@@ -16,14 +16,17 @@ const Layout = ({
   onButtonClick
 }: ILayoutProps) => {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={[styles.container, exibirBotao && styles.padding]}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+    >
       {children}
       {exibirBotao && (
         <View style={styles.botao}>
           <Button onPress={onButtonClick}>{textoBotao}</Button>
         </View>
       )}
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -34,6 +37,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     width: '80%'
+  },
+  padding: {
+    paddingBottom: 80
   },
   botao: {
     position: 'absolute',
