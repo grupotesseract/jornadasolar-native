@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { HomeNavigationProps } from '../routes'
 import { View, StyleSheet, Image } from 'react-native'
 import { Caption, Text, Title } from 'react-native-paper'
 import { appVersion } from '../utils/appVersion'
@@ -8,9 +8,8 @@ import Icone from '../../assets/icon.png'
 import { theme } from '../../theme'
 import i18n from '../i18n'
 
-export default function Home() {
+export default function Home({ navigation }: HomeNavigationProps) {
   const { t } = i18n
-  const navigation = useNavigation()
 
   const handleCadastro = () => {
     navigation.navigate('Login')
