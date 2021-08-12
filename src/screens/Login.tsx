@@ -6,7 +6,7 @@ import i18n from '../i18n'
 import TextInput from '../components/TextInput'
 import PasswordInput from '../components/PasswordInput'
 import Layout from '../components/Layout'
-import ButtonEsqueciSenha from '../components/ButtonEsqueciSenha'
+import ButtonLink from '../components/ButtonLink'
 import { ScrollView } from 'react-native-gesture-handler'
 import Emoji from '../components/Emoji'
 
@@ -39,6 +39,10 @@ const Login = () => {
     setErros({ ...erros, senha: '' })
   }
 
+  const handleEsqueciSenha = () => {
+    navigation.navigate('EsqueciSenha')
+  }
+
   return (
     <Layout
       exibirBotao
@@ -65,7 +69,10 @@ const Login = () => {
               erro={erros.senha}
               onChangeText={handleChangeSenha}
             />
-            <ButtonEsqueciSenha />
+            <ButtonLink
+              texto={t('login.esqueciSenha')}
+              onPress={handleEsqueciSenha}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
