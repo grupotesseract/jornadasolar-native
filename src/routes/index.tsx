@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps
+} from '@react-navigation/native-stack'
 import { theme } from '../../theme'
 import Background from '../components/Background'
 import Login from '../screens/Login'
@@ -8,9 +11,18 @@ import Home from '../screens/Home'
 import EsqueciSenha from '../screens/EsqueciSenha'
 import Identificacao from '../screens/cadastro/Identificacao'
 
-const { Navigator, Screen } = createStackNavigator()
+type HomeStackParams = {
+  Home: undefined
+  Login: undefined
+  EsqueciSenha: undefined
+  Identificacao: undefined
+}
 
-export function Routes() {
+type HomeNavigationProps = NativeStackScreenProps<HomeStackParams, 'Home'>
+
+const { Navigator, Screen } = createNativeStackNavigator<HomeStackParams>()
+
+function Routes() {
   return (
     <Background>
       <NavigationContainer theme={theme}>
@@ -24,3 +36,5 @@ export function Routes() {
     </Background>
   )
 }
+
+export { Routes, HomeNavigationProps }

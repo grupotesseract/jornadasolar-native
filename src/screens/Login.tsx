@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { HomeNavigationProps } from '../routes'
 import { ScrollView } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
+import Titulo from '../components/Titulo'
+import { StyleSheet, View } from 'react-native'
 import i18n from '../i18n'
 import Layout from '../components/Layout'
 import Titulo from '../components/Titulo'
 import Emoji from '../components/Emoji'
 import TextInput from '../components/TextInput'
 import PasswordInput from '../components/PasswordInput'
-import ButtonEsqueciSenha from '../components/ButtonEsqueciSenha'
+import ButtonLink from '../components/ButtonLink'
 
-const Login = () => {
+const Login = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
-  const navigation = useNavigation()
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState({ email: '', senha: '' })
@@ -39,6 +39,10 @@ const Login = () => {
     setErros({ ...erros, senha: '' })
   }
 
+  const handleEsqueciSenha = () => {
+    navigation.navigate('EsqueciSenha')
+  }
+
   return (
     <Layout
       exibirBotao
@@ -50,23 +54,26 @@ const Login = () => {
           {t('login.saudacao')} <Emoji nome="alegre" />
         </Titulo>
 
-        <View style={styles.container}>
-          <TextInput
-            label={t('login.email')}
-            value={email}
-            erro={erros.email}
-            onChangeText={handleChangeEmail}
-            keyboardType="email-address"
-          />
-          <PasswordInput
-            label={t('login.senha')}
-            value={senha}
-            erro={erros.senha}
-            onChangeText={handleChangeSenha}
-          />
-          <ButtonEsqueciSenha />
-        </View>
-      </ScrollView>
+          <View style={styles.container}>
+            <TextInput
+              label={t('login.email')}
+              value={email}
+              erro={erros.email}
+              onChangeText={handleChangeEmail}
+              keyboardType="email-address"
+            />
+            <PasswordInput
+              label={t('login.senha')}
+              value={senha}
+              erro={erros.senha}
+              onChangeText={handleChangeSenha}
+            />
+            <ButtonLink
+              texto={t('login.esqueciSenha')}
+              onPress={handleEsqueciSenha}
+            />
+          </View>
+        </ScrollView>
     </Layout>
   )
 }
