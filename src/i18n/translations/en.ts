@@ -20,7 +20,16 @@ const en = {
   cadastro: {
     parabens: 'Hello! Congratulations on starting your journey',
     perguntaNome: 'For starters, what would you like to be called?',
-    continuar: 'Continue'
+    continuar: 'Continue',
+    prazerConhecer: 'Nice to meet you, %{nome}!',
+    perguntaObjetivos: 'What are your main goals?',
+    objetivos: {
+      autoconhecimento: 'Self-awareness',
+      habitos: 'Monitoring habits',
+      emocoes: 'Monitoring emotions',
+      escrever: 'Write about my day',
+      outros: 'Other'
+    }
   }
 }
 export default en

@@ -21,7 +21,16 @@ const pt = {
   cadastro: {
     parabens: 'Olá! Parabéns por começar sua jornada',
     perguntaNome: 'Para começar, como gostaria de ser chamado?',
-    continuar: 'Continuar'
+    continuar: 'Continuar',
+    prazerConhecer: 'É um prazer te conhecer, %{nome}!',
+    perguntaObjetivos: 'Quais são seus principais objetivos?',
+    objetivos: {
+      autoconhecimento: 'Autoconhecimento',
+      habitos: 'Monitorar hábitos',
+      emocoes: 'Monitorar emoções',
+      escrever: 'Escrever sobre meu dia',
+      outros: 'Outros'
+    }
   }
 }
 export default pt
