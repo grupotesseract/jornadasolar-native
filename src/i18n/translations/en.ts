@@ -16,6 +16,11 @@ const en = {
     versao: 'version',
     frase:
       'Embark on a journey of self-awareness and monitor your habits and emotions'
+  },
+  cadastro: {
+    parabens: 'Hello! Congratulations on starting your journey',
+    perguntaNome: 'For starters, what would you like to be called?',
+    continuar: 'Continue'
   }
 }
 export default en

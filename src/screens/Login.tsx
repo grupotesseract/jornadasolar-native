@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { HomeNavigationProps } from '../routes'
 import { ScrollView } from 'react-native-gesture-handler'
-import Titulo from '../components/Titulo'
 import { StyleSheet, View } from 'react-native'
 import i18n from '../i18n'
 import Layout from '../components/Layout'
@@ -54,26 +53,26 @@ const Login = ({ navigation }: HomeNavigationProps) => {
           {t('login.saudacao')} <Emoji nome="alegre" />
         </Titulo>
 
-          <View style={styles.container}>
-            <TextInput
-              label={t('login.email')}
-              value={email}
-              erro={erros.email}
-              onChangeText={handleChangeEmail}
-              keyboardType="email-address"
-            />
-            <PasswordInput
-              label={t('login.senha')}
-              value={senha}
-              erro={erros.senha}
-              onChangeText={handleChangeSenha}
-            />
-            <ButtonLink
-              texto={t('login.esqueciSenha')}
-              onPress={handleEsqueciSenha}
-            />
-          </View>
-        </ScrollView>
+        <View style={styles.container}>
+          <TextInput
+            label={t('login.email')}
+            value={email}
+            erro={erros.email}
+            onChangeText={handleChangeEmail}
+            keyboardType="email-address"
+          />
+          <PasswordInput
+            label={t('login.senha')}
+            value={senha}
+            erro={erros.senha}
+            onChangeText={handleChangeSenha}
+          />
+          <ButtonLink
+            texto={t('login.esqueciSenha')}
+            onPress={handleEsqueciSenha}
+          />
+        </View>
+      </ScrollView>
     </Layout>
   )
 }

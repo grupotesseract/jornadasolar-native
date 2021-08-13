@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
 import Emoji from '../../components/Emoji'
 import Layout from '../../components/Layout'
 import TextInput from '../../components/TextInput'
 import Titulo from '../../components/Titulo'
 import i18n from '../../i18n'
+import { HomeNavigationProps } from '../../routes'
 
-const Identificacao = () => {
+const Identificacao = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
-  const navigator = useNavigation()
   const [nome, setNome] = useState('')
   const botaoVisivel = nome.length > 0
 
   const handleContinuar = () => {
-    navigator.navigate('Objetivos')
+    navigation.navigate('Objetivos')
   }
 
   const handleChangeNome = (novoNome: string) => {
