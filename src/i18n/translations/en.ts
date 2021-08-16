@@ -29,7 +29,9 @@ const en = {
       emocoes: 'Monitoring emotions',
       escrever: 'Write about my day',
       outros: 'Other'
-    }
+    },
+    vamosAjudar: `Cool, let's help you with that!`,
+    perguntaSentimentos: 'How are you feeling right now?'
   }
 }
 export default en

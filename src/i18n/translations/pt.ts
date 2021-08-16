@@ -30,7 +30,9 @@ const pt = {
       emocoes: 'Monitorar emoções',
       escrever: 'Escrever sobre meu dia',
       outros: 'Outros'
-    }
+    },
+    vamosAjudar: 'Legal, vamos te ajudar com isso!',
+    perguntaSentimentos: 'Como você está se sentindo nesse momento?'
   }
 }
 export default pt
