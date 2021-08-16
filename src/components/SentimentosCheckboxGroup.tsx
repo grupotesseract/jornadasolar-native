@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
+import { ISentimento } from '../entities/Sentimento'
 import getSentimentosIniciais from '../utils/getSentimentosIniciais'
 import SentimentoCheckbox from './SentimentoCheckbox'
 
 interface Props {
-  onChange: (selecionados: string[]) => void
+  onChange: (selecionados: ISentimento[]) => void
 }
 
 const SentimentosCheckboxGroup = ({ onChange }: Props) => {
   const opcoes = getSentimentosIniciais()
-  const [itensSelecionados, setItensSelecionados] = useState<string[]>([])
+  const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
 
-  const handleChangeSelected = (item: string) => {
-    if (itensSelecionados.includes(item)) {
-      const novosSelecionados = itensSelecionados.filter(i => i !== item)
+  const handleChangeSelected = (item: ISentimento) => {
+    if (itensSelecionados.some(selecionado => selecionado.nome === item.nome)) {
+      const novosSelecionados = itensSelecionados.filter(
+        i => i.nome !== item.nome
+      )
       setItensSelecionados(novosSelecionados)
     } else {
       setItensSelecionados([...itensSelecionados, item])
@@ -29,8 +32,7 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
       {opcoes.map(opcao => (
         <SentimentoCheckbox
           key={opcao.nome}
-          nome={opcao.nome}
-          emojiUnicode={opcao.emoji}
+          sentimento={opcao}
           onPress={handleChangeSelected}
         />
       ))}

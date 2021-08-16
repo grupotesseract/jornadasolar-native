@@ -5,14 +5,14 @@ import Emoji from './Emoji'
 
 interface Props {
   nome: string
-  unicode: string
+  emoji: string
   textStyle?: TextStyle
 }
 
-const EmojiComNome = ({ nome, unicode, textStyle }: Props) => {
+const EmojiComNome = ({ nome, emoji, textStyle }: Props) => {
   return (
     <Text style={textStyle}>
-      <Emoji unicode={unicode} /> {nome}
+      <Emoji emoji={emoji} /> {nome}
     </Text>
   )
 }

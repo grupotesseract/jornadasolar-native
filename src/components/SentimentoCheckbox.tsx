@@ -3,19 +3,19 @@ import { useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 import { theme } from '../../theme'
 import EmojiComNome from './EmojiComNome'
+import Sentimento, { ISentimento } from '../entities/Sentimento'
 
 interface ItemProps {
-  nome: string
-  emojiUnicode: string
-  onPress: (value: string) => void
+  sentimento: Sentimento
+  onPress: (sentimento: ISentimento) => void
 }
 
-const SentimentoCheckbox = ({ nome, emojiUnicode, onPress }: ItemProps) => {
+const SentimentoCheckbox = ({ sentimento, onPress }: ItemProps) => {
   const [isChecked, setIsChecked] = useState(false)
 
   const handlePress = () => {
     setIsChecked(!isChecked)
-    onPress(nome)
+    onPress(sentimento)
   }
 
   return (
@@ -24,8 +24,8 @@ const SentimentoCheckbox = ({ nome, emojiUnicode, onPress }: ItemProps) => {
       onPress={handlePress}
     >
       <EmojiComNome
-        nome={nome}
-        unicode={emojiUnicode}
+        nome={sentimento.nome}
+        emoji={sentimento.emoji}
         textStyle={
           isChecked ? styles.textoCheckboxSelecionado : styles.textoCheckbox
         }

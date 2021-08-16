@@ -1,25 +1,20 @@
 import React, { useState } from 'react'
-import { Pressable, StyleSheet } from 'react-native'
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { theme } from '../../../theme'
-import EmojiComNome from '../../components/EmojiComNome'
 import InputLabel from '../../components/InputLabel'
 import Layout from '../../components/Layout'
-import SentimentoCheckbox from '../../components/SentimentoCheckbox'
 import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
-import TextCheckbox from '../../components/TextCheckbox'
 import Titulo from '../../components/Titulo'
+import { ISentimento } from '../../entities/Sentimento'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes'
-import getSentimentosIniciais from '../../utils/getSentimentosIniciais'
 
 const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
-  const [itensSelecionados, setItensSelecionados] = useState<string[]>([])
+  const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
   const botaoVisivel = itensSelecionados.length > 0
 
-  const handleChangeSelected = (selecionados: string[]) => {
+  const handleChangeSelected = (selecionados: ISentimento[]) => {
     setItensSelecionados(selecionados)
   }
 
