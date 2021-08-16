@@ -19,7 +19,7 @@ const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   }
 
   const handleContinuar = () => {
-    navigation.navigate('Home')
+    navigation.navigate('Habitos')
   }
 
   return (

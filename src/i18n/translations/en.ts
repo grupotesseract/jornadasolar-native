@@ -31,7 +31,9 @@ const en = {
       outros: 'Other'
     },
     vamosAjudar: `Cool, let's help you with that!`,
-    perguntaSentimentos: 'How are you feeling right now?'
+    perguntaSentimentos: 'How are you feeling right now?',
+    perguntaHabitos: 'What did you do today?',
+    faltaUmPasso: 'Just one more step!'
   }
 }
 export default en

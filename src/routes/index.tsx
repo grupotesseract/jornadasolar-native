@@ -12,6 +12,7 @@ import EsqueciSenha from '../screens/EsqueciSenha'
 import Identificacao from '../screens/cadastro/Identificacao'
 import Objetivos from '../screens/cadastro/Objetivos'
 import Sentimentos from '../screens/cadastro/Sentimentos'
+import Habitos from '../screens/cadastro/Habitos'
 
 type HomeStackParams = {
   Home: undefined
@@ -20,6 +21,7 @@ type HomeStackParams = {
   Identificacao: undefined
   Objetivos: undefined
   Sentimentos: undefined
+  Habitos: undefined
 }
 
 type HomeNavigationProps = NativeStackScreenProps<HomeStackParams, 'Home'>
@@ -37,6 +39,7 @@ function Routes() {
           <Screen name="Identificacao" component={Identificacao} />
           <Screen name="Objetivos" component={Objetivos} />
           <Screen name="Sentimentos" component={Sentimentos} />
+          <Screen name="Habitos" component={Habitos} />
         </Navigator>
       </NavigationContainer>
     </Background>

@@ -32,7 +32,9 @@ const pt = {
       outros: 'Outros'
     },
     vamosAjudar: 'Legal, vamos te ajudar com isso!',
-    perguntaSentimentos: 'Como você está se sentindo nesse momento?'
+    perguntaSentimentos: 'Como você está se sentindo nesse momento?',
+    perguntaHabitos: 'O que você fez hoje?',
+    faltaUmPasso: 'Só falta um passo!'
   }
 }
 export default pt
