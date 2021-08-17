@@ -43,7 +43,7 @@ export const theme = {
     accent: '#F7C92A',
     secondary: '#000000',
     background: '#000000',
-    surface: '#000000',
+    surface: '#151515',
     error: '#f44336'
   }
 }
