@@ -1,14 +1,16 @@
 const en = {
   nomeApp: 'Solar Journey',
+  errosAuth: {
+    erroEmailVazio: 'Invalid email',
+    erroSenhaVazia:
+      'Incorrect password. Try again or click "Forgot password?" to reset it'
+  },
   login: {
     saudacao: 'Hi! Good to see you here',
     email: 'Email',
     senha: 'Password',
     entrar: 'Sign In',
-    esqueciSenha: 'Forgot password?',
-    erroEmailVazio: 'Invalid email',
-    erroSenhaVazia:
-      'Incorrect password. Try again or click "Forgot password?" to reset it'
+    esqueciSenha: 'Forgot password?'
   },
   home: {
     comecarJornada: 'Start Journey',
@@ -33,7 +35,17 @@ const en = {
     vamosAjudar: `Cool, let's help you with that!`,
     perguntaSentimentos: 'How are you feeling right now?',
     perguntaHabitos: 'What did you do today?',
-    faltaUmPasso: 'Just one more step!'
+    faltaUmPasso: 'Just one more step!',
+    crieCadastro: 'Create an account and save your data',
+    email: 'Email',
+    senha: 'Password',
+    perguntaLivro: 'Do you have the Solar Journey book?',
+    opcoesLivro: {
+      TemLivro: 'Yes, I have it!',
+      NaoTemLivro: `I don't`,
+      QueroSaberMais: 'No, but I want to know more'
+    },
+    pronto: 'Pronto!'
   }
 }
 export default en

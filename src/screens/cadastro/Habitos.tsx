@@ -16,7 +16,7 @@ const Habitos = ({ navigation }: HomeNavigationProps) => {
     grupo => grupo.habitos.length > 0
   )
   const handleContinuar = () => {
-    navigation.navigate('Sentimentos')
+    navigation.navigate('DadosAutenticacao')
   }
 
   const handleChangeSelected = (selecionados: Array<IGrupoDeHabitos>) => {
