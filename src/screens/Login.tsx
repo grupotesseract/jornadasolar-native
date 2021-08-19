@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { HomeNavigationProps } from '../routes'
+import { ScrollView } from 'react-native-gesture-handler'
 import Titulo from '../components/Titulo'
 import i18n from '../i18n'
 import TextInput from '../components/TextInput'
 import PasswordInput from '../components/PasswordInput'
 import Layout from '../components/Layout'
 import ButtonLink from '../components/ButtonLink'
-import { ScrollView } from 'react-native-gesture-handler'
 import Emoji from '../components/Emoji'
 
-const Login = () => {
+const Login = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
-  const navigation = useNavigation()
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState({ email: '', senha: '' })
