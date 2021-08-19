@@ -32,7 +32,7 @@ export default function App() {
 
     return (
       <PaperProvider theme={themeWithFonts}>
-        <StatusBar style="light" />
+        <StatusBar style="inverted" />
         <Routes />
       </PaperProvider>
     )

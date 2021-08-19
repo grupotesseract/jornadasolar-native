@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="public/icons/icon-192x192.png" height="100" /><br>
+  <img src="assets/icon.png" height="100" /><br>
   Jornada Solar
 </h1>
 

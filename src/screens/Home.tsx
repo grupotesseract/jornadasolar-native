@@ -12,7 +12,7 @@ export default function Home({ navigation }: HomeNavigationProps) {
   const { t } = i18n
 
   const handleCadastro = () => {
-    navigation.navigate('Login')
+    navigation.navigate('Identificacao')
   }
 
   const handleLogin = () => {

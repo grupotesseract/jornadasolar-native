@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { Text } from 'react-native-paper'
 
 const emojis = {
@@ -9,15 +8,15 @@ const emojis = {
 
 interface Props {
   nome?: keyof typeof emojis
-  unicode?: string
+  emoji?: string
 }
 
-const Emoji = ({ nome, unicode }: Props) => {
+const Emoji = ({ nome, emoji }: Props) => {
   const emojis = {
     alegre: '\u{1F603}',
     wink: '\u{1F609}'
   }
-  return <Text>{nome ? emojis[nome] : unicode}</Text>
+  return <Text>{nome ? emojis[nome] : emoji}</Text>
 }
 
 export default Emoji
