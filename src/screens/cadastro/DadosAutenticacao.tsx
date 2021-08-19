@@ -80,10 +80,15 @@ const DadosAutenticacao = ({ navigation }: HomeNavigationProps) => {
             >
               {opcoesLivro.map(opcao => {
                 return (
-                  <View key={opcao.value} style={styles.radio}>
-                    <RadioButton value={opcao.value} />
-                    <Text style={styles.texto}>{opcao.label}</Text>
-                  </View>
+                  <RadioButton.Item
+                    key={opcao.value}
+                    value={opcao.value}
+                    label={opcao.label}
+                    position="leading"
+                    labelStyle={styles.texto}
+                    mode="android"
+                    style={styles.radio}
+                  />
                 )
               })}
             </RadioButton.Group>
@@ -101,13 +106,11 @@ const styles = StyleSheet.create({
     marginVertical: 16
   },
   texto: {
-    flexShrink: 1,
     fontSize: 20,
-    lineHeight: 24
+    lineHeight: 24,
+    textAlign: 'left'
   },
   radio: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 9
+    paddingStart: 0
   }
 })

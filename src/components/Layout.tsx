@@ -17,15 +17,17 @@ const Layout = ({
 }: ILayoutProps) => {
   return (
     <KeyboardAvoidingView
-      style={[styles.container, exibirBotao && styles.padding]}
+      style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
     >
-      {children}
-      {exibirBotao && (
-        <View style={styles.botao}>
-          <Button onPress={onButtonClick}>{textoBotao}</Button>
-        </View>
-      )}
+      <View style={[exibirBotao && styles.padding]}>
+        {children}
+        {exibirBotao && (
+          <View style={styles.botao}>
+            <Button onPress={onButtonClick}>{textoBotao}</Button>
+          </View>
+        )}
+      </View>
     </KeyboardAvoidingView>
   )
 }
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
     width: '80%'
   },
   padding: {
+    flex: 1,
     paddingBottom: 80
   },
   botao: {

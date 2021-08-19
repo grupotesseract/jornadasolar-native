@@ -53,5 +53,5 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary
   },
   emoji: { fontSize: 18 },
-  texto: { textAlign: 'center', marginTop: 5, marginBottom: 16 }
+  texto: { textAlign: 'center', marginTop: 5, marginBottom: 16, width: '100%' }
 })
