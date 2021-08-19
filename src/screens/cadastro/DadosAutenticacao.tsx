@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   texto: {
     fontSize: 20,
-    lineHeight: 24,
+    lineHeight: 28,
     textAlign: 'left'
   },
   radio: {
