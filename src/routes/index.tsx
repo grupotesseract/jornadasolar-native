@@ -5,6 +5,7 @@ import { theme } from '../../theme'
 import Background from '../components/Background'
 import Login from '../screens/Login'
 import Home from '../screens/Home'
+import EsqueciSenha from '../screens/EsqueciSenha'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -13,12 +14,9 @@ export function Routes() {
     <Background>
       <NavigationContainer theme={theme}>
         <Navigator screenOptions={{ headerShown: false }}>
-          <Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
+          <Screen name="Home" component={Home} />
           <Screen name="Login" component={Login} />
+          <Screen name="EsqueciSenha" component={EsqueciSenha} />
         </Navigator>
       </NavigationContainer>
     </Background>
