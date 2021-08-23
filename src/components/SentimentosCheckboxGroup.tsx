@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { ISentimento } from '../entities/Sentimento'
+import { ActivityIndicator } from 'react-native-paper'
+import Sentimento, { ISentimento } from '../entities/Sentimento'
 import getSentimentosIniciais from '../utils/getSentimentosIniciais'
 import SentimentoCheckbox from './SentimentoCheckbox'
 
@@ -9,8 +10,18 @@ interface Props {
 }
 
 const SentimentosCheckboxGroup = ({ onChange }: Props) => {
-  const opcoes = getSentimentosIniciais()
+  const [isLoading, setIsLoading] = useState(false)
   const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
+  const [opcoes, setOpcoes] = useState<Sentimento[]>([])
+
+  useEffect(() => {
+    const getSentimentos = async () => {
+      setIsLoading(true)
+      setOpcoes(await getSentimentosIniciais())
+      setIsLoading(false)
+    }
+    getSentimentos()
+  }, [])
 
   const handleChangeSelected = (item: ISentimento) => {
     if (itensSelecionados.some(selecionado => selecionado.nome === item.nome)) {
@@ -29,13 +40,17 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
 
   return (
     <View style={styles.sentimentos}>
-      {opcoes.map(opcao => (
-        <SentimentoCheckbox
-          key={opcao.nome}
-          sentimento={opcao}
-          onPress={handleChangeSelected}
-        />
-      ))}
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        opcoes.map(opcao => (
+          <SentimentoCheckbox
+            key={opcao.nome}
+            sentimento={opcao}
+            onPress={handleChangeSelected}
+          />
+        ))
+      )}
     </View>
   )
 }
@@ -45,6 +60,7 @@ export default SentimentosCheckboxGroup
 const styles = StyleSheet.create({
   sentimentos: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   }
 })
