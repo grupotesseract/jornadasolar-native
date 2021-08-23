@@ -1,6 +1,8 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import { LogBox } from 'react-native'
 
+LogBox.ignoreLogs(['Setting a timer'])
 const config = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
