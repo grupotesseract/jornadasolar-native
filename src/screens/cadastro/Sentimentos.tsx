@@ -7,7 +7,7 @@ import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
 import Titulo from '../../components/Titulo'
 import CadastroContext from '../../context/ContextCadastro'
 import i18n from '../../i18n'
-import { HomeNavigationProps } from '../../routes'
+import { HomeNavigationProps } from '../../routes/Home.routes'
 
 const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n

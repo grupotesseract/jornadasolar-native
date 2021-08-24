@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HomeNavigationProps } from '../routes'
+import { HomeNavigationProps } from '../routes/Home.routes'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View } from 'react-native'
 import i18n from '../i18n'

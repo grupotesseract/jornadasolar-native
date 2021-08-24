@@ -7,7 +7,7 @@ import Titulo from '../../components/Titulo'
 import CadastroContext from '../../context/ContextCadastro'
 import { IGrupoDeHabitos } from '../../entities/GrupoDeHabitos'
 import i18n from '../../i18n'
-import { HomeNavigationProps } from '../../routes'
+import { HomeNavigationProps } from '../../routes/Home.routes'
 
 const Habitos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
