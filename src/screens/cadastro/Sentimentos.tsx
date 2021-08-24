@@ -6,17 +6,16 @@ import Layout from '../../components/Layout'
 import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
 import Titulo from '../../components/Titulo'
 import CadastroContext from '../../context/ContextCadastro'
-import { ISentimento } from '../../entities/Sentimento'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes'
 
 const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
   const { AvancoParaEtapa4 } = useContext(CadastroContext)
-  const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
+  const [itensSelecionados, setItensSelecionados] = useState<string[]>([])
   const botaoVisivel = itensSelecionados.length > 0
 
-  const handleChangeSelected = (selecionados: ISentimento[]) => {
+  const handleChangeSelected = (selecionados: string[]) => {
     setItensSelecionados(selecionados)
   }
 

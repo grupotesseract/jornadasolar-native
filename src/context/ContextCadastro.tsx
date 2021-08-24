@@ -1,19 +1,18 @@
 import React from 'react'
 import { createContext, useState } from 'react'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
-import { ISentimento } from '../entities/Sentimento'
 
 interface DadosCadastro {
   nome: string
   objetivos: string[]
-  sentimentos: ISentimento[]
+  sentimentos: string[]
   gruposDeHabitos: IGrupoDeHabitos[]
 }
 
 interface CadastroContextData {
   AvancoParaEtapa2: (nome: string) => void
   AvancoParaEtapa3: (objetivos: string[]) => void
-  AvancoParaEtapa4: (sentimentos: ISentimento[]) => void
+  AvancoParaEtapa4: (sentimentos: String[]) => void
   AvancoParaEtapa5: (gruposDeHabitos: IGrupoDeHabitos[]) => void
   dadosCadastro: DadosCadastro
 }
@@ -40,7 +39,7 @@ export const CadastroProvider: React.FC = ({ children }) => {
     setDadosCadastro({ ...dadosCadastro, objetivos })
   }
 
-  const AvancoParaEtapa4 = (sentimentos: ISentimento[]) => {
+  const AvancoParaEtapa4 = (sentimentos: string[]) => {
     setDadosCadastro({ ...dadosCadastro, sentimentos })
   }
 
