@@ -13,7 +13,7 @@ export default class GruposDeHabitosModelosRepository
   private collection
 
   constructor() {
-    this.collection = firestore.collection('gruposDeHabitosModelo')
+    this.collection = firestore.collection('gruposDeHabitosModelos')
   }
 
   async getAll(): Promise<Array<IGrupoDeHabitos>> {
