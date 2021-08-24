@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import InputLabel from '../../components/InputLabel'
 import Layout from '../../components/Layout'
 import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
 import Titulo from '../../components/Titulo'
+import CadastroContext from '../../context/ContextCadastro'
 import { ISentimento } from '../../entities/Sentimento'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes'
 
 const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
+  const { AvancoParaEtapa4 } = useContext(CadastroContext)
   const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
   const botaoVisivel = itensSelecionados.length > 0
 
@@ -19,6 +21,7 @@ const Sentimentos = ({ navigation }: HomeNavigationProps) => {
   }
 
   const handleContinuar = () => {
+    AvancoParaEtapa4(itensSelecionados)
     navigation.navigate('Habitos')
   }
 

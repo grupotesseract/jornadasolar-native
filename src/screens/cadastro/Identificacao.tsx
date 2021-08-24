@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import Emoji from '../../components/Emoji'
 import Layout from '../../components/Layout'
 import TextInput from '../../components/TextInput'
 import Titulo from '../../components/Titulo'
+import CadastroContext from '../../context/ContextCadastro'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes'
 
 const Identificacao = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
+  const { AvancoParaEtapa2 } = useContext(CadastroContext)
   const [nome, setNome] = useState('')
   const botaoVisivel = nome.length > 0
 
   const handleContinuar = () => {
+    AvancoParaEtapa2(nome)
     navigation.navigate('Objetivos')
   }
 

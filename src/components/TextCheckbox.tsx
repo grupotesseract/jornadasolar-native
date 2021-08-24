@@ -3,21 +3,20 @@ import { useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 import { Text, Title } from 'react-native-paper'
 import { theme } from '../../theme'
-import i18n from '../i18n'
 
 interface ItemProps {
   texto: string
-  onPress: (value: string) => void
+  onPress: (value: any) => void
+  value: any
 }
 
-const TextCheckbox = ({ texto, onPress }: ItemProps) => {
-  const { t } = i18n
+const TextCheckbox = ({ value, texto, onPress }: ItemProps) => {
   const [isChecked, setIsChecked] = useState(false)
   const TextWrapper = isChecked ? Title : Text
 
   const handlePress = () => {
     setIsChecked(!isChecked)
-    onPress(texto)
+    onPress(value)
   }
 
   return (
@@ -25,7 +24,7 @@ const TextCheckbox = ({ texto, onPress }: ItemProps) => {
       style={[styles.botao, isChecked && styles.botaoSelecionado]}
       onPress={handlePress}
     >
-      <TextWrapper style={styles.texto}>{t(texto)}</TextWrapper>
+      <TextWrapper style={styles.texto}>{texto}</TextWrapper>
     </Pressable>
   )
 }

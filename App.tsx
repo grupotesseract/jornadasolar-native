@@ -14,6 +14,7 @@ import AppLoading from 'expo-app-loading'
 import { theme, fontConfig } from './theme'
 import './src/i18n'
 import { Routes } from './src/routes'
+import { CadastroProvider } from './src/context/ContextCadastro'
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -33,7 +34,9 @@ export default function App() {
     return (
       <PaperProvider theme={themeWithFonts}>
         <StatusBar style="inverted" />
-        <Routes />
+        <CadastroProvider>
+          <Routes />
+        </CadastroProvider>
       </PaperProvider>
     )
   }
