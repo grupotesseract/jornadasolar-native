@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { HomeNavigationProps } from '../../routes'
+import React, { useContext, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View } from 'react-native'
 import { RadioButton, Text } from 'react-native-paper'
@@ -9,31 +8,37 @@ import Titulo from '../../components/Titulo'
 import Emoji from '../../components/Emoji'
 import TextInput from '../../components/TextInput'
 import PasswordInput from '../../components/PasswordInput'
+import CadastroContext from '../../context/ContextCadastro'
 import { ErrosAuth, getMessageFromCode } from '../../utils/getMessageFromCode'
+import CreateUser from '../../services/user/CreateUser'
 
-const DadosAutenticacao = ({ navigation }: HomeNavigationProps) => {
+const DadosAutenticacao = () => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<ErrosAuth>({})
   const [temLivro, setTemLivro] = React.useState('TemLivro')
-
+  const { dadosCadastro } = useContext(CadastroContext)
   const opcoesLivro = [
     { value: 'TemLivro', label: t('cadastro.opcoesLivro.TemLivro') },
     { value: 'NaoTemLivro', label: t('cadastro.opcoesLivro.NaoTemLivro') },
     { value: 'QueroSaberMais', label: t('cadastro.opcoesLivro.QueroSaberMais') }
   ]
 
-  const handlePronto = () => {
+  const handlePronto = async () => {
     if (email.length < 6) {
-      setErros({ ...erros, email: t('errosAuth.emailInvalido') })
+      setErros({ email: t('errosAuth.emailInvalido') })
       return
     }
     if (senha.length < 6) {
-      setErros({ ...erros, senha: t('errosAuth.senhaFraca') })
+      setErros({ senha: t('errosAuth.senhaFraca') })
       return
     }
-    navigation.navigate('Home')
+    try {
+      await new CreateUser().call({ ...dadosCadastro, email, senha, temLivro })
+    } catch (e) {
+      setErros(getMessageFromCode(e.code))
+    }
   }
 
   const handleChangeEmail = (input: string) => {
