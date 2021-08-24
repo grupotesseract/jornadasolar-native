@@ -18,11 +18,11 @@ const Login = ({ navigation }: HomeNavigationProps) => {
 
   const handleLogin = () => {
     if (!email.length) {
-      setErros({ ...erros, email: t('errosAuth.erroEmailVazio') })
+      setErros({ ...erros, email: t('errosAuth.emailInvalido') })
       return
     }
     if (!senha.length) {
-      setErros({ ...erros, senha: t('errosAuth.erroSenhaVazia') })
+      setErros({ ...erros, senha: t('errosAuth.senhaFraca') })
       return
     }
     navigation.navigate('Home')

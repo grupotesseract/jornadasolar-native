@@ -1,9 +1,14 @@
 const en = {
   nomeApp: 'Solar Journey',
   errosAuth: {
-    erroEmailVazio: 'Invalid email',
-    erroSenhaVazia:
-      'Incorrect password. Try again or click "Forgot password?" to reset it'
+    emailInvalido: 'Invalid email',
+    emailJaCadastrado: 'Email already in use',
+    senhaFraca: 'Password must be at least 6 characters long',
+    senhaErrada:
+      'Incorrect password. Try again or click "Forgot password?" to reset it',
+    emailNaoEncontrado: 'User not found',
+    linkExpirado:
+      'The link to reset your password has expired. Click "Forgot password?" to ask for a new link'
   },
   login: {
     saudacao: 'Hi! Good to see you here',

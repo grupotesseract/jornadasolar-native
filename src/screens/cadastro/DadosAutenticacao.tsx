@@ -9,12 +9,13 @@ import Titulo from '../../components/Titulo'
 import Emoji from '../../components/Emoji'
 import TextInput from '../../components/TextInput'
 import PasswordInput from '../../components/PasswordInput'
+import { ErrosAuth, getMessageFromCode } from '../../utils/getMessageFromCode'
 
 const DadosAutenticacao = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-  const [erros, setErros] = useState({ email: '', senha: '' })
+  const [erros, setErros] = useState<ErrosAuth>({})
   const [temLivro, setTemLivro] = React.useState('TemLivro')
 
   const opcoesLivro = [
@@ -24,12 +25,12 @@ const DadosAutenticacao = ({ navigation }: HomeNavigationProps) => {
   ]
 
   const handlePronto = () => {
-    if (!email.length) {
-      setErros({ ...erros, email: t('errosAuth.erroEmailVazio') })
+    if (email.length < 6) {
+      setErros({ ...erros, email: t('errosAuth.emailInvalido') })
       return
     }
-    if (!senha.length) {
-      setErros({ ...erros, senha: t('errosAuth.erroSenhaVazia') })
+    if (senha.length < 6) {
+      setErros({ ...erros, senha: t('errosAuth.senhaFraca') })
       return
     }
     navigation.navigate('Home')
