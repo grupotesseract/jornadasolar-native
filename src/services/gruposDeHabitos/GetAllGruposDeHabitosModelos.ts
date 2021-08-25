@@ -7,7 +7,7 @@ interface IGetAll {
   call(): Promise<Array<IGrupoDeHabitos>>
 }
 
-export default class GetAll implements IGetAll {
+export default class GetAllGruposDeHabitosModelos implements IGetAll {
   private gruposDeHabitosModelosRepository: IGruposDeHabitosModelosRepository
 
   constructor() {
