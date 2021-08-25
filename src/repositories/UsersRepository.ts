@@ -2,6 +2,13 @@ import { auth, firestore } from '../firebase/firebase.config'
 import firebase from 'firebase/app'
 import User, { IUser } from '../entities/User'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
+import CreateUserGrupoDeHabitos from '../services/user/CreateUserGrupoDeHabitos'
+import GetAllGruposDeHabitosModelos from '../services/gruposDeHabitos/GetAllGruposDeHabitosModelos'
+import GetUserGruposDeHabitos from '../services/user/GetUserGruposDeHabitos'
+import GetAllSentimentosModelos from '../services/sentimentosModelos/GetAllSentimentosModelos'
+import CreateUserSentimentos from '../services/user/CreateUserSentimentos'
+import CreateOrUpdateRegistro from '../services/registros/CreateOrUpdateRegistro'
+import GetUserSentimentos from '../services/user/GetUserSentimentos'
 
 interface ICreateParameters {
   nome: string
@@ -54,16 +61,73 @@ export default class UsersRepository implements IUsersRepository {
     }
     await this.collection.doc(user.uid).set(data)
 
-    /*  
-    // Cria subcollection de gruposDeHabitos com subcollection de habitos na collection user 
+    // Cria subcollection de gruposDeHabitos com subcollection de habitos na collection user
+    const gruposDeHabitosModelos =
+      await new GetAllGruposDeHabitosModelos().call()
+    gruposDeHabitosModelos.forEach(async grupoDeHabitoModelo => {
+      await CreateUserGrupoDeHabitos({
+        userId: user.uid,
+        grupoDeHabitos: grupoDeHabitoModelo
+      })
+    })
 
-    // Busca grupos de hábitos do usuário e atualiza o gruposDeHabitos que vão pro registro com os ids 
+    // Busca grupos de hábitos do usuário e atualiza o gruposDeHabitos que vão pro registro com os ids
+    const gruposDeHabitosDoUsuario = await GetUserGruposDeHabitos(user.uid)
+    const gruposDeHabitosAtualizados = gruposDeHabitos.map(grupoDeHabito => {
+      const grupoDoUsuario = gruposDeHabitosDoUsuario.find(
+        grupoDeHabitosDoUsuario =>
+          grupoDeHabitosDoUsuario.nome.toLowerCase() ===
+          grupoDeHabito.nome.toLowerCase()
+      )
+      const habitosDoUsuario = grupoDeHabito.habitos.map(habito => {
+        const habitoDoUsuario = grupoDoUsuario.habitos.find(
+          habitoDoUsuario =>
+            habitoDoUsuario.nome.toLowerCase() === habito.nome.toLowerCase()
+        )
+        return {
+          ...habito,
+          id: habitoDoUsuario.id
+        }
+      })
+
+      return {
+        ...grupoDeHabito,
+        id: grupoDoUsuario.id,
+        habitos: habitosDoUsuario
+      }
+    })
 
     // Cria subcollection de sentimentos na collection user
+    const sentimentosModelos = await new GetAllSentimentosModelos().call()
+    console.log('sentimentosModelos', sentimentosModelos)
 
-    // Busca sentimentos do usuário e atualiza o sentimentos que vão pro registro com os ids  
+    const serviceCreateSentimento = new CreateUserSentimentos(user.uid)
 
-    // Cria o primeiro registro do usuário no diário */
+    sentimentosModelos.forEach(async sentimento => {
+      const { id, nome, emojiUnicode } = sentimento
+      await serviceCreateSentimento.call({
+        idSentimentoModelo: id,
+        nome,
+        emojiUnicode
+      })
+    })
+
+    // Busca sentimentos do usuário e atualiza o sentimentos que vão pro registro com os ids
+    const sentimentosDoUsuario = await new GetUserSentimentos(user.uid).call()
+    const sentimentosAtualizado = sentimentos.map(sentimento => {
+      const sentimentoUsuario = sentimentosDoUsuario.find(
+        sentimentoUser => sentimentoUser.idSentimentoModelo === sentimento
+      )
+      return sentimentoUsuario.id
+    })
+
+    // Cria o primeiro registro do usuário no diário
+    await new CreateOrUpdateRegistro().call({
+      date: now,
+      userId: user.uid,
+      sentimentos: sentimentosAtualizado,
+      gruposDeHabitos: gruposDeHabitosAtualizados
+    })
 
     return new User({
       id: user.uid,

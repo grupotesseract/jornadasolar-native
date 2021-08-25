@@ -17,7 +17,7 @@ const Diario = () => {
     <View>
       <Text>Esta é a área logada 😉</Text>
       <Text>Bem vindo {userId}</Text>
-      <Button onPress={handleSair}>
+      <Button onPress={handleSair}>Sair</Button>
         <Text>Sair</Text>
       </Button>
     </View>
