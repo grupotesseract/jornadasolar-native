@@ -9,23 +9,21 @@ import Emoji from '../components/Emoji'
 import TextInput from '../components/TextInput'
 import PasswordInput from '../components/PasswordInput'
 import ButtonLink from '../components/ButtonLink'
+import SignInUser from '../services/user/SignInUser'
+import { ErrosAuth, getMessageFromCode } from '../utils/getMessageFromCode'
 
 const Login = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-  const [erros, setErros] = useState({ email: '', senha: '' })
+  const [erros, setErros] = useState<ErrosAuth>({})
 
-  const handleLogin = () => {
-    if (!email.length) {
-      setErros({ ...erros, email: t('errosAuth.emailInvalido') })
-      return
+  const handleLogin = async () => {
+    try {
+      await new SignInUser().call(email, senha)
+    } catch (e) {
+      setErros(getMessageFromCode(e.code))
     }
-    if (!senha.length) {
-      setErros({ ...erros, senha: t('errosAuth.senhaFraca') })
-      return
-    }
-    navigation.navigate('Home')
   }
 
   const handleChangeEmail = (input: string) => {
