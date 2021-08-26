@@ -9,6 +9,8 @@ import GetAllSentimentosModelos from '../services/sentimentosModelos/GetAllSenti
 import CreateUserSentimentos from '../services/user/CreateUserSentimentos'
 import CreateOrUpdateRegistro from '../services/registros/CreateOrUpdateRegistro'
 import GetUserSentimentos from '../services/user/GetUserSentimentos'
+import UserFactory, { IUserFactory } from '../factories/UserFactory'
+import { isSameDay } from 'date-fns'
 
 interface ICreateParameters {
   nome: string
@@ -20,15 +22,24 @@ interface ICreateParameters {
   gruposDeHabitos: Array<IGrupoDeHabitos>
 }
 
+interface IUpdateParameters {
+  id: string
+  attributes: Record<string, unknown>
+}
 export interface IUsersRepository {
   add(params): Promise<IUser>
+  getById(id: string): Promise<IUser>
+  update(params): boolean
+  updateAccessFlags(user: IUser): void
 }
 
 export default class UsersRepository implements IUsersRepository {
   private collection
+  private factory: IUserFactory
 
   constructor() {
     this.collection = firestore.collection('user')
+    this.factory = new UserFactory()
   }
 
   async add({
@@ -134,5 +145,48 @@ export default class UsersRepository implements IUsersRepository {
       temLivro,
       objetivos
     })
+  }
+
+  async getById(id: string): Promise<IUser> {
+    try {
+      const userSnapshot = await this.collection.doc(id).get()
+      const user = this.factory.build(userSnapshot)
+
+      return user
+    } catch (e) {
+      throw new Error('Ocorreu um erro inesperado ao buscar o usuário:' + e)
+    }
+  }
+
+  update({ id, attributes }: IUpdateParameters): boolean {
+    try {
+      this.collection.doc(id).update(attributes)
+      return true
+    } catch (e) {
+      throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
+    }
+  }
+
+  updateAccessFlags(user: IUser): void {
+    const hoje = new Date()
+    const mesmoDia = isSameDay(hoje, user.lastAccess)
+
+    if (!mesmoDia) {
+      try {
+        const acessos = user.countAccess + 1
+        if (!user.lastAccess) {
+          this.collection
+            .doc(user.id)
+            .set({ lastAccess: hoje, countAccess: acessos }, { merge: true })
+        } else {
+          this.update({
+            id: user.id,
+            attributes: { lastAccess: hoje, countAccess: acessos }
+          })
+        }
+      } catch (e) {
+        throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
+      }
+    }
   }
 }
