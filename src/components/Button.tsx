@@ -7,15 +7,22 @@ interface Props {
   children: ReactNode
   mode?: 'contained' | 'outlined'
   onPress?: () => void
+  loading?: boolean
 }
 
-const Button = ({ children, onPress, mode = 'contained' }: Props) => {
+const Button = ({
+  children,
+  onPress,
+  mode = 'contained',
+  loading = false
+}: Props) => {
   return (
     <PaperButton
       style={[styles.botao, mode === 'outlined' && styles.borda]}
       mode={mode}
       labelStyle={styles.texto}
       onPress={onPress}
+      loading={loading}
     >
       {children}
     </PaperButton>

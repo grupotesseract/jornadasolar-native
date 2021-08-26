@@ -17,13 +17,16 @@ const Login = ({ navigation }: HomeNavigationProps) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<ErrosAuth>({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = async () => {
+    setIsLoading(true)
     try {
       await new SignInUser().call(email, senha)
     } catch (e) {
       setErros(getMessageFromCode(e.code))
     }
+    setIsLoading(false)
   }
 
   const handleChangeEmail = (input: string) => {
@@ -45,6 +48,7 @@ const Login = ({ navigation }: HomeNavigationProps) => {
       exibirBotao
       textoBotao={t('login.entrar')}
       onButtonClick={handleLogin}
+      loading={isLoading}
     >
       <ScrollView>
         <Titulo>

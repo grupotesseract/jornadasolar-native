@@ -17,6 +17,7 @@ const DadosAutenticacao = () => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<ErrosAuth>({})
+  const [isLoading, setIsLoading] = useState(false)
   const [temLivro, setTemLivro] = React.useState('TemLivro')
   const { dadosCadastro } = useContext(CadastroContext)
   const opcoesLivro = [
@@ -34,11 +35,13 @@ const DadosAutenticacao = () => {
       setErros({ senha: t('errosAuth.senhaFraca') })
       return
     }
+    setIsLoading(true)
     try {
       await new CreateUser().call({ ...dadosCadastro, email, senha, temLivro })
     } catch (e) {
       setErros(getMessageFromCode(e.code))
     }
+    setIsLoading(false)
   }
 
   const handleChangeEmail = (input: string) => {
@@ -56,6 +59,7 @@ const DadosAutenticacao = () => {
       exibirBotao
       textoBotao={t('cadastro.pronto')}
       onButtonClick={handlePronto}
+      loading={isLoading}
     >
       <ScrollView>
         <Titulo>
