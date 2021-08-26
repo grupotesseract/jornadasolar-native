@@ -131,7 +131,6 @@ export default class UsersRepository implements IUsersRepository {
       id: user.uid,
       nome,
       email,
-      senha,
       temLivro,
       objetivos
     })
