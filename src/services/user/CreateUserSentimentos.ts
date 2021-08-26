@@ -19,8 +19,6 @@ export default class CreateUserSentimentos implements ICreateUserSentimentos {
   }
 
   async call(params: ICreateParameters): Promise<ISentimento> {
-    console.log('parametros ', params)
-
     return await this.sentimentosRepository.add(params)
   }
 }

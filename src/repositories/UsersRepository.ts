@@ -99,8 +99,6 @@ export default class UsersRepository implements IUsersRepository {
 
     // Cria subcollection de sentimentos na collection user
     const sentimentosModelos = await new GetAllSentimentosModelos().call()
-    console.log('sentimentosModelos', sentimentosModelos)
-
     const serviceCreateSentimento = new CreateUserSentimentos(user.uid)
 
     sentimentosModelos.forEach(async sentimento => {
