@@ -60,6 +60,41 @@ const pt = {
     linkEnviado:
       'Um link para redefinir sua senha foi enviado para %{email}, verifique sua caixa de entrada ou spam.',
     enviar: 'Enviar'
+  },
+  diario: {
+    bomDia: 'Bom dia',
+    boaTarde: 'Boa tarde',
+    boaNoite: 'Boa noite',
+    mensagem: {
+      inicio: 'Hoje o ',
+      sol: 'Sol',
+      final: 'está no signo de %{signo} e a Lua está na fase %{faseDaLua}.'
+    },
+    perfil: 'Perfil'
+  },
+  signos: {
+    capricornio: 'Capricórnio',
+    aquario: 'Aquário',
+    peixes: 'Peixes',
+    aries: 'Áries',
+    touro: 'Touro',
+    gemeos: 'Gêmeos',
+    cancer: 'Câncer',
+    leao: 'Leão',
+    virgem: 'Virgem',
+    libra: 'Libra',
+    escorpiao: 'Escorpião',
+    sagitario: 'Sagitário'
+  },
+  fasesDaLua: {
+    nova: 'Nova',
+    crescenteInicio: 'Crescente',
+    crescente: 'Crescente',
+    crescenteFinal: 'Crescente',
+    cheia: 'Cheia',
+    minguanteInicio: 'Minguante',
+    minguante: 'Minguante',
+    minguanteFinal: 'Minguante'
   }
 }
 export default pt

@@ -14,14 +14,16 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUser>()
-  const userId = user.id || ''
-  const userName = user.nome || ''
+  const userId = user ? user.id : ''
+  const userName = user ? user.nome : ''
 
   useEffect(() => {
     const subscription = auth.onAuthStateChanged(async user => {
       if (user) {
         const usuario = await new GetUserById().call(user.uid)
         setUser(usuario)
+      } else {
+        setUser(null)
       }
     })
     return subscription

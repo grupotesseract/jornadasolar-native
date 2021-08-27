@@ -59,6 +59,42 @@ const en = {
     linkEnviado:
       'A link to reset your password has been sent to %{email}, please check your inbox or spam folder.',
     enviar: 'Send'
+  },
+  diario: {
+    bomDia: 'Good Morning',
+    boaTarde: 'Good Afternoon',
+    boaNoite: 'Good evening',
+    mensagem: {
+      inicio: 'Today the ',
+      sol: 'Sun',
+      final:
+        'is in the sign of %{signo} and the Moon is in its %{faseDaLua} phase.'
+    },
+    perfil: 'Profile'
+  },
+  signos: {
+    capricornio: 'Capricorn',
+    aquario: 'Aquarius',
+    peixes: 'Pisces',
+    aries: 'Aries',
+    touro: 'Taurus',
+    gemeos: 'Gemini',
+    cancer: 'Cancer',
+    leao: 'Leo',
+    virgem: 'Virgo',
+    libra: 'Libra',
+    escorpiao: 'Scorpio',
+    sagitario: 'Sagittarius'
+  },
+  fasesDaLua: {
+    nova: 'New',
+    crescenteInicio: 'Waxing Crescent',
+    crescente: 'Quarter',
+    crescenteFinal: 'Waxing Gibbous',
+    cheia: 'Full',
+    minguanteInicio: 'Waning Gibbous',
+    minguante: 'Last Quarter',
+    minguanteFinal: 'Waning Crescent'
   }
 }
 export default en
