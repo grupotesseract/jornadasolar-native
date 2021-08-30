@@ -1,26 +1,29 @@
 import {
   compareDesc,
   eachDayOfInterval,
+  isEqual,
   isThisMonth,
   lastDayOfMonth,
+  startOfDay,
   startOfMonth
 } from 'date-fns'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { StyleSheet, View, Dimensions, Pressable } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Text } from 'react-native-paper'
+import { ActivityIndicator, Text } from 'react-native-paper'
 import { theme } from '../../../theme'
 import CardRegistroDoDia from '../../components/CardRegistroDoDia'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
+import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
 import i18n from '../../i18n'
 import { AppNavigationProps } from '../../routes/App.routes'
 import getFaseDaLua from '../../utils/getFaseDaLua'
 import getSigno from '../../utils/getSigno'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
-  const { user } = useContext(AuthContext)
+  const { userName, userId } = useContext(AuthContext)
   const { t } = i18n
 
   const [mes, setMes] = useState(new Date())
@@ -35,18 +38,38 @@ const Diario = ({ navigation }: AppNavigationProps) => {
   const signo = getSigno(new Date())
   const faseDaLua = getFaseDaLua(new Date())
 
+  const { loading, diarios } = useRegistrosByMonth({
+    userId,
+    mes
+  })
+
   const registros = dias.sort(compareDesc).map((dia, index) => {
-    return <CardRegistroDoDia navigation={navigation} data={dia} key={index} />
+    let diario = diarios?.find(diario =>
+      isEqual(startOfDay(diario.date), startOfDay(dia))
+    )
+
+    if (!diario) {
+      diario = {
+        id: `diario-${index}`,
+        date: dia,
+        sentimentos: null,
+        gruposDeHabitos: null,
+        anotacoes: null
+      }
+    }
+    return (
+      <CardRegistroDoDia navigation={navigation} diario={diario} key={index} />
+    )
   })
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <Pressable onPress={handlePerfil}>
         <Text style={styles.linkPerfil}>{t('diario.perfil')}</Text>
       </Pressable>
       <View style={styles.conteudo}>
         <View style={styles.topo}>
-          <Saudacao nome={user.nome} />
+          <Saudacao nome={userName} />
           <Text style={styles.textoPreto}>
             {t('diario.mensagem.inicio')}
             <Text style={styles.negrito}>{t('diario.mensagem.sol')}</Text>{' '}
@@ -55,7 +78,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           <View style={styles.oval}></View>
         </View>
         <Text style={styles.pickerMes}>agosto, 2021</Text>
-        {registros}
+        {loading ? <ActivityIndicator size="large" /> : registros}
       </View>
     </ScrollView>
   )
@@ -64,14 +87,9 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 export default Diario
 
 const tela = Dimensions.get('screen').width
-console.log(tela)
-
+const corPreta = theme.colors.secondary
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   topo: {
-    width: '100%',
     position: 'relative'
   },
   oval: {
@@ -91,20 +109,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   textoPreto: {
-    color: theme.colors.secondary,
+    color: corPreta,
     textAlign: 'center',
     marginVertical: 14,
     fontSize: 16
   },
   linkPerfil: {
-    color: theme.colors.secondary,
+    color: corPreta,
     textAlign: 'right',
     fontSize: 10,
     paddingTop: 4,
     paddingRight: 8
   },
   negrito: {
-    color: theme.colors.secondary,
+    color: corPreta,
     fontWeight: 'bold'
   },
   pickerMes: {
