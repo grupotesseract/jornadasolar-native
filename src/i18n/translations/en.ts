@@ -70,7 +70,11 @@ const en = {
       final:
         'is in the sign of %{signo} and the Moon is in its %{faseDaLua} phase.'
     },
-    perfil: 'Profile'
+    perfil: 'Profile',
+    sentimentos: 'Fill in feelings',
+    habitos: 'Fill in habits',
+    anotacoes: 'Write about your day',
+    verMais: 'More'
   },
   signos: {
     capricornio: 'Capricorn',
@@ -95,6 +99,12 @@ const en = {
     minguanteInicio: 'Waning Gibbous',
     minguante: 'Last Quarter',
     minguanteFinal: 'Waning Crescent'
+  },
+  comum: {
+    formatoDataExtenso: "EEEE, do 'of' MMMM",
+    sentimentos: 'Feelings',
+    habitos: 'Habits',
+    anotacoes: 'Notes'
   }
 }
 export default en

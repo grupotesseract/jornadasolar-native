@@ -70,7 +70,11 @@ const pt = {
       sol: 'Sol',
       final: 'está no signo de %{signo} e a Lua está na fase %{faseDaLua}.'
     },
-    perfil: 'Perfil'
+    perfil: 'Perfil',
+    sentimentos: 'Preencher sentimentos',
+    habitos: 'Preencher hábitos',
+    anotacoes: 'Escrever sobre seu dia',
+    verMais: 'Ver mais'
   },
   signos: {
     capricornio: 'Capricórnio',
@@ -95,6 +99,12 @@ const pt = {
     minguanteInicio: 'Minguante',
     minguante: 'Minguante',
     minguanteFinal: 'Minguante'
+  },
+  comum: {
+    formatoDataExtenso: "EEEE, d 'de' MMMM",
+    sentimentos: 'Sentimentos',
+    habitos: 'Hábitos',
+    anotacoes: 'Anotações'
   }
 }
 export default pt

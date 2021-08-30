@@ -1,8 +1,17 @@
-import React from 'react'
+import {
+  compareDesc,
+  eachDayOfInterval,
+  isThisMonth,
+  lastDayOfMonth,
+  startOfMonth
+} from 'date-fns'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { StyleSheet, View, Dimensions, Pressable } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Text } from 'react-native-paper'
 import { theme } from '../../../theme'
+import CardRegistroDoDia from '../../components/CardRegistroDoDia'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
 import i18n from '../../i18n'
@@ -13,14 +22,25 @@ import getSigno from '../../utils/getSigno'
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { user } = useContext(AuthContext)
   const { t } = i18n
+
+  const [mes, setMes] = useState(new Date())
+  const dias = eachDayOfInterval({
+    start: startOfMonth(mes),
+    end: isThisMonth(mes) ? new Date() : lastDayOfMonth(mes)
+  })
+
   const handlePerfil = () => {
     navigation.navigate('Perfil')
   }
   const signo = getSigno(new Date())
   const faseDaLua = getFaseDaLua(new Date())
 
+  const registros = dias.sort(compareDesc).map((dia, index) => {
+    return <CardRegistroDoDia navigation={navigation} data={dia} key={index} />
+  })
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Pressable onPress={handlePerfil}>
         <Text style={styles.linkPerfil}>{t('diario.perfil')}</Text>
       </Pressable>
@@ -34,14 +54,17 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           </Text>
           <View style={styles.oval}></View>
         </View>
+        <Text style={styles.pickerMes}>agosto, 2021</Text>
+        {registros}
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 export default Diario
 
 const tela = Dimensions.get('screen').width
+console.log(tela)
 
 const styles = StyleSheet.create({
   container: {
@@ -83,5 +106,10 @@ const styles = StyleSheet.create({
   negrito: {
     color: theme.colors.secondary,
     fontWeight: 'bold'
+  },
+  pickerMes: {
+    paddingTop: 40,
+    paddingBottom: 20,
+    textAlign: 'center'
   }
 })
