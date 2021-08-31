@@ -14,6 +14,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { ActivityIndicator, Text } from 'react-native-paper'
 import { theme } from '../../../theme'
 import CardRegistroDoDia from '../../components/CardRegistroDoDia'
+import MonthNavigator from '../../components/MonthNavigator'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
 import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
@@ -42,6 +43,10 @@ const Diario = ({ navigation }: AppNavigationProps) => {
     userId,
     mes
   })
+
+  const handleChangeMes = (novoMes: Date) => {
+    setMes(novoMes)
+  }
 
   const registros = dias.sort(compareDesc).map((dia, index) => {
     let diario = diarios?.find(diario =>
@@ -77,7 +82,9 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           </Text>
           <View style={styles.oval}></View>
         </View>
-        <Text style={styles.pickerMes}>agosto, 2021</Text>
+        <View style={styles.monthNavigator}>
+          <MonthNavigator mes={mes} onChange={handleChangeMes} />
+        </View>
         {loading ? <ActivityIndicator size="large" /> : registros}
       </View>
     </ScrollView>
@@ -125,9 +132,8 @@ const styles = StyleSheet.create({
     color: corPreta,
     fontWeight: 'bold'
   },
-  pickerMes: {
+  monthNavigator: {
     paddingTop: 40,
-    paddingBottom: 20,
-    textAlign: 'center'
+    paddingBottom: 20
   }
 })
