@@ -1,10 +1,9 @@
 import { format } from 'date-fns'
-import { enUS, ptBR } from 'date-fns/locale'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Caption, Card, Text } from 'react-native-paper'
 import { IRegistro } from '../entities/Registro'
-import i18n from '../i18n'
+import i18n, { dateLocale } from '../i18n'
 import Categoria from './Categoria'
 import EmojiComNome from './EmojiComNome'
 import TextButton from './TextButton'
@@ -15,8 +14,7 @@ interface Props {
 }
 
 const CardRegistroDoDia = ({ diario, navigation }: Props) => {
-  const { t, locale } = i18n
-  const dateLocale = locale.startsWith('pt') ? ptBR : enUS
+  const { t } = i18n
 
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
   const habitos = diario.gruposDeHabitos?.some(grupo => grupo.habitos.length)
