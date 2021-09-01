@@ -40,14 +40,17 @@ export default Categoria
 const styles = StyleSheet.create({
   linha: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'baseline',
     justifyContent: 'flex-start',
     paddingVertical: 12
   },
   itens: {
-    fontFamily: 'NunitoSans_600SemiBold',
-    fontSize: 14
+    fontFamily: 'NunitoSans_600SemiBold'
   },
   emoji: { paddingEnd: 8 },
-  conteudo: { paddingStart: 8, flexDirection: 'row', flex: 1 }
+  conteudo: {
+    paddingStart: 8,
+    flexDirection: 'row',
+    flex: 1
+  }
 })
