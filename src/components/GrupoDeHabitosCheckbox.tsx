@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
-import { IHabito } from '../entities/Habito'
+import Habito from '../entities/Habito'
 import { Card, Text } from 'react-native-paper'
 import HabitoCheckbox from './HabitoCheckbox'
 
@@ -11,9 +11,9 @@ interface Props {
 }
 
 const GrupoDeHabitosCheckbox = ({ grupoDeHabitos, onChange }: Props) => {
-  const [habitosSelecionados, setHabitosSelecionados] = useState<IHabito[]>([])
+  const [habitosSelecionados, setHabitosSelecionados] = useState<Habito[]>([])
 
-  const handlePressHabito = (habito: IHabito) => {
+  const handlePressHabito = (habito: Habito) => {
     if (habitosSelecionados.some(selecionado => habito.id === selecionado.id)) {
       const novosSelecionados = habitosSelecionados.filter(
         selecionado => habito.id !== selecionado.id
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   tituloCard: {
-    marginBottom: 14
+    marginBottom: 14,
+    textTransform: 'capitalize'
   },
   habitosDoGrupo: {
     flexDirection: 'row',
