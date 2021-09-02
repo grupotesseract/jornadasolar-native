@@ -51,6 +51,14 @@ const en = {
       QueroSaberMais: 'No, but I want to know more'
     },
     pronto: 'Pronto!'
+  },
+  recuperarSenha: {
+    titulo: "Oops, let's fix that",
+    enviaremosLink:
+      'We will send you a link by email to create a new password.',
+    linkEnviado:
+      'A link to reset your password has been sent to %{email}, please check your inbox or spam folder.',
+    enviar: 'Send'
   }
 }
 export default en

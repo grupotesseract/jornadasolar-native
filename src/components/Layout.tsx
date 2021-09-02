@@ -1,5 +1,11 @@
 import React, { ReactNode } from 'react'
-import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native'
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  View
+} from 'react-native'
 import Button from './Button'
 
 interface ILayoutProps {
@@ -7,14 +13,21 @@ interface ILayoutProps {
   textoBotao: ReactNode
   exibirBotao?: boolean
   onButtonClick?: () => void
+  loading?: boolean
 }
 
 const Layout = ({
   children,
   textoBotao,
   exibirBotao,
-  onButtonClick
+  onButtonClick,
+  loading = false
 }: ILayoutProps) => {
+  const handlePress = () => {
+    Keyboard.dismiss()
+    onButtonClick()
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -24,7 +37,9 @@ const Layout = ({
         {children}
         {exibirBotao && (
           <View style={styles.botao}>
-            <Button onPress={onButtonClick}>{textoBotao}</Button>
+            <Button onPress={handlePress} loading={loading}>
+              {textoBotao}
+            </Button>
           </View>
         )}
       </View>

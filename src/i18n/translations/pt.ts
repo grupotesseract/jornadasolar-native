@@ -52,6 +52,14 @@ const pt = {
       QueroSaberMais: 'Não, mas quero saber mais '
     },
     pronto: 'Pronto!'
+  },
+  recuperarSenha: {
+    titulo: 'Opa! Vamos dar um jeito nisso',
+    enviaremosLink:
+      'Te enviaremos um link por email para criar uma nova senha.',
+    linkEnviado:
+      'Um link para redefinir sua senha foi enviado para %{email}, verifique sua caixa de entrada ou spam.',
+    enviar: 'Enviar'
   }
 }
 export default pt
