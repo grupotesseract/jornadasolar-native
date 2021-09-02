@@ -1,8 +1,10 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 import { LogBox } from 'react-native'
 
 LogBox.ignoreLogs(['Setting a timer'])
+
 const config = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
@@ -18,5 +20,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
 const firestore = firebase.firestore()
+const auth = firebase.auth()
 
-export { config, firestore }
+export { firestore, auth }

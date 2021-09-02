@@ -1,5 +1,5 @@
 import React from 'react'
-import { HomeNavigationProps } from '../routes'
+import { HomeNavigationProps } from '../routes/Home.routes'
 import { View, StyleSheet, Image } from 'react-native'
 import { Caption, Text, Title } from 'react-native-paper'
 import { appVersion } from '../utils/appVersion'

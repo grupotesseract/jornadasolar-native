@@ -2,9 +2,14 @@
 const pt = {
   nomeApp: 'Jornada Solar',
   errosAuth: {
-    erroEmailVazio: 'Email inválido',
-    erroSenhaVazia:
-      'Senha incorreta. Tente novamente ou clique em "Esqueci minha senha" para redefini-la'
+    emailInvalido: 'E-mail inválido',
+    emailJaCadastrado: 'E-mail já cadastrado',
+    senhaFraca: 'A senha deve ter 6 caracteres ou mais',
+    senhaErrada:
+      'Senha incorreta. Tente novamente ou clique em "Esqueceu a senha?" para redefini-la',
+    emailNaoEncontrado: 'E-mail não encontrado',
+    linkExpirado:
+      'O link para redefinir a senha expirou. Clique em "Esqueci minha senha" na tela de login e solicite novamente.'
   },
   login: {
     saudacao: 'Oi! Que bom te ver por aqui',

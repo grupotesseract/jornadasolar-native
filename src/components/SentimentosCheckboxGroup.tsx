@@ -6,12 +6,12 @@ import getSentimentosIniciais from '../utils/getSentimentosIniciais'
 import SentimentoCheckbox from './SentimentoCheckbox'
 
 interface Props {
-  onChange: (selecionados: ISentimento[]) => void
+  onChange: (selecionados: string[]) => void
 }
 
 const SentimentosCheckboxGroup = ({ onChange }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [itensSelecionados, setItensSelecionados] = useState<ISentimento[]>([])
+  const [idsSelecionados, setIdsSelecionados] = useState<string[]>([])
   const [opcoes, setOpcoes] = useState<Sentimento[]>([])
 
   useEffect(() => {
@@ -24,19 +24,17 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
   }, [])
 
   const handleChangeSelected = (item: ISentimento) => {
-    if (itensSelecionados.some(selecionado => selecionado.nome === item.nome)) {
-      const novosSelecionados = itensSelecionados.filter(
-        i => i.nome !== item.nome
-      )
-      setItensSelecionados(novosSelecionados)
+    if (idsSelecionados.some(selecionado => selecionado === item.id)) {
+      const novosSelecionados = idsSelecionados.filter(i => i !== item.id)
+      setIdsSelecionados(novosSelecionados)
     } else {
-      setItensSelecionados([...itensSelecionados, item])
+      setIdsSelecionados([...idsSelecionados, item.id])
     }
   }
 
   useEffect(() => {
-    onChange(itensSelecionados)
-  }, [itensSelecionados])
+    onChange(idsSelecionados)
+  }, [idsSelecionados])
 
   return (
     <View style={styles.sentimentos}>

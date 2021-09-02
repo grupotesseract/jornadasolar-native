@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import GrupoDeHabitosCheckboxGroup from '../../components/GrupoDeHabitosCheckboxGroup'
 import Layout from '../../components/Layout'
 import Titulo from '../../components/Titulo'
+import CadastroContext from '../../context/ContextCadastro'
 import { IGrupoDeHabitos } from '../../entities/GrupoDeHabitos'
 import i18n from '../../i18n'
-import { HomeNavigationProps } from '../../routes'
+import { HomeNavigationProps } from '../../routes/Home.routes'
 
 const Habitos = ({ navigation }: HomeNavigationProps) => {
   const { t } = i18n
-  const [gruposDeHabitosSelecionados, setGruposDeHabitosSelecionados] =
-    useState<Array<IGrupoDeHabitos>>([])
-  const botaoVisivel = gruposDeHabitosSelecionados.some(
+  const { AvancoParaEtapa5 } = useContext(CadastroContext)
+
+  const [gruposSelecionados, setGruposSelecionados] = useState<
+    Array<IGrupoDeHabitos>
+  >([])
+
+  const botaoVisivel = gruposSelecionados.some(
     grupo => grupo.habitos.length > 0
   )
   const handleContinuar = () => {
+    AvancoParaEtapa5(gruposSelecionados)
     navigation.navigate('DadosAutenticacao')
   }
 
   const handleChangeSelected = (selecionados: Array<IGrupoDeHabitos>) => {
-    setGruposDeHabitosSelecionados(selecionados)
+    setGruposSelecionados(selecionados)
   }
 
   return (

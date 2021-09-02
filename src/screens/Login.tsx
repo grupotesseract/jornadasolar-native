@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HomeNavigationProps } from '../routes'
+import { HomeNavigationProps } from '../routes/Home.routes'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View } from 'react-native'
 import i18n from '../i18n'
@@ -18,11 +18,11 @@ const Login = ({ navigation }: HomeNavigationProps) => {
 
   const handleLogin = () => {
     if (!email.length) {
-      setErros({ ...erros, email: t('errosAuth.erroEmailVazio') })
+      setErros({ ...erros, email: t('errosAuth.emailInvalido') })
       return
     }
     if (!senha.length) {
-      setErros({ ...erros, senha: t('errosAuth.erroSenhaVazia') })
+      setErros({ ...erros, senha: t('errosAuth.senhaFraca') })
       return
     }
     navigation.navigate('Home')
