@@ -3,12 +3,17 @@ import {
   BottomTabScreenProps,
   createBottomTabNavigator
 } from '@react-navigation/bottom-tabs'
+import {
+  useSafeAreaInsets,
+  SafeAreaProvider
+} from 'react-native-safe-area-context'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import Diario from '../screens/app/Diario'
 import Graficos from '../screens/app/Graficos'
 import Meditacoes from '../screens/app/Meditacoes'
 import IconeRegistros from '../components/svg/IconeRegistros'
 import IconeGraficos from '../components/svg/IconeGraficos'
+import i18n from '../i18n'
 
 type BottomTabsParams = {
   Diario: undefined
@@ -21,40 +26,49 @@ type TabsNavigationProps = BottomTabScreenProps<BottomTabsParams, 'Diario'>
 const { Navigator, Screen } = createBottomTabNavigator<BottomTabsParams>()
 
 function BottomTabs() {
+  const { t } = i18n
+  const insets = useSafeAreaInsets()
+  const paddingBottom = insets.bottom ? insets.bottom : 9
   return (
-    <Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: { paddingBottom: 9, paddingTop: 12, height: 62 }
-      }}
-    >
-      <Screen
-        name="Diario"
-        component={Diario}
-        options={{
-          tabBarLabel: 'Registros',
-          tabBarIcon: ({ color }) => <IconeRegistros color={color} />
+    <SafeAreaProvider>
+      <Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            paddingBottom: paddingBottom,
+            paddingTop: 12,
+            height: insets.bottom + 62
+          }
         }}
-      />
-      <Screen
-        name="Graficos"
-        component={Graficos}
-        options={{
-          tabBarLabel: 'Gráficos',
-          tabBarIcon: ({ color }) => <IconeGraficos color={color} />
-        }}
-      />
-      <Screen
-        name="Meditacoes"
-        component={Meditacoes}
-        options={{
-          tabBarLabel: 'Meditações',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="spa" size={24} color={color} />
-          )
-        }}
-      />
-    </Navigator>
+      >
+        <Screen
+          name="Diario"
+          component={Diario}
+          options={{
+            tabBarLabel: t('menuInferior.registros'),
+            tabBarIcon: ({ color }) => <IconeRegistros color={color} />
+          }}
+        />
+        <Screen
+          name="Graficos"
+          component={Graficos}
+          options={{
+            tabBarLabel: t('menuInferior.graficos'),
+            tabBarIcon: ({ color }) => <IconeGraficos color={color} />
+          }}
+        />
+        <Screen
+          name="Meditacoes"
+          component={Meditacoes}
+          options={{
+            tabBarLabel: t('menuInferior.meditacoes'),
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="spa" size={24} color={color} />
+            )
+          }}
+        />
+      </Navigator>
+    </SafeAreaProvider>
   )
 }
 
