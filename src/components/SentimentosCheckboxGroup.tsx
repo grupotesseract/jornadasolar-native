@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { ActivityIndicator } from 'react-native-paper'
+import Loading from './Loading'
 import Sentimento, { ISentimento } from '../entities/Sentimento'
 import getSentimentosIniciais from '../utils/getSentimentosIniciais'
 import SentimentoCheckbox from './SentimentoCheckbox'
@@ -39,7 +39,7 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
   return (
     <View style={styles.sentimentos}>
       {isLoading ? (
-        <ActivityIndicator size="large" />
+        <Loading />
       ) : (
         opcoes.map(opcao => (
           <SentimentoCheckbox
