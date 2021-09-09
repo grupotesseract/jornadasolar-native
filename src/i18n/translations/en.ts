@@ -109,7 +109,9 @@ const en = {
     formatoDataExtenso: "EEEE, do 'of' MMMM",
     sentimentos: 'Feelings',
     habitos: 'Habits',
-    anotacoes: 'Notes'
+    anotacoes: 'Notes',
+    editar: 'Edit',
+    voltar: 'Back'
   }
 }
 export default en

@@ -6,7 +6,6 @@ import { HomeRoutes } from './Home.routes'
 import AuthContext from '../context/AuthContext'
 import { CadastroProvider } from '../context/ContextCadastro'
 import { AppRoutes } from './App.routes'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 function Routes() {
   const { userId } = useContext(AuthContext)

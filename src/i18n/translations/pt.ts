@@ -109,7 +109,9 @@ const pt = {
     formatoDataExtenso: "EEEE, d 'de' MMMM",
     sentimentos: 'Sentimentos',
     habitos: 'Hábitos',
-    anotacoes: 'Anotações'
+    anotacoes: 'Anotações',
+    editar: 'Editar',
+    voltar: 'Voltar'
   }
 }
 export default pt
