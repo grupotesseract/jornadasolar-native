@@ -1,4 +1,5 @@
 import {
+  addMonths,
   compareDesc,
   eachDayOfInterval,
   isEqual,
@@ -11,9 +12,11 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { StyleSheet, View, Dimensions, Pressable } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { ActivityIndicator, Text } from 'react-native-paper'
+import { Text } from 'react-native-paper'
 import { theme } from '../../../theme'
 import CardRegistroDoDia from '../../components/CardRegistroDoDia'
+import DateNavigator from '../../components/DateNavigator'
+import Loading from '../../components/Loading'
 import MonthNavigator from '../../components/MonthNavigator'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
@@ -83,9 +86,15 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           <View style={styles.oval}></View>
         </View>
         <View style={styles.monthNavigator}>
-          <MonthNavigator mes={mes} onChange={handleChangeMes} />
+          <DateNavigator
+            date={mes}
+            onChange={handleChangeMes}
+            alteraData={addMonths}
+            isUltimoPasso={isThisMonth}
+            formatoData="MMMM, yyyy"
+          />
         </View>
-        {loading ? <ActivityIndicator size="large" /> : registros}
+        {loading ? <Loading /> : registros}
       </View>
     </ScrollView>
   )
