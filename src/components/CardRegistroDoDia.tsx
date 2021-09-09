@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Caption, Card, Text } from 'react-native-paper'
 import { IRegistro } from '../entities/Registro'
+import Categorias from '../enums/Categorias'
 import i18n, { dateLocale } from '../i18n'
 import Categoria from './Categoria'
 import EmojiComNome from './EmojiComNome'
@@ -22,7 +23,7 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
     : null
 
   const handleVerMais = () => {
-    navigation.navigate('Dia', { data: diario.date.toLocaleDateString() })
+    navigation.navigate('Dia', { data: diario.date.toDateString() })
   }
 
   const handleSentimentos = () => {
@@ -74,17 +75,17 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
             <TextButton texto={t('diario.verMais')} onPress={handleVerMais} />
           </View>
           <Categoria
-            tipo="sentimentos"
+            categoria={Categorias.Sentimentos}
             conteudo={ConteudoSentimentos}
             onPress={handleSentimentos}
           />
           <Categoria
-            tipo="habitos"
+            categoria={Categorias.Habitos}
             conteudo={ConteudoHabitos}
             onPress={handleHabitos}
           />
           <Categoria
-            tipo="anotacoes"
+            categoria={Categorias.Anotacoes}
             conteudo={ConteudoAnotacoes}
             onPress={handleAnotacoes}
           />
