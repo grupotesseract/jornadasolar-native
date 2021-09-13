@@ -113,6 +113,10 @@ const en = {
     editar: 'Edit',
     voltar: 'Back',
     salvar: 'Save'
+  },
+  mensagensAlerta: {
+    registroSucesso: 'The entry was saved successfully',
+    registroFalha: 'The entry could not be saved'
   }
 }
 export default en

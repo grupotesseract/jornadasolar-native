@@ -113,6 +113,10 @@ const pt = {
     editar: 'Editar',
     voltar: 'Voltar',
     salvar: 'Salvar'
+  },
+  mensagensAlerta: {
+    registroSucesso: 'Cadastro realizado com sucesso',
+    registroFalha: 'O cadastro falhou'
   }
 }
 export default pt
