@@ -111,7 +111,8 @@ const en = {
     habitos: 'Habits',
     anotacoes: 'Notes',
     editar: 'Edit',
-    voltar: 'Back'
+    voltar: 'Back',
+    salvar: 'Save'
   }
 }
 export default en

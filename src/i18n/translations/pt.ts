@@ -111,7 +111,8 @@ const pt = {
     habitos: 'Hábitos',
     anotacoes: 'Anotações',
     editar: 'Editar',
-    voltar: 'Voltar'
+    voltar: 'Voltar',
+    salvar: 'Salvar'
   }
 }
 export default pt
