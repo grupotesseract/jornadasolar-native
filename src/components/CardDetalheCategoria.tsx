@@ -1,12 +1,10 @@
-import { format } from 'date-fns'
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Caption, Card, Text } from 'react-native-paper'
+import { Card, Text } from 'react-native-paper'
 import { IHabito } from '../entities/Habito'
-import { IRegistro } from '../entities/Registro'
 import { ISentimento } from '../entities/Sentimento'
 import Categorias from '../enums/Categorias'
-import i18n, { dateLocale } from '../i18n'
+import i18n from '../i18n'
 import EmojiComNome from './EmojiComNome'
 import TextButton from './TextButton'
 
@@ -14,9 +12,15 @@ interface Props {
   navigation: any
   categoria: Categorias
   conteudo?: ISentimento[] | IHabito[] | string | null
+  data: Date
 }
 
-const CardDetalheCategoria = ({ conteudo, navigation, categoria }: Props) => {
+const CardDetalheCategoria = ({
+  conteudo,
+  navigation,
+  categoria,
+  data
+}: Props) => {
   const { t } = i18n
 
   const sentimentos =
@@ -27,7 +31,7 @@ const CardDetalheCategoria = ({ conteudo, navigation, categoria }: Props) => {
     categoria === Categorias.Anotacoes ? (conteudo as string) : null
 
   const handleEditar = () => {
-    navigation.navigate(categoria)
+    navigation.navigate(categoria, { data: data.toDateString() })
   }
 
   const ConteudoSentimentos = sentimentos ? (
