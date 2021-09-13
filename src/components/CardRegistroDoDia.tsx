@@ -27,7 +27,7 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
   }
 
   const handleSentimentos = () => {
-    navigation.navigate('Sentimentos')
+    navigation.navigate('Sentimentos', { data: diario.date.toDateString() })
   }
   const handleHabitos = () => {
     navigation.navigate('Habitos')

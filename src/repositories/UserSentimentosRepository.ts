@@ -9,7 +9,7 @@ interface ICreateParameters {
 
 export interface IUserSentimentosRepository {
   add(params: ICreateParameters): Promise<ISentimento>
-  getAll(): Promise<Array<ISentimento>>
+  getAll(): Promise<Array<Sentimento>>
 }
 export default class UserSentimentosRepository
   implements IUserSentimentosRepository
@@ -29,7 +29,7 @@ export default class UserSentimentosRepository
     })
   }
 
-  async getAll(): Promise<Array<ISentimento>> {
+  async getAll(): Promise<Array<Sentimento>> {
     try {
       const querySnapshot = await this.collection.get()
       const sentimentos = []

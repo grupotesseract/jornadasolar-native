@@ -7,17 +7,22 @@ import SentimentoCheckbox from './SentimentoCheckbox'
 
 interface Props {
   onChange: (selecionados: string[]) => void
+  userId?: string
+  idsSelecionados: string[]
 }
 
-const SentimentosCheckboxGroup = ({ onChange }: Props) => {
+const SentimentosCheckboxGroup = ({
+  onChange,
+  userId = null,
+  idsSelecionados = []
+}: Props) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [idsSelecionados, setIdsSelecionados] = useState<string[]>([])
   const [opcoes, setOpcoes] = useState<Sentimento[]>([])
 
   useEffect(() => {
     const getSentimentos = async () => {
       setIsLoading(true)
-      setOpcoes(await getSentimentosIniciais())
+      setOpcoes(await getSentimentosIniciais(userId))
       setIsLoading(false)
     }
     getSentimentos()
@@ -26,15 +31,11 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
   const handleChangeSelected = (item: ISentimento) => {
     if (idsSelecionados.some(selecionado => selecionado === item.id)) {
       const novosSelecionados = idsSelecionados.filter(i => i !== item.id)
-      setIdsSelecionados(novosSelecionados)
+      onChange(novosSelecionados)
     } else {
-      setIdsSelecionados([...idsSelecionados, item.id])
+      onChange([...idsSelecionados, item.id])
     }
   }
-
-  useEffect(() => {
-    onChange(idsSelecionados)
-  }, [idsSelecionados])
 
   return (
     <View style={styles.sentimentos}>
@@ -46,6 +47,7 @@ const SentimentosCheckboxGroup = ({ onChange }: Props) => {
             key={opcao.nome}
             sentimento={opcao}
             onPress={handleChangeSelected}
+            checked={idsSelecionados.includes(opcao.id)}
           />
         ))
       )}
