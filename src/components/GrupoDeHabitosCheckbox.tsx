@@ -1,33 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
-import Habito from '../entities/Habito'
+import { IHabito } from '../entities/Habito'
 import { Card, Text } from 'react-native-paper'
 import HabitoCheckbox from './HabitoCheckbox'
 
 interface Props {
   grupoDeHabitos: IGrupoDeHabitos
   onChange: (selecao: IGrupoDeHabitos) => void
+  grupoHabitosSelecionados?: IGrupoDeHabitos
 }
 
-const GrupoDeHabitosCheckbox = ({ grupoDeHabitos, onChange }: Props) => {
-  const [habitosSelecionados, setHabitosSelecionados] = useState<Habito[]>([])
+const GrupoDeHabitosCheckbox = ({
+  grupoDeHabitos,
+  onChange,
+  grupoHabitosSelecionados
+}: Props) => {
+  const [habitosSelecionados, setHabitosSelecionados] = useState<IHabito[]>([])
 
-  const handlePressHabito = (habito: Habito) => {
-    if (habitosSelecionados.some(selecionado => habito.id === selecionado.id)) {
+  useEffect(() => {
+    console.log('mudou grupo')
+    setHabitosSelecionados(
+      grupoHabitosSelecionados?.habitos || habitosSelecionados
+    )
+  }, [grupoHabitosSelecionados])
+
+  const handlePressHabito = (habito: IHabito, wasChecked: boolean) => {
+    let novoGrupo = { ...grupoHabitosSelecionados }
+    if (wasChecked) {
       const novosSelecionados = habitosSelecionados.filter(
         selecionado => habito.id !== selecionado.id
       )
-      setHabitosSelecionados(novosSelecionados)
+      novoGrupo.habitos = novosSelecionados
     } else {
-      setHabitosSelecionados([...habitosSelecionados, habito])
+      novoGrupo.habitos = [...habitosSelecionados, habito]
     }
-  }
 
-  useEffect(() => {
-    const novoGrupo = { ...grupoDeHabitos, habitos: habitosSelecionados }
     onChange(novoGrupo)
-  }, [habitosSelecionados])
+  }
 
   return (
     <Card style={styles.cardGruposDeHabitos}>
@@ -39,6 +49,9 @@ const GrupoDeHabitosCheckbox = ({ grupoDeHabitos, onChange }: Props) => {
               key={habito.nome}
               habito={habito}
               onPress={handlePressHabito}
+              isChecked={habitosSelecionados.some(
+                selecionado => habito.id === selecionado.id
+              )}
             />
           ))}
         </View>
@@ -62,7 +75,6 @@ const styles = StyleSheet.create({
   },
   habitosDoGrupo: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    flexWrap: 'wrap'
   }
 })
