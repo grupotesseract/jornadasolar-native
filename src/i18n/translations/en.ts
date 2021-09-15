@@ -60,6 +60,11 @@ const en = {
       'A link to reset your password has been sent to %{email}, please check your inbox or spam folder.',
     enviar: 'Send'
   },
+  menuInferior: {
+    registros: 'Entries',
+    graficos: 'Charts',
+    meditacoes: 'Meditations'
+  },
   diario: {
     bomDia: 'Good Morning',
     boaTarde: 'Good Afternoon',
