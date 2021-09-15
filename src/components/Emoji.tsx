@@ -3,7 +3,8 @@ import { Text } from 'react-native-paper'
 
 const emojis = {
   alegre: '\u{1F603}',
-  wink: '\u{1F609}'
+  wink: '\u{1F609}',
+  lapis: '\u{270F}\u{FE0F}'
 }
 
 interface Props {
@@ -12,10 +13,6 @@ interface Props {
 }
 
 const Emoji = ({ nome, emoji }: Props) => {
-  const emojis = {
-    alegre: '\u{1F603}',
-    wink: '\u{1F609}'
-  }
   return <Text>{nome ? emojis[nome] : emoji}</Text>
 }
 

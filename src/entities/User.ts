@@ -2,7 +2,6 @@ interface IUserAttributes {
   id: string
   nome: string
   email: string
-  senha: string
   objetivos: Array<string>
   temLivro: string
   role?: string
@@ -18,7 +17,6 @@ export default class User implements IUser {
   public id: string
   public nome: string
   public email: string
-  public senha: string
   public objetivos: Array<string>
   public temLivro: string
   public role: string
@@ -30,7 +28,6 @@ export default class User implements IUser {
     id,
     nome,
     email,
-    senha,
     objetivos,
     temLivro,
     role,
@@ -41,7 +38,6 @@ export default class User implements IUser {
     this.id = id
     this.nome = nome
     this.email = email
-    this.senha = senha
     this.objetivos = objetivos
     this.temLivro = temLivro
     this.role = role

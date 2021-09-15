@@ -25,8 +25,8 @@ const Login = ({ navigation }: HomeNavigationProps) => {
       await new SignInUser().call(email, senha)
     } catch (e) {
       setErros(getMessageFromCode(e.code))
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   const handleChangeEmail = (input: string) => {

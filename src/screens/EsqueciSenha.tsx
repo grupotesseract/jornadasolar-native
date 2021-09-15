@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { HelperText, Text } from 'react-native-paper'
+import Emoji from '../components/Emoji'
 import Layout from '../components/Layout'
 import TextInput from '../components/TextInput'
 import Titulo from '../components/Titulo'
@@ -41,7 +42,9 @@ const EsqueciSenha = () => {
       loading={isLoading}
     >
       <ScrollView>
-        <Titulo>{t('recuperarSenha.titulo')} 😉</Titulo>
+        <Titulo>
+          {t('recuperarSenha.titulo')} <Emoji nome="wink" />
+        </Titulo>
         <Text style={styles.texto}>{t('recuperarSenha.enviaremosLink')}</Text>
         <TextInput
           label={t('login.email')}
