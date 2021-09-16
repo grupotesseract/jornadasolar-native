@@ -19,7 +19,6 @@ const GrupoDeHabitosCheckbox = ({
   const [habitosSelecionados, setHabitosSelecionados] = useState<IHabito[]>([])
 
   useEffect(() => {
-    console.log('mudou grupo')
     setHabitosSelecionados(
       grupoHabitosSelecionados?.habitos || habitosSelecionados
     )
