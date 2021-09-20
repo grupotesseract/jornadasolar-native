@@ -1,4 +1,5 @@
-import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
+import GrupoDeHabitos, { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
+import Habito from '../entities/Habito'
 import { firestore } from '../firebase/firebase.config'
 
 export interface IUserGrupoRepository {
@@ -90,12 +91,12 @@ export default class UserGrupoDeHabitosRepository
             emojiUnicode: habitoData.emojiUnicode,
             posicao: habitoData.posicao
           }
-          habitos.push(habito)
+          habitos.push(new Habito(habito))
         })
         grupoDeHabitos.habitos = habitos
       }
 
-      return gruposDeHabitos
+      return gruposDeHabitos.map(grupo => new GrupoDeHabitos(grupo))
     } catch (e) {
       throw new Error(
         'Ocorreu um erro inesperado ao buscar os grupos de hábitos.'

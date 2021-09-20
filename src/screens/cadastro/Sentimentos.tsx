@@ -21,7 +21,7 @@ const Sentimentos = ({ navigation }: HomeNavigationProps) => {
 
   const handleContinuar = () => {
     AvancoParaEtapa4(itensSelecionados)
-    navigation.navigate('Habitos')
+    navigation.navigate('CadastroHabitos')
   }
 
   return (
