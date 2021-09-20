@@ -7,6 +7,8 @@ import { logEvent } from 'expo-firebase-analytics'
 import Loading from '../../components/Loading'
 import EdicaoDiario from '../../components/EdicaoDiario'
 import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
+import TextButton from '../../components/TextButton'
+import { t } from 'i18n-js'
 
 const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
   const dia = new Date(route.params.data)
@@ -17,6 +19,7 @@ const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
     focus: true
   })
   const [itensSelecionados, setItensSelecionados] = useState<string[]>([])
+  const [isEmEdicao, setIsEmEdicao] = useState(false)
 
   const handleChangeSelected = (selecionados: string[]) => {
     setItensSelecionados(selecionados)
@@ -29,6 +32,17 @@ const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
     setItensSelecionados(sentimentosAnteriores || [])
   }, [registroDoDia])
 
+  const toggleEmEdicao = () => {
+    setIsEmEdicao(!isEmEdicao)
+  }
+
+  const botaoEditar = (
+    <TextButton
+      texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
+      onPress={toggleEmEdicao}
+    />
+  )
+
   const onSalvarClick = async () => {
     await new CreateOrUpdateRegistro().call({
       id: registroDoDia?.id,
@@ -40,7 +54,12 @@ const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
   }
 
   return (
-    <EdicaoDiario navigation={navigation} data={dia} onSalvar={onSalvarClick}>
+    <EdicaoDiario
+      botaoSecundario={botaoEditar}
+      navigation={navigation}
+      data={dia}
+      onSalvar={onSalvarClick}
+    >
       {loading ? (
         <Loading />
       ) : (
@@ -48,6 +67,7 @@ const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
           idsSelecionados={itensSelecionados}
           userId={userId}
           onChange={handleChangeSelected}
+          isEmEdicao={isEmEdicao}
         />
       )}
     </EdicaoDiario>
