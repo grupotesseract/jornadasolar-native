@@ -117,6 +117,14 @@ const pt = {
   mensagensAlerta: {
     registroSucesso: 'Cadastro realizado com sucesso',
     registroFalha: 'O cadastro falhou'
+  },
+  graficos: {
+    emocoes: 'Emoções',
+    habitos: 'Hábitos',
+    textoEmocoes: 'Acompanhe a frequência de cada emoção ao longo do mês:',
+    textoHabitos:
+      'Esses hábitos tiveram o maior impacto em sua vida neste mês:',
+    textoVazio: 'Ainda não existem registros nesse mês'
   }
 }
 export default pt

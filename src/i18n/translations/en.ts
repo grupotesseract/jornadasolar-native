@@ -117,6 +117,14 @@ const en = {
   mensagensAlerta: {
     registroSucesso: 'The entry was saved successfully',
     registroFalha: 'The entry could not be saved'
+  },
+  graficos: {
+    emocoes: 'Feelings',
+    habitos: 'Habits',
+    textoEmocoes: 'Track the frequency of each feeling throughout the month:',
+    textoHabitos:
+      'These habits had the biggest impact on your life this month:',
+    textoVazio: 'There are no entries in this month yet'
   }
 }
 export default en
