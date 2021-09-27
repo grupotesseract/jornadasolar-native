@@ -4,13 +4,11 @@ import { Text } from 'react-native-paper'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { theme } from '../../theme'
 import i18n from '../i18n'
+import { useNavigation } from '@react-navigation/core'
 
-interface Props {
-  navigation: any
-}
-
-const BotaoVoltar = ({ navigation }: Props) => {
+const BotaoVoltar = () => {
   const { t } = i18n
+  const navigation = useNavigation()
   const handlePress = () => {
     navigation.goBack()
   }

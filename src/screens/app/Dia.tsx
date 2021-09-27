@@ -43,7 +43,7 @@ const Dia = ({ navigation, route }: DiaNavigationProps) => {
   return (
     <Container>
       <ScrollView>
-        <BotaoVoltar navigation={navigation} />
+        <BotaoVoltar />
         <DateNavigator
           date={dia}
           onChange={handleChangeDia}
