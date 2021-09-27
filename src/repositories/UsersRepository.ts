@@ -160,7 +160,17 @@ export default class UsersRepository implements IUsersRepository {
 
   update({ id, attributes }: IUpdateParameters): boolean {
     try {
+      const now = firebase.firestore.FieldValue.serverTimestamp()
+      attributes.updated_at = now
+
       this.collection.doc(id).update(attributes)
+
+      if (attributes.nome) {
+        const user = auth.currentUser
+        user.updateProfile({
+          displayName: attributes.nome as string
+        })
+      }
       return true
     } catch (e) {
       throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
