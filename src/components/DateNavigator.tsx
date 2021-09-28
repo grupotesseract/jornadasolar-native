@@ -1,42 +1,50 @@
-import { addMonths, isThisMonth } from 'date-fns'
-import { format } from 'date-fns/esm'
+import { format } from 'date-fns'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { IconButton, Text } from 'react-native-paper'
 import { dateLocale } from '../i18n'
 
 interface Props {
-  mes: Date
+  date: Date
   onChange: (Date) => void
+  alteraData: (Date, number) => void
+  isUltimoPasso: (Date) => boolean
+  formatoData: string
 }
 
-const MonthNavigator = ({ mes, onChange }: Props) => {
+const DateNavigator = ({
+  date,
+  onChange,
+  alteraData,
+  isUltimoPasso,
+  formatoData
+}: Props) => {
   const handleVoltar = () => {
-    const novoMes = addMonths(mes, -1)
-    onChange(novoMes)
+    const novaData = alteraData(date, -1)
+    onChange(novaData)
   }
 
   const handleProximo = () => {
-    const novoMes = addMonths(mes, 1)
-    onChange(novoMes)
+    const novaData = alteraData(date, 1)
+    onChange(novaData)
   }
 
   return (
     <View style={styles.container}>
       <IconButton icon="chevron-left" onPress={handleVoltar} />
       <Text style={styles.nomeMes}>
-        {format(mes, 'MMMM, yyyy', { locale: dateLocale })}
+        {format(date, formatoData, { locale: dateLocale })}
       </Text>
       <IconButton
         icon="chevron-right"
         onPress={handleProximo}
-        disabled={isThisMonth(mes)}
+        disabled={isUltimoPasso(date)}
       />
     </View>
   )
 }
 
-export default MonthNavigator
+export default DateNavigator
 
 const styles = StyleSheet.create({
   container: {

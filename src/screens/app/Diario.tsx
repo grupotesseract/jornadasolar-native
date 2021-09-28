@@ -1,4 +1,5 @@
 import {
+  addMonths,
   compareDesc,
   eachDayOfInterval,
   isEqual,
@@ -11,10 +12,11 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { StyleSheet, View, Dimensions, Pressable } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { ActivityIndicator, Text } from 'react-native-paper'
+import { Text } from 'react-native-paper'
 import { theme } from '../../../theme'
 import CardRegistroDoDia from '../../components/CardRegistroDoDia'
-import MonthNavigator from '../../components/MonthNavigator'
+import DateNavigator from '../../components/DateNavigator'
+import Loading from '../../components/Loading'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
 import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
@@ -22,11 +24,13 @@ import i18n from '../../i18n'
 import { AppNavigationProps } from '../../routes/App.routes'
 import getFaseDaLua from '../../utils/getFaseDaLua'
 import getSigno from '../../utils/getSigno'
+import { useFocusEffect } from '@react-navigation/core'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId } = useContext(AuthContext)
   const { t } = i18n
 
+  const [isFocused, setIsFocused] = useState(true)
   const [mes, setMes] = useState(new Date())
   const dias = eachDayOfInterval({
     start: startOfMonth(mes),
@@ -41,8 +45,16 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   const { loading, diarios } = useRegistrosByMonth({
     userId,
-    mes
+    mes,
+    focus: isFocused
   })
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setIsFocused(true)
+      return () => setIsFocused(false)
+    }, [])
+  )
 
   const handleChangeMes = (novoMes: Date) => {
     setMes(novoMes)
@@ -69,7 +81,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   return (
     <ScrollView>
-      <Pressable onPress={handlePerfil}>
+      <Pressable style={styles.botaoPerfil} onPress={handlePerfil}>
         <Text style={styles.linkPerfil}>{t('diario.perfil')}</Text>
       </Pressable>
       <View style={styles.conteudo}>
@@ -83,9 +95,15 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           <View style={styles.oval}></View>
         </View>
         <View style={styles.monthNavigator}>
-          <MonthNavigator mes={mes} onChange={handleChangeMes} />
+          <DateNavigator
+            date={mes}
+            onChange={handleChangeMes}
+            alteraData={addMonths}
+            isUltimoPasso={isThisMonth}
+            formatoData="MMMM, yyyy"
+          />
         </View>
-        {loading ? <ActivityIndicator size="large" /> : registros}
+        {loading ? <Loading /> : registros}
       </View>
     </ScrollView>
   )
@@ -120,6 +138,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 14,
     fontSize: 16
+  },
+  botaoPerfil: {
+    zIndex: 1
   },
   linkPerfil: {
     color: corPreta,

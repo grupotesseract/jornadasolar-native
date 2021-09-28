@@ -6,7 +6,7 @@ import { HomeRoutes } from './Home.routes'
 import AuthContext from '../context/AuthContext'
 import { CadastroProvider } from '../context/ContextCadastro'
 import { AppRoutes } from './App.routes'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { AlertProvider } from '../context/AlertContext'
 
 function Routes() {
   const { userId } = useContext(AuthContext)
@@ -17,7 +17,13 @@ function Routes() {
     </CadastroProvider>
   )
 
-  const Conteudo = userId ? <AppRoutes /> : AreaNaoLogada
+  const AreaLogada = (
+    <AlertProvider>
+      <AppRoutes />
+    </AlertProvider>
+  )
+
+  const Conteudo = userId ? AreaLogada : AreaNaoLogada
 
   return (
     <Background>

@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Caption, Card, Text } from 'react-native-paper'
 import { IRegistro } from '../entities/Registro'
+import Categorias from '../enums/Categorias'
 import i18n, { dateLocale } from '../i18n'
 import Categoria from './Categoria'
 import EmojiComNome from './EmojiComNome'
@@ -15,24 +16,24 @@ interface Props {
 
 const CardRegistroDoDia = ({ diario, navigation }: Props) => {
   const { t } = i18n
-
+  const data = diario.date.toDateString()
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
   const habitos = diario.gruposDeHabitos?.some(grupo => grupo.habitos.length)
     ? diario.gruposDeHabitos?.map(grupo => grupo.habitos).flat()
     : null
 
   const handleVerMais = () => {
-    navigation.navigate('Dia', { data: diario.date.toLocaleDateString() })
+    navigation.navigate('Dia', { data })
   }
 
   const handleSentimentos = () => {
-    navigation.navigate('Sentimentos')
+    navigation.navigate('Sentimentos', { data })
   }
   const handleHabitos = () => {
-    navigation.navigate('Habitos')
+    navigation.navigate('Habitos', { data })
   }
   const handleAnotacoes = () => {
-    navigation.navigate('Anotacoes')
+    navigation.navigate('Anotacoes', { data })
   }
 
   const ConteudoSentimentos = sentimentos ? (
@@ -74,17 +75,17 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
             <TextButton texto={t('diario.verMais')} onPress={handleVerMais} />
           </View>
           <Categoria
-            tipo="sentimentos"
+            categoria={Categorias.Sentimentos}
             conteudo={ConteudoSentimentos}
             onPress={handleSentimentos}
           />
           <Categoria
-            tipo="habitos"
+            categoria={Categorias.Habitos}
             conteudo={ConteudoHabitos}
             onPress={handleHabitos}
           />
           <Categoria
-            tipo="anotacoes"
+            categoria={Categorias.Anotacoes}
             conteudo={ConteudoAnotacoes}
             onPress={handleAnotacoes}
           />

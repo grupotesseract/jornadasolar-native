@@ -1,49 +1,37 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { View } from 'react-native'
-import { ActivityIndicator } from 'react-native-paper'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
-import GetAllGruposDeHabitosModelos from '../services/gruposDeHabitos/GetAllGruposDeHabitosModelos'
-import { getGruposDeHabitosTemplate } from '../utils/getGruposDeHabitos'
+import { getGruposDeHabitosIniciais } from '../utils/getGruposDeHabitos'
 import GrupoDeHabitosCheckbox from './GrupoDeHabitosCheckbox'
+import Loading from './Loading'
+import { IItemEdicao } from './ModalEdicao'
 
 interface Props {
   onChangeSelection: (selecionados: IGrupoDeHabitos[]) => void
   userId?: string
+  gruposSelecionados: IGrupoDeHabitos[]
 }
 
-const GrupoDeHabitosCheckboxGroup = ({ onChangeSelection, userId }: Props) => {
+const GrupoDeHabitosCheckboxGroup = ({
+  onChangeSelection,
+  userId,
+  gruposSelecionados
+}: Props) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [gruposDeHabitos, setGruposDeHabitos] = useState<IGrupoDeHabitos[]>([])
-  const [gruposSelecionados, setGruposSelecionados] = useState<
-    IGrupoDeHabitos[]
-  >([])
-  const isCadastro = !userId
+  const [opcoes, setOpcoes] = useState<IGrupoDeHabitos[]>([])
+  
+  const getGrupos = async () => {
+    const gruposModelo = await getGruposDeHabitosIniciais(userId)
+    setOpcoes(gruposModelo)
+  }
 
   useEffect(() => {
-    const tiraGrupoPersonalizado = (grupos: IGrupoDeHabitos[]) => {
-      return grupos.filter(grupo => grupo.nome != 'Personalizados')
-    }
+    setIsLoading(true)
 
-    const getGrupos = async () => {
-      setIsLoading(true)
-
-      let template = await getGruposDeHabitosTemplate()
-      let gruposModelo = await new GetAllGruposDeHabitosModelos().call()
-      if (isCadastro) {
-        template = tiraGrupoPersonalizado(template)
-        gruposModelo = tiraGrupoPersonalizado(gruposModelo)
-      }
-      setGruposSelecionados(template)
-      setGruposDeHabitos(gruposModelo)
-      setIsLoading(false)
-    }
     getGrupos()
+    setIsLoading(false)
   }, [])
-
-  useEffect(() => {
-    onChangeSelection(gruposSelecionados)
-  }, [gruposSelecionados])
 
   const handleChangeGrupo = (grupoAlterado: IGrupoDeHabitos) => {
     const novosSelecionados = gruposSelecionados.map(grupo => {
@@ -53,19 +41,53 @@ const GrupoDeHabitosCheckboxGroup = ({ onChangeSelection, userId }: Props) => {
         return grupo
       }
     })
-    setGruposSelecionados(novosSelecionados)
+    onChangeSelection(novosSelecionados)
+  }
+
+  const atualizaHabito = (novosDados: IItemEdicao) => {
+    const grupoAtualizado = opcoes.map(grupo => {
+      if (grupo.id !== novosDados.idGrupo) {
+        return grupo
+      }
+      const habitosAtualizados = grupo.habitos.map(habito => {
+        if (habito.id !== novosDados.id) {
+          return habito
+        }
+        return {
+          ...habito,
+          nome: novosDados.nome,
+          emojiUnicode: novosDados.emojiUnicode,
+          emoji: novosDados.emoji
+        }
+      })
+      return { ...grupo, habitos: habitosAtualizados }
+    })
+    setOpcoes(grupoAtualizado)
+  }
+
+  const handleEdicaoHabito = async (novosDados: IItemEdicao) => {
+    if (novosDados.id) {
+      atualizaHabito(novosDados)
+    } else {
+      await getGrupos()
+    }
   }
 
   return (
     <View>
       {isLoading ? (
-        <ActivityIndicator size="large" />
+        <Loading />
       ) : (
-        gruposDeHabitos.map(grupo => (
+        opcoes.map(grupo => (
           <GrupoDeHabitosCheckbox
+            userId={userId}
             key={grupo.nome}
             grupoDeHabitos={grupo}
             onChange={handleChangeGrupo}
+            grupoHabitosSelecionados={gruposSelecionados.find(
+              grupoSelecionado => grupoSelecionado.id === grupo.id
+            )}
+            onHabitoAtualizado={handleEdicaoHabito}
           />
         ))
       )}

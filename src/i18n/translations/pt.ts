@@ -109,7 +109,29 @@ const pt = {
     formatoDataExtenso: "EEEE, d 'de' MMMM",
     sentimentos: 'Sentimentos',
     habitos: 'Hábitos',
-    anotacoes: 'Anotações'
+    anotacoes: 'Anotações',
+    editar: 'Editar',
+    concluir: 'Concluir',
+    voltar: 'Voltar',
+    salvar: 'Salvar'
+  },
+  mensagensAlerta: {
+    registroSucesso: 'Cadastro realizado com sucesso',
+    registroFalha: 'O cadastro falhou',
+    atualizacaoSucesso: 'O %{tipo} foi atualizado com sucesso.',
+    atualizacaoFalha: 'A atualização do %{tipo} falhou.',
+    criacaoFalha: 'A criação do %{tipo} falhou.'
+  },
+  edicao: {
+    tituloEdicao: 'Edição de %{tipo}',
+    tituloNovo: 'Novo %{tipo}',
+    novoSentimento: '+ Criar novo',
+    emoji: 'Emoji',
+    sentimento: 'Sentimento',
+    erroEmoji: 'Por favor adicione um emoji',
+    erroNome: 'Por favor adicione um nome',
+    novoHabito: 'Novo hábito',
+    habito: 'Hábito'
   }
 }
 export default pt

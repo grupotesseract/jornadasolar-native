@@ -13,9 +13,9 @@ import { BottomTabs } from './BottomTabs.routes'
 type AppStackParams = {
   Abas: undefined
   Dia: { data: string }
-  Sentimentos: undefined
-  Habitos: undefined
-  Anotacoes: undefined
+  Sentimentos: { data: string }
+  Habitos: { data: string }
+  Anotacoes: { data: string }
   Perfil: undefined
 }
 

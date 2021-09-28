@@ -8,13 +8,15 @@ interface Props {
   mode?: 'contained' | 'outlined'
   onPress?: () => void
   loading?: boolean
+  icon?: string
 }
 
 const Button = ({
   children,
   onPress,
   mode = 'contained',
-  loading = false
+  loading = false,
+  icon = ''
 }: Props) => {
   return (
     <PaperButton
@@ -23,6 +25,7 @@ const Button = ({
       labelStyle={styles.texto}
       onPress={onPress}
       loading={loading}
+      icon={icon}
     >
       {children}
     </PaperButton>
