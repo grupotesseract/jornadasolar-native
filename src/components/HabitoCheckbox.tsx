@@ -8,15 +8,13 @@ import Emoji from './Emoji'
 
 interface ItemProps {
   habito: IHabito
-  onPress: (Habito: IHabito) => void
+  onPress: (Habito: IHabito, wasChecked: boolean) => void
+  isChecked: boolean
 }
 
-const HabitoCheckbox = ({ habito, onPress }: ItemProps) => {
-  const [isChecked, setIsChecked] = useState(false)
-
+const HabitoCheckbox = ({ habito, onPress, isChecked }: ItemProps) => {
   const handlePress = () => {
-    setIsChecked(!isChecked)
-    onPress(habito)
+    onPress(habito, isChecked)
   }
   return (
     <View style={styles.container}>

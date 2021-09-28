@@ -18,8 +18,8 @@ type HomeStackParams = {
   EsqueciSenha: undefined
   Identificacao: undefined
   Objetivos: undefined
-  Sentimentos: undefined
-  Habitos: undefined
+  CadastroSentimentos: undefined
+  CadastroHabitos: undefined
   DadosAutenticacao: undefined
 }
 
@@ -35,8 +35,8 @@ function HomeRoutes() {
       <Screen name="EsqueciSenha" component={EsqueciSenha} />
       <Screen name="Identificacao" component={Identificacao} />
       <Screen name="Objetivos" component={Objetivos} />
-      <Screen name="Sentimentos" component={Sentimentos} />
-      <Screen name="Habitos" component={Habitos} />
+      <Screen name="CadastroSentimentos" component={Sentimentos} />
+      <Screen name="CadastroHabitos" component={Habitos} />
       <Screen name="DadosAutenticacao" component={DadosAutenticacao} />
     </Navigator>
   )

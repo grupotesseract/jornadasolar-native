@@ -35,7 +35,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
 
   const handleContinuar = () => {
     AvancoParaEtapa3(itensSelecionados)
-    navigation.navigate('Sentimentos')
+    navigation.navigate('CadastroSentimentos')
   }
 
   return (
