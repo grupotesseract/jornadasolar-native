@@ -11,6 +11,7 @@ import PasswordInput from '../../components/PasswordInput'
 import CadastroContext from '../../context/ContextCadastro'
 import { ErrosAuth, getMessageFromCode } from '../../utils/getMessageFromCode'
 import CreateUser from '../../services/user/CreateUser'
+import { logEvent } from 'expo-firebase-analytics'
 
 const DadosAutenticacao = () => {
   const { t } = i18n
@@ -38,6 +39,7 @@ const DadosAutenticacao = () => {
     setIsLoading(true)
     try {
       await new CreateUser().call({ ...dadosCadastro, email, senha, temLivro })
+      logEvent('sign_up')
     } catch (e) {
       setErros(getMessageFromCode(e.code))
       setIsLoading(false)
