@@ -6,6 +6,7 @@ import GetRegistrosByMonth from '../services/registros/GetRegistrosByMonth'
 interface IParameters {
   userId: string
   mes: Date
+  focus: boolean
 }
 
 interface IResult {
@@ -13,7 +14,7 @@ interface IResult {
   loading: boolean
 }
 
-const useRegistrosByMonth = ({ userId, mes }: IParameters): IResult => {
+const useRegistrosByMonth = ({ userId, mes, focus }: IParameters): IResult => {
   const initialData = { loading: true, diarios: null }
   const [data, setData] = useState(initialData)
   const startDate = startOfMonth(mes)
@@ -31,8 +32,10 @@ const useRegistrosByMonth = ({ userId, mes }: IParameters): IResult => {
   }
 
   useEffect(() => {
-    buscar()
-  }, [userId, mes.toString()])
+    if (focus) {
+      buscar()
+    }
+  }, [userId, mes.toString(), focus])
 
   return data
 }

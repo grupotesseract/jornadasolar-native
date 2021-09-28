@@ -111,7 +111,12 @@ const en = {
     habitos: 'Habits',
     anotacoes: 'Notes',
     editar: 'Edit',
-    voltar: 'Back'
+    voltar: 'Back',
+    salvar: 'Save'
+  },
+  mensagensAlerta: {
+    registroSucesso: 'The entry was saved successfully',
+    registroFalha: 'The entry could not be saved'
   }
 }
 export default en

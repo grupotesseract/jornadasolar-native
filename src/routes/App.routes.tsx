@@ -15,7 +15,7 @@ type AppStackParams = {
   Dia: { data: string }
   Sentimentos: undefined
   Habitos: undefined
-  Anotacoes: undefined
+  Anotacoes: { data: string }
   Perfil: undefined
 }
 

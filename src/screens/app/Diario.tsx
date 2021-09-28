@@ -17,7 +17,6 @@ import { theme } from '../../../theme'
 import CardRegistroDoDia from '../../components/CardRegistroDoDia'
 import DateNavigator from '../../components/DateNavigator'
 import Loading from '../../components/Loading'
-import MonthNavigator from '../../components/MonthNavigator'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
 import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
@@ -25,11 +24,13 @@ import i18n from '../../i18n'
 import { AppNavigationProps } from '../../routes/App.routes'
 import getFaseDaLua from '../../utils/getFaseDaLua'
 import getSigno from '../../utils/getSigno'
+import { useFocusEffect } from '@react-navigation/core'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId } = useContext(AuthContext)
   const { t } = i18n
 
+  const [isFocused, setIsFocused] = useState(true)
   const [mes, setMes] = useState(new Date())
   const dias = eachDayOfInterval({
     start: startOfMonth(mes),
@@ -44,8 +45,16 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   const { loading, diarios } = useRegistrosByMonth({
     userId,
-    mes
+    mes,
+    focus: isFocused
   })
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setIsFocused(true)
+      return () => setIsFocused(false)
+    }, [])
+  )
 
   const handleChangeMes = (novoMes: Date) => {
     setMes(novoMes)

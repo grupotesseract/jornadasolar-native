@@ -111,7 +111,12 @@ const pt = {
     habitos: 'Hábitos',
     anotacoes: 'Anotações',
     editar: 'Editar',
-    voltar: 'Voltar'
+    voltar: 'Voltar',
+    salvar: 'Salvar'
+  },
+  mensagensAlerta: {
+    registroSucesso: 'Cadastro realizado com sucesso',
+    registroFalha: 'O cadastro falhou'
   }
 }
 export default pt

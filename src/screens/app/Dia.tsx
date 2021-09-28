@@ -11,15 +11,27 @@ import AuthContext from '../../context/AuthContext'
 import Categorias from '../../enums/Categorias'
 import useRegistroByDate from '../../hooks/useRegistroByDate'
 import i18n from '../../i18n'
+import { useFocusEffect } from '@react-navigation/native'
 
 const Dia = ({ navigation, route }: DiaNavigationProps) => {
   const { data } = route.params
   const { userId } = useContext(AuthContext)
   const [dia, setDia] = useState(new Date(data))
   const { t } = i18n
+  const [isFocused, setIsFocused] = useState(true)
 
-  const { loading, registroDoDia } = useRegistroByDate({ userId, date: dia })
+  const { loading, registroDoDia } = useRegistroByDate({
+    userId,
+    date: dia,
+    focus: isFocused
+  })
 
+  useFocusEffect(
+    React.useCallback(() => {
+      setIsFocused(true)
+      return () => setIsFocused(false)
+    }, [])
+  )
   const habitos = registroDoDia?.gruposDeHabitos
     ?.map(grupo => grupo.habitos)
     .flat()
@@ -47,16 +59,19 @@ const Dia = ({ navigation, route }: DiaNavigationProps) => {
               navigation={navigation}
               categoria={Categorias.Sentimentos}
               conteudo={registroDoDia?.sentimentos}
+              data={dia}
             />
             <CardDetalheCategoria
               navigation={navigation}
               categoria={Categorias.Habitos}
               conteudo={habitos}
+              data={dia}
             />
             <CardDetalheCategoria
               navigation={navigation}
               categoria={Categorias.Anotacoes}
               conteudo={registroDoDia?.anotacoes}
+              data={dia}
             />
           </>
         )}
