@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, Pressable } from 'react-native'
-import { Button, Text } from 'react-native-paper'
+import { StyleSheet } from 'react-native'
+import { Text } from 'react-native-paper'
 import { theme } from '../../theme'
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
 
 const TextButton = ({ texto, onPress }: Props) => {
   return (
-    <Pressable onPress={onPress}>
-      <Text style={styles.texto}>{texto}</Text>
-    </Pressable>
+    <Text onPress={onPress} style={styles.texto}>
+      {texto}
+    </Text>
   )
 }
 

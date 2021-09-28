@@ -16,24 +16,24 @@ interface Props {
 
 const CardRegistroDoDia = ({ diario, navigation }: Props) => {
   const { t } = i18n
-
+  const data = diario.date.toDateString()
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
   const habitos = diario.gruposDeHabitos?.some(grupo => grupo.habitos.length)
     ? diario.gruposDeHabitos?.map(grupo => grupo.habitos).flat()
     : null
 
   const handleVerMais = () => {
-    navigation.navigate('Dia', { data: diario.date.toDateString() })
+    navigation.navigate('Dia', { data })
   }
 
   const handleSentimentos = () => {
-    navigation.navigate('Sentimentos')
+    navigation.navigate('Sentimentos', { data })
   }
   const handleHabitos = () => {
-    navigation.navigate('Habitos')
+    navigation.navigate('Habitos', { data })
   }
   const handleAnotacoes = () => {
-    navigation.navigate('Anotacoes', { data: diario.date.toDateString() })
+    navigation.navigate('Anotacoes', { data })
   }
 
   const ConteudoSentimentos = sentimentos ? (

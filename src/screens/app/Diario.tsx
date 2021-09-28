@@ -81,7 +81,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   return (
     <ScrollView>
-      <Pressable onPress={handlePerfil}>
+      <Pressable style={styles.botaoPerfil} onPress={handlePerfil}>
         <Text style={styles.linkPerfil}>{t('diario.perfil')}</Text>
       </Pressable>
       <View style={styles.conteudo}>
@@ -138,6 +138,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 14,
     fontSize: 16
+  },
+  botaoPerfil: {
+    zIndex: 1
   },
   linkPerfil: {
     color: corPreta,

@@ -16,12 +16,10 @@ const Categoria = ({ categoria, conteudo, onPress }: Props) => {
   const tipo = categoria.toLowerCase()
   const BotaoPreencher = () => {
     return (
-      <>
-        <View style={styles.emoji}>
-          <Emoji nome="lapis" />
-        </View>
+      <Text>
+        <Emoji nome="lapis" />{' '}
         <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} />
-      </>
+      </Text>
     )
   }
 
@@ -42,14 +40,17 @@ export default Categoria
 const styles = StyleSheet.create({
   linha: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
     paddingVertical: 12
   },
   itens: {
-    fontFamily: 'NunitoSans_600SemiBold',
-    fontSize: 14
+    fontFamily: 'NunitoSans_600SemiBold'
   },
   emoji: { paddingEnd: 8 },
-  conteudo: { paddingStart: 8, flexDirection: 'row', flex: 1 }
+  conteudo: {
+    paddingStart: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1
+  }
 })

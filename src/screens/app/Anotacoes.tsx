@@ -78,9 +78,6 @@ const styles = StyleSheet.create({
   input: {
     color: theme.colors.text
   },
-  habito: {
-    width: '50%'
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',

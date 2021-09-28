@@ -111,12 +111,27 @@ const en = {
     habitos: 'Habits',
     anotacoes: 'Notes',
     editar: 'Edit',
+    concluir: 'Done',
     voltar: 'Back',
     salvar: 'Save'
   },
   mensagensAlerta: {
     registroSucesso: 'The entry was saved successfully',
-    registroFalha: 'The entry could not be saved'
+    registroFalha: 'The entry could not be saved',
+    atualizacaoSucesso: 'The %{tipo} update was successful.',
+    atualizacaoFalha: 'The %{tipo} could not be updated.',
+    criacaoFalha: 'The %{tipo} cration failed.'
+  },
+  edicao: {
+    tituloEdicao: 'Editing a %{tipo}',
+    tituloNovo: 'New %{tipo}',
+    novoSentimento: '+ Create new',
+    emoji: 'Emoji',
+    sentimento: 'Feeling',
+    erroEmoji: 'Please provide an emoji',
+    erroNome: 'Please provide a name',
+    novoHabito: 'New habit',
+    habito: 'Habit'
   },
   graficos: {
     emocoes: 'Feelings',
