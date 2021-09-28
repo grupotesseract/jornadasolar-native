@@ -129,7 +129,9 @@ const en = {
     emoji: 'Emoji',
     sentimento: 'Feeling',
     erroEmoji: 'Please provide an emoji',
-    erroNome: 'Please provide a name'
+    erroNome: 'Please provide a name',
+    novoHabito: 'New habit',
+    habito: 'Habit'
   }
 }
 export default en

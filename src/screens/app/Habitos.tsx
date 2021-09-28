@@ -42,8 +42,10 @@ const Habitos = ({ navigation, route }: DiaNavigationProps) => {
   }, [])
 
   useEffect(() => {
-    const habitosAnteriores = registroDoDia?.gruposDeHabitos
-    setItensSelecionados(habitosAnteriores || template)
+    const habitosAnteriores = registroDoDia?.gruposDeHabitos.length
+      ? registroDoDia?.gruposDeHabitos
+      : template
+    setItensSelecionados(habitosAnteriores)
   }, [registroDoDia])
 
   const handleChangeSelected = (selecionados: IGrupoDeHabitos[]) => {

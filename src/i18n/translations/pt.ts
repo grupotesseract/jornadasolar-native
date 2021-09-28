@@ -129,7 +129,9 @@ const pt = {
     emoji: 'Emoji',
     sentimento: 'Sentimento',
     erroEmoji: 'Por favor adicione um emoji',
-    erroNome: 'Por favor adicione um nome'
+    erroNome: 'Por favor adicione um nome',
+    novoHabito: 'Novo hábito',
+    habito: 'Hábito'
   }
 }
 export default pt
