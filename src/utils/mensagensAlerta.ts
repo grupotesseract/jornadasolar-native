@@ -22,4 +22,31 @@ const registroFalha: AlertProps = {
   texto: t('mensagensAlerta.registroFalha')
 }
 
-export { TiposAlerta, AlertProps, registroSucesso, registroFalha }
+const atualizacaoSucesso = (item: string): AlertProps => {
+  return {
+    tipo: TiposAlerta.Sucesso,
+    texto: t('mensagensAlerta.atualizacaoSucesso', { tipo: item.toLowerCase() })
+  }
+}
+const atualizacaoFalha = (item: string): AlertProps => {
+  return {
+    tipo: TiposAlerta.Falha,
+    texto: t('mensagensAlerta.atualizacaoFalha', { tipo: item.toLowerCase() })
+  }
+}
+const criacaoFalha = (item: string): AlertProps => {
+  return {
+    tipo: TiposAlerta.Falha,
+    texto: t('mensagensAlerta.criacaoFalha', { tipo: item.toLowerCase() })
+  }
+}
+
+export {
+  TiposAlerta,
+  AlertProps,
+  registroSucesso,
+  registroFalha,
+  atualizacaoSucesso,
+  atualizacaoFalha,
+  criacaoFalha
+}

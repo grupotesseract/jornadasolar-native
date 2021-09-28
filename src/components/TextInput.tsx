@@ -28,6 +28,7 @@ const TextInput = ({
         error={!!erro}
         value={value}
         keyboardType={keyboardType}
+        style={{ backgroundColor: 'transparent' }}
       />
       {!!erro && (
         <HelperText type="error" visible={!!erro}>
