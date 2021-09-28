@@ -34,7 +34,10 @@ const Sentimentos = ({ navigation }: HomeNavigationProps) => {
         <Titulo>{t('cadastro.vamosAjudar')}</Titulo>
         <View style={styles.container}>
           <InputLabel texto={t('cadastro.perguntaSentimentos')} />
-          <SentimentosCheckboxGroup onChange={handleChangeSelected} />
+          <SentimentosCheckboxGroup
+            idsSelecionados={itensSelecionados}
+            onChange={handleChangeSelected}
+          />
         </View>
       </ScrollView>
     </Layout>

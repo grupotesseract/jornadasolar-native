@@ -8,10 +8,15 @@ import Sentimento, { ISentimento } from '../entities/Sentimento'
 interface ItemProps {
   sentimento: Sentimento
   onPress: (sentimento: ISentimento) => void
+  checked?: boolean
 }
 
-const SentimentoCheckbox = ({ sentimento, onPress }: ItemProps) => {
-  const [isChecked, setIsChecked] = useState(false)
+const SentimentoCheckbox = ({
+  sentimento,
+  onPress,
+  checked = false
+}: ItemProps) => {
+  const [isChecked, setIsChecked] = useState(checked)
 
   const handlePress = () => {
     setIsChecked(!isChecked)
