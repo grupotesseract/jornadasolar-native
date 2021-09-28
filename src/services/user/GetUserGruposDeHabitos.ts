@@ -1,9 +1,9 @@
-import { IGrupoDeHabitos } from '../../entities/GrupoDeHabitos'
+import GrupoDeHabitos from '../../entities/GrupoDeHabitos'
 import UserGrupoDeHabitosRepository from '../../repositories/UserGruposDeHabitosRepository'
 
 const GetUserGruposDeHabitos = async (
   userId: string
-): Promise<Array<IGrupoDeHabitos>> => {
+): Promise<Array<GrupoDeHabitos>> => {
   return await new UserGrupoDeHabitosRepository(userId).getAll()
 }
 

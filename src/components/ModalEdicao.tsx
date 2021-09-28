@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, Pressable, StyleSheet, View } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  Pressable,
+  StyleSheet,
+  View
+} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Paragraph, Portal, Surface, Text } from 'react-native-paper'
 import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIcons'
@@ -7,11 +14,14 @@ import { t } from 'i18n-js'
 import EmojiToUnicode from '../services/EmojiToUnicode'
 import TextButton from './TextButton'
 import TextInput from './TextInput'
+import { theme } from '../../theme'
 
 export interface IItemEdicao {
   emoji?: string
   nome: string
   emojiUnicode: string[]
+  id?: string
+  idGrupo?: string
 }
 
 interface Props {
@@ -42,17 +52,20 @@ const ModalEdicao = ({
   const [erro, setErros] = useState(null)
 
   useEffect(() => {
-    if (itemEdicao) {
+    if (itemEdicao?.id) {
       setItem({
         emoji: itemEdicao.emoji,
         nome: itemEdicao.nome,
-        emojiUnicode: itemEdicao.emojiUnicode
+        emojiUnicode: itemEdicao.emojiUnicode,
+        id: itemEdicao.id,
+        idGrupo: itemEdicao.idGrupo
       })
     } else {
       setItem({
         emoji: '',
         nome: '',
-        emojiUnicode: []
+        emojiUnicode: [],
+        idGrupo: itemEdicao?.idGrupo
       })
     }
     setErros(null)
@@ -111,39 +124,43 @@ const ModalEdicao = ({
         transparent
       >
         <View style={styles.container}>
-          <Surface style={styles.modal}>
-            <ScrollView>
-              <View style={styles.header}>
-                <Pressable style={styles.fechar} onPress={handleFecha}>
-                  <MaterialCommunityIcons
-                    name="close"
-                    color="white"
-                    size={20}
+          <KeyboardAvoidingView
+            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+          >
+            <Surface style={styles.modal}>
+              <ScrollView>
+                <View style={styles.header}>
+                  <Pressable style={styles.fechar} onPress={handleFecha}>
+                    <MaterialCommunityIcons
+                      name="close"
+                      color={theme.colors.text}
+                      size={20}
+                    />
+                  </Pressable>
+                  <Paragraph style={styles.titulo}>{tituloModal}</Paragraph>
+                  <View style={styles.spacer}></View>
+                  <TextButton
+                    texto={t('comum.concluir')}
+                    onPress={handleConfirma}
                   />
-                </Pressable>
-                <Paragraph style={styles.titulo}>{tituloModal}</Paragraph>
-                <View style={styles.spacer}></View>
-                <TextButton
-                  texto={t('comum.concluir')}
-                  onPress={handleConfirma}
-                />
-              </View>
-              <View style={styles.form}>
-                <TextInput
-                  label={t('edicao.emoji')}
-                  value={item.emoji}
-                  onChangeText={handleChangeEmoji}
-                  erro={erro?.emoji}
-                />
-                <TextInput
-                  label={labelNome}
-                  value={item.nome}
-                  onChangeText={handleChangeNome}
-                  erro={erro?.nome}
-                />
-              </View>
-            </ScrollView>
-          </Surface>
+                </View>
+                <View style={styles.form}>
+                  <TextInput
+                    label={t('edicao.emoji')}
+                    value={item.emoji}
+                    onChangeText={handleChangeEmoji}
+                    erro={erro?.emoji}
+                  />
+                  <TextInput
+                    label={labelNome}
+                    value={item.nome}
+                    onChangeText={handleChangeNome}
+                    erro={erro?.nome}
+                  />
+                </View>
+              </ScrollView>
+            </Surface>
+          </KeyboardAvoidingView>
         </View>
       </Modal>
     </Portal>
@@ -157,7 +174,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0,0,0,0.8)'
+    backgroundColor: theme.colors.backdrop
   },
   modal: {
     paddingHorizontal: 26,

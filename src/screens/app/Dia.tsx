@@ -10,14 +10,14 @@ import Loading from '../../components/Loading'
 import AuthContext from '../../context/AuthContext'
 import Categorias from '../../enums/Categorias'
 import useRegistroByDate from '../../hooks/useRegistroByDate'
-import i18n from '../../i18n'
 import { useFocusEffect } from '@react-navigation/native'
+import { t } from 'i18n-js'
+import { View } from 'react-native'
 
 const Dia = ({ navigation, route }: DiaNavigationProps) => {
   const { data } = route.params
   const { userId } = useContext(AuthContext)
   const [dia, setDia] = useState(new Date(data))
-  const { t } = i18n
   const [isFocused, setIsFocused] = useState(true)
 
   const { loading, registroDoDia } = useRegistroByDate({
@@ -44,13 +44,15 @@ const Dia = ({ navigation, route }: DiaNavigationProps) => {
     <Container>
       <ScrollView>
         <BotaoVoltar />
-        <DateNavigator
-          date={dia}
-          onChange={handleChangeDia}
-          alteraData={addDays}
-          isUltimoPasso={isToday}
-          formatoData={t('comum.formatoDataExtenso')}
-        />
+        <View style={{ marginTop: 24 }}>
+          <DateNavigator
+            date={dia}
+            onChange={handleChangeDia}
+            alteraData={addDays}
+            isUltimoPasso={isToday}
+            formatoData={t('comum.formatoDataExtenso')}
+          />
+        </View>
         {loading ? (
           <Loading />
         ) : (
