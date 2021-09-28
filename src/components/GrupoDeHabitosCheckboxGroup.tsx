@@ -20,7 +20,7 @@ const GrupoDeHabitosCheckboxGroup = ({
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [opcoes, setOpcoes] = useState<IGrupoDeHabitos[]>([])
-
+  
   const getGrupos = async () => {
     const gruposModelo = await getGruposDeHabitosIniciais(userId)
     setOpcoes(gruposModelo)
@@ -28,6 +28,7 @@ const GrupoDeHabitosCheckboxGroup = ({
 
   useEffect(() => {
     setIsLoading(true)
+
     getGrupos()
     setIsLoading(false)
   }, [])

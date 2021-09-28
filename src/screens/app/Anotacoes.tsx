@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { StyleSheet, View, TextInput, Pressable } from 'react-native'
 import { Card, Text } from 'react-native-paper'
 import AuthContext from '../../context/AuthContext'
 import useRegistroByDate from '../../hooks/useRegistroByDate'
@@ -21,6 +21,7 @@ const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
     focus: true
   })
   const [anotacoes, setAnotacoes] = useState<string>('')
+  const inputRef = useRef<TextInput>(null)
 
   useEffect(() => {
     setAnotacoes(registroDoDia?.anotacoes || '')
@@ -28,6 +29,10 @@ const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
 
   const handleChangeTexto = (novoTexto: string) => {
     setAnotacoes(novoTexto)
+  }
+
+  const handleFoco = () => {
+    inputRef.current.focus()
   }
 
   const onSalvarClick = async () => {
@@ -47,11 +52,12 @@ const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
       ) : (
         <Card style={styles.card}>
           <Card.Content>
-            <View style={styles.header}>
+            <Pressable style={styles.header} onPress={handleFoco}>
               <Text>{t(`comum.anotacoes`)}:</Text>
-            </View>
+            </Pressable>
             <View style={styles.conteudo}>
               <TextInput
+                ref={inputRef}
                 multiline
                 style={styles.input}
                 underlineColorAndroid="transparent"

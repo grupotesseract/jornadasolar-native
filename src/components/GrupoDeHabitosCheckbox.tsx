@@ -21,6 +21,7 @@ interface Props {
   grupoDeHabitos: IGrupoDeHabitos
   onChange: (selecao: IGrupoDeHabitos) => void
   grupoHabitosSelecionados?: IGrupoDeHabitos
+
   onHabitoAtualizado?: (IItemEdicao) => Promise<void>
   userId?: string
 }
