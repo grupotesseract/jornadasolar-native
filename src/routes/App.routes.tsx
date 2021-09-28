@@ -3,15 +3,15 @@ import {
   NativeStackScreenProps
 } from '@react-navigation/native-stack'
 import React from 'react'
-import Diario from '../screens/app/Diario'
 import Dia from '../screens/app/Dia'
 import Sentimentos from '../screens/app/Sentimentos'
 import Habitos from '../screens/app/Habitos'
 import Anotacoes from '../screens/app/Anotacoes'
 import Perfil from '../screens/app/Perfil'
+import { BottomTabs } from './BottomTabs.routes'
 
 type AppStackParams = {
-  Diario: undefined
+  Abas: undefined
   Dia: { data: string }
   Sentimentos: undefined
   Habitos: undefined
@@ -19,7 +19,7 @@ type AppStackParams = {
   Perfil: undefined
 }
 
-type AppNavigationProps = NativeStackScreenProps<AppStackParams, 'Diario'>
+type AppNavigationProps = NativeStackScreenProps<AppStackParams, 'Abas'>
 type DiaNavigationProps = NativeStackScreenProps<AppStackParams, 'Dia'>
 
 const { Navigator, Screen } = createNativeStackNavigator<AppStackParams>()
@@ -27,7 +27,7 @@ const { Navigator, Screen } = createNativeStackNavigator<AppStackParams>()
 function AppRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name="Diario" component={Diario} />
+      <Screen name="Abas" component={BottomTabs} />
       <Screen name="Dia" component={Dia} />
       <Screen name="Sentimentos" component={Sentimentos} />
       <Screen name="Habitos" component={Habitos} />

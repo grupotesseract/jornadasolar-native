@@ -21,6 +21,7 @@ interface IUpdateParameters extends ICreateParameters {
 export interface IRegistrosRepository {
   add(params): boolean
   update(params): boolean
+  getByDate(userId, date): Promise<IRegistro>
   getByDateRange(
     userId: string,
     startDate: Date,
@@ -52,6 +53,19 @@ export default class RegistrosRepository implements IRegistrosRepository {
       throw new Error(
         'Ocorreu um erro inesperado ao atualizar o registro do dia.'
       )
+    }
+  }
+
+  async getByDate(userId: string, date: Date): Promise<IRegistro> {
+    const Registros = await this.getByDateRange(
+      userId,
+      startOfDay(date),
+      endOfDay(date)
+    )
+    if (Registros) {
+      return Registros[0]
+    } else {
+      return null
     }
   }
 

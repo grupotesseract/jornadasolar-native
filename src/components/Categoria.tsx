@@ -1,17 +1,19 @@
 import React, { ReactNode } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
+import Categorias from '../enums/Categorias'
 import i18n from '../i18n'
 import Emoji from './Emoji'
 import TextButton from './TextButton'
 
 interface Props {
-  tipo: 'sentimentos' | 'habitos' | 'anotacoes'
+  categoria: Categorias
   onPress: () => void
   conteudo?: ReactNode
 }
 
-const Categoria = ({ tipo, conteudo, onPress }: Props) => {
+const Categoria = ({ categoria, conteudo, onPress }: Props) => {
+  const tipo = categoria.toLowerCase()
   const BotaoPreencher = () => {
     return (
       <Text>

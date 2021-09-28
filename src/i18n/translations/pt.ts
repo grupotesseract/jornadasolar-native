@@ -61,6 +61,11 @@ const pt = {
       'Um link para redefinir sua senha foi enviado para %{email}, verifique sua caixa de entrada ou spam.',
     enviar: 'Enviar'
   },
+  menuInferior: {
+    registros: 'Registros',
+    graficos: 'Gráficos',
+    meditacoes: 'Meditações'
+  },
   diario: {
     bomDia: 'Bom dia',
     boaTarde: 'Boa tarde',
@@ -104,7 +109,9 @@ const pt = {
     formatoDataExtenso: "EEEE, d 'de' MMMM",
     sentimentos: 'Sentimentos',
     habitos: 'Hábitos',
-    anotacoes: 'Anotações'
+    anotacoes: 'Anotações',
+    editar: 'Editar',
+    voltar: 'Voltar'
   }
 }
 export default pt

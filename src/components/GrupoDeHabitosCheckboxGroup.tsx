@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { View } from 'react-native'
-import { ActivityIndicator } from 'react-native-paper'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
 import GetAllGruposDeHabitosModelos from '../services/gruposDeHabitos/GetAllGruposDeHabitosModelos'
 import { getGruposDeHabitosTemplate } from '../utils/getGruposDeHabitos'
 import GrupoDeHabitosCheckbox from './GrupoDeHabitosCheckbox'
+import Loading from './Loading'
 
 interface Props {
   onChangeSelection: (selecionados: IGrupoDeHabitos[]) => void
@@ -59,7 +59,7 @@ const GrupoDeHabitosCheckboxGroup = ({ onChangeSelection, userId }: Props) => {
   return (
     <View>
       {isLoading ? (
-        <ActivityIndicator size="large" />
+        <Loading />
       ) : (
         gruposDeHabitos.map(grupo => (
           <GrupoDeHabitosCheckbox
