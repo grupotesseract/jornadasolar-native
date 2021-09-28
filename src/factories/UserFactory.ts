@@ -7,17 +7,10 @@ export interface IUserFactory {
 export default class UserFactory {
   build(userSnapshot: any): IUser {
     const { id } = userSnapshot
-    const {
-      nome,
-      email,
-      senha,
-      temLivro,
-      objetivos,
-      role,
-      novidadesDispensadas
-    } = userSnapshot.data()
-
     const dados = userSnapshot.data()
+    const { nome, email, temLivro, objetivos, role, novidadesDispensadas } =
+      dados
+
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
     const countAccess = dados.countAccess ? dados.countAccess : 0
 
@@ -25,7 +18,6 @@ export default class UserFactory {
       id,
       nome,
       email,
-      senha,
       temLivro,
       objetivos,
       role,

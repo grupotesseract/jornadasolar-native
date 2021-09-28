@@ -42,8 +42,8 @@ const DadosAutenticacao = () => {
       logEvent('sign_up')
     } catch (e) {
       setErros(getMessageFromCode(e.code))
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   const handleChangeEmail = (input: string) => {
