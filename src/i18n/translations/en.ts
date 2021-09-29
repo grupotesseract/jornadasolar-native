@@ -120,7 +120,7 @@ const en = {
     registroFalha: 'The entry could not be saved',
     atualizacaoSucesso: 'The %{tipo} update was successful.',
     atualizacaoFalha: 'The %{tipo} could not be updated.',
-    criacaoFalha: 'The %{tipo} cration failed.',
+    criacaoFalha: 'The %{tipo} could not be created.',
     alteracaoSenhaSucesso: 'The password was changed successfully'
   },
   edicao: {
