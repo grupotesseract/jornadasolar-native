@@ -120,7 +120,8 @@ const pt = {
     registroFalha: 'O cadastro falhou',
     atualizacaoSucesso: 'O %{tipo} foi atualizado com sucesso.',
     atualizacaoFalha: 'A atualização do %{tipo} falhou.',
-    criacaoFalha: 'A criação do %{tipo} falhou.'
+    criacaoFalha: 'A criação do %{tipo} falhou.',
+    alteracaoSenhaSucesso: 'A senha foi alterada com sucesso'
   },
   edicao: {
     tituloEdicao: 'Edição de %{tipo}',
@@ -140,6 +141,24 @@ const pt = {
     textoHabitos:
       'Esses hábitos tiveram o maior impacto em sua vida neste mês:',
     textoVazio: 'Ainda não existem registros nesse mês'
+  },
+  perfil: {
+    editarPerfil: 'Editar Perfil',
+    meusDados: 'Meus Dados',
+    notificacoes: 'Notificações',
+    ajuda: 'Ajuda',
+    textoAjuda: 'Precisa de ajuda? Envie um e-mail para jornadasolar@gmail.com',
+    sair: 'Sair',
+    ok: 'Ok',
+    notificaEventos: 'Eventos do Jornada Solar',
+    alterarNome: 'Alterar nome',
+    alterarSenha: 'Alterar senha',
+    nome: 'Nome',
+    senha: 'Senha',
+    novaSenha: 'Nova senha',
+    confirmaSenha: 'Confirme sua nova senha',
+    erroConfirmaSenha: 'A confirmação é diferente da nova senha',
+    erroSenhaAtual: 'Senha atual incorreta'
   }
 }
 export default pt

@@ -120,7 +120,8 @@ const en = {
     registroFalha: 'The entry could not be saved',
     atualizacaoSucesso: 'The %{tipo} update was successful.',
     atualizacaoFalha: 'The %{tipo} could not be updated.',
-    criacaoFalha: 'The %{tipo} cration failed.'
+    criacaoFalha: 'The %{tipo} could not be created.',
+    alteracaoSenhaSucesso: 'The password was changed successfully'
   },
   edicao: {
     tituloEdicao: 'Editing a %{tipo}',
@@ -140,6 +141,24 @@ const en = {
     textoHabitos:
       'These habits had the biggest impact on your life this month:',
     textoVazio: 'There are no entries in this month yet'
+  },
+  perfil: {
+    editarPerfil: 'Update Profile',
+    meusDados: 'My info',
+    notificacoes: 'Notifications',
+    ajuda: 'Help',
+    textoAjuda: 'Need help? Send an email to jornadasolar@gmail.com',
+    sair: 'Sign Out',
+    ok: 'Ok',
+    notificaEventos: 'Solar Journey Events',
+    alterarNome: 'Change name',
+    alterarSenha: 'Change password',
+    nome: 'Name',
+    senha: 'Password',
+    novaSenha: 'New password',
+    confirmaSenha: 'Confirm your new password',
+    erroConfirmaSenha: 'The confirmation is different from the new password',
+    erroSenhaAtual: 'Incorrect current password'
   }
 }
 export default en

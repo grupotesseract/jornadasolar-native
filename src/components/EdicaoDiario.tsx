@@ -48,7 +48,7 @@ const EdicaoDiario = ({
     >
       <ScrollView>
         <View style={styles.botoesTopo}>
-          <BotaoVoltar navigation={navigation} />
+          <BotaoVoltar />
           {botaoSecundario}
         </View>
         <Text style={styles.data}>
