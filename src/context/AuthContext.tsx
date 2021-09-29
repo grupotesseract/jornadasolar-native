@@ -8,6 +8,7 @@ interface AuthContextData {
   userId?: string
   userName?: string
   user?: IUser
+  refreshUser: () => void
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -19,18 +20,23 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const subscription = auth.onAuthStateChanged(async user => {
-      if (user) {
-        const usuario = await new GetUserById().call(user.uid)
-        setUser(usuario)
-      } else {
-        setUser(null)
-      }
+      refreshUser()
     })
     return subscription
   }, [])
 
+  const refreshUser = async () => {
+    const currentUser = auth.currentUser
+    if (currentUser) {
+      const usuario = await new GetUserById().call(currentUser.uid)
+      setUser(usuario)
+    } else {
+      setUser(null)
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ userId, user, userName }}>
+    <AuthContext.Provider value={{ userId, user, userName, refreshUser }}>
       {children}
     </AuthContext.Provider>
   )

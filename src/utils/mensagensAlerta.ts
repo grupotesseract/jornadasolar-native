@@ -40,6 +40,12 @@ const criacaoFalha = (item: string): AlertProps => {
     texto: t('mensagensAlerta.criacaoFalha', { tipo: item.toLowerCase() })
   }
 }
+const senhaAlteradaSucesso = (): AlertProps => {
+  return {
+    tipo: TiposAlerta.Sucesso,
+    texto: t('mensagensAlerta.alteracaoSenhaSucesso')
+  }
+}
 
 export {
   TiposAlerta,
@@ -48,5 +54,6 @@ export {
   registroFalha,
   atualizacaoSucesso,
   atualizacaoFalha,
-  criacaoFalha
+  criacaoFalha,
+  senhaAlteradaSucesso
 }
