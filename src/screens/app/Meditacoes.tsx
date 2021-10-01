@@ -2,7 +2,8 @@ import { t } from 'i18n-js'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { FAB, IconButton, List, Surface, Text } from 'react-native-paper'
+import { FAB, List, Surface } from 'react-native-paper'
+import { theme } from '../../../theme'
 import Container from '../../components/Container'
 import Titulo from '../../components/Titulo'
 import { IMeditacao } from '../../entities/Meditacao'
@@ -25,7 +26,9 @@ const Meditacoes = ({ navigation }: AppNavigationProps) => {
       <List.Item
         title={item.nome}
         description={item.data.toLocaleDateString()}
-        right={() => <FAB icon="play" color="black" style={styles.fab} />}
+        right={() => (
+          <FAB icon="play" color={theme.colors.secondary} style={styles.fab} />
+        )}
         onPress={() => navigation.navigate('Player', { id: item.id })}
       />
     </Surface>
