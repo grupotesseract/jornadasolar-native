@@ -162,6 +162,9 @@ const en = {
   },
   audio: {
     mensagemErro: 'There was a problem with the audio'
+  },
+  novidade: {
+    novo: 'New'
   }
 }
 export default en

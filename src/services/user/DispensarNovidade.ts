@@ -1,4 +1,4 @@
-import { IUser } from 'src/entities/User'
+import { IUser } from '../../entities/User'
 import UsersRepository, {
   IUsersRepository
 } from '../../repositories/UsersRepository'

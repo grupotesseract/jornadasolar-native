@@ -20,7 +20,6 @@ export default class GetNovidadeValida implements IGetNovidadeValida {
       date,
       path
     )
-    console.log(user)
     const novidadeValida = novidadesHoje.find(
       novidade => !user.novidadeDispensada(novidade.id)
     )
