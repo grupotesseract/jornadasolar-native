@@ -159,6 +159,9 @@ const pt = {
     confirmaSenha: 'Confirme sua nova senha',
     erroConfirmaSenha: 'A confirmação é diferente da nova senha',
     erroSenhaAtual: 'Senha atual incorreta'
+  },
+  audio: {
+    mensagemErro: 'Houve um problema com o áudio'
   }
 }
 export default pt

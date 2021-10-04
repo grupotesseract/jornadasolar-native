@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { FAB, Paragraph } from 'react-native-paper'
+import { FAB, Paragraph, Text } from 'react-native-paper'
 import Slider from '@react-native-community/slider'
 import { theme } from '../../theme'
 import { Audio } from 'expo-av'
 import Loading from './Loading'
+import { t } from 'i18n-js'
 
 interface Props {
   source: string
   onPlayChange: (boolean) => void
 }
+
 const AudioPlayer = ({ source, onPlayChange }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [erro, setErro] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duracao, setDuracao] = useState(0)
   const iconePlayPause = isPlaying ? 'pause' : 'play'
   const [sound, setSound] = useState(new Audio.Sound())
 
-  const loadSounds = async () => {
+  const loadSound = async () => {
     sound
       .loadAsync(
         {
@@ -29,7 +32,10 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
           progressUpdateIntervalMillis: 1000
         }
       )
-      .catch(err => console.log('erro no load', err))
+      .catch(err => {
+        setErro(true)
+        console.log('erro no load', err)
+      })
   }
 
   useEffect(() => {
@@ -46,13 +52,9 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
   }, [isPlaying])
 
   useEffect(() => {
-    const buscarMeditacao = async () => {
-      await loadSounds()
+    loadSound().then(() =>
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
-    }
-
-    buscarMeditacao()
-
+    )
     return () => {
       sound.unloadAsync().catch(err => console.log('erro no unload', err))
     }
@@ -68,6 +70,7 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
         console.log(
           `Encountered a fatal error during playback: ${playbackStatus.error}`
         )
+        setErro(true)
       }
     } else {
       setDuracao(playbackStatus.durationMillis)
@@ -105,32 +108,41 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
     setIsPlaying(false)
   }
 
+  if (erro) {
+    return (
+      <View style={styles.controles}>
+        <Text style={styles.mensagemErro}>{t('audio.mensagemErro')}</Text>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.controles}>
       {!sound._loaded ? (
         <Loading />
       ) : (
-        <FAB
-          icon={iconePlayPause}
-          onPress={handlePlayPause}
-          color={theme.colors.secondary}
-        />
+        <>
+          <FAB
+            icon={iconePlayPause}
+            onPress={handlePlayPause}
+            color={theme.colors.secondary}
+          />
+          <Slider
+            style={styles.slider}
+            value={progress}
+            minimumValue={0}
+            maximumValue={duracao}
+            minimumTrackTintColor={theme.colors.primary}
+            maximumTrackTintColor={theme.colors.primary}
+            thumbTintColor={theme.colors.primary}
+            onValueChange={handleInteracaoSlider}
+          />
+          <View style={styles.tempos}>
+            <Paragraph>{converteDuracaoEmTimeString(progress)}</Paragraph>
+            <Paragraph>{converteDuracaoEmTimeString(duracao)}</Paragraph>
+          </View>
+        </>
       )}
-
-      <Slider
-        style={styles.slider}
-        value={progress}
-        minimumValue={0}
-        maximumValue={duracao}
-        minimumTrackTintColor={theme.colors.primary}
-        maximumTrackTintColor={theme.colors.primary}
-        thumbTintColor={theme.colors.primary}
-        onValueChange={handleInteracaoSlider}
-      />
-      <View style={styles.tempos}>
-        <Paragraph>{converteDuracaoEmTimeString(progress)}</Paragraph>
-        <Paragraph>{converteDuracaoEmTimeString(duracao)}</Paragraph>
-      </View>
     </View>
   )
 }
@@ -140,13 +152,16 @@ export default AudioPlayer
 const styles = StyleSheet.create({
   controles: {
     width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 32
   },
   slider: { width: '100%', marginTop: 36 },
   tempos: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
-    marginBottom: 16
+    width: '90%'
+  },
+  mensagemErro: {
+    marginBottom: 32
   }
 })
