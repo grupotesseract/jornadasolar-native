@@ -59,7 +59,9 @@ const Novidade = ({ path, isFocused }: Props) => {
         >
           <View style={styles.header}>
             <Text style={styles.titulo}>{novidade?.titulo}</Text>
-            <Text style={styles.novo}>{t('novidade.novo')}</Text>
+            <View style={styles.containerNovo}>
+              <Text style={styles.novo}>{t('novidade.novo')}</Text>
+            </View>
             <IconButton
               style={styles.icone}
               icon="close"
@@ -78,7 +80,7 @@ export default Novidade
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
+    width: '100%',
     alignSelf: 'center',
     borderRadius: 8,
     paddingBottom: 14,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   titulo: {
-    fontWeight: 'bold',
+    fontFamily: 'NunitoSans_700Bold',
     fontSize: 16
   },
   descricao: {
@@ -99,14 +101,16 @@ const styles = StyleSheet.create({
   },
   novo: {
     fontSize: 8,
-    fontWeight: 'bold',
-    backgroundColor: theme.colors.primary,
+    fontWeight: '700',
     color: theme.colors.secondary,
-    textTransform: 'uppercase',
-    paddingVertical: 2,
-    paddingHorizontal: 8,
+    textTransform: 'uppercase'
+  },
+  containerNovo: {
+    backgroundColor: theme.colors.primary,
     borderRadius: 10,
-    marginLeft: 8
+    marginLeft: 8,
+    paddingVertical: 2,
+    paddingHorizontal: 8
   },
   icone: {
     flex: 1,
