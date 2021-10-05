@@ -20,15 +20,16 @@ import Loading from '../../components/Loading'
 import Saudacao from '../../components/Saudacao'
 import AuthContext from '../../context/AuthContext'
 import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
-import i18n from '../../i18n'
+import { t } from 'i18n-js'
 import { AppNavigationProps } from '../../routes/App.routes'
 import getFaseDaLua from '../../utils/getFaseDaLua'
 import getSigno from '../../utils/getSigno'
 import { useFocusEffect } from '@react-navigation/core'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId } = useContext(AuthContext)
-  const { t } = i18n
 
   const [isFocused, setIsFocused] = useState(true)
   const [mes, setMes] = useState(new Date())
@@ -103,6 +104,8 @@ const Diario = ({ navigation }: AppNavigationProps) => {
             formatoData="MMMM, yyyy"
           />
         </View>
+        <Novidade path={Telas.Diario} isFocused={isFocused} />
+
         {loading ? <Loading /> : registros}
       </View>
     </ScrollView>

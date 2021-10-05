@@ -9,12 +9,13 @@ import { logEvent } from 'expo-firebase-analytics'
 import Loading from '../../components/Loading'
 import EdicaoDiario from '../../components/EdicaoDiario'
 import { theme } from '../../../theme'
-import i18n from '../../i18n'
+import { t } from 'i18n-js'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
   const dia = new Date(route.params.data)
   const { userId } = useContext(AuthContext)
-  const { t } = i18n
   const { loading, registroDoDia } = useRegistroByDate({
     userId,
     date: dia,
@@ -47,6 +48,7 @@ const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
 
   return (
     <EdicaoDiario navigation={navigation} data={dia} onSalvar={onSalvarClick}>
+      <Novidade path={Telas.Anotacoes} isFocused />
       {loading ? (
         <Loading />
       ) : (

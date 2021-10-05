@@ -13,6 +13,8 @@ import useRegistroByDate from '../../hooks/useRegistroByDate'
 import { useFocusEffect } from '@react-navigation/native'
 import { t } from 'i18n-js'
 import { View } from 'react-native'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Dia = ({ navigation, route }: DiaNavigationProps) => {
   const { data } = route.params
@@ -53,6 +55,8 @@ const Dia = ({ navigation, route }: DiaNavigationProps) => {
             formatoData={t('comum.formatoDataExtenso')}
           />
         </View>
+        <Novidade path={Telas.Dia} isFocused={isFocused} />
+
         {loading ? (
           <Loading />
         ) : (

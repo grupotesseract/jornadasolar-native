@@ -11,6 +11,8 @@ import Loading from '../../components/Loading'
 import ToggleButton from '../../components/graficos/ToggleButton'
 import AuthContext from '../../context/AuthContext'
 import useRegistrosByMonth from '../../hooks/useRegistrosByMonth'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Graficos = () => {
   const { userId } = useContext(AuthContext)
@@ -66,6 +68,7 @@ const Graficos = () => {
             formatoData="MMMM, yyyy"
           />
         </View>
+        <Novidade path={Telas.Graficos} isFocused={isFocused} />
         <View style={styles.tabs}>
           <ToggleButton botoes={botoes} checked={currentTab} />
           {loading ? <Loading /> : <Graficos />}
@@ -79,11 +82,12 @@ export default Graficos
 
 const styles = StyleSheet.create({
   monthNavigator: {
-    marginTop: 16
+    marginTop: 16,
+    marginBottom: 20
   },
   tabs: {
     width: '90%',
     alignSelf: 'center',
-    marginTop: 32
+    marginTop: 12
   }
 })
