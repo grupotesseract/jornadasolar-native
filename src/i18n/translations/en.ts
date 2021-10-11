@@ -165,6 +165,9 @@ const en = {
   },
   novidade: {
     novo: 'New'
+  },
+  notificacoes: {
+    tresDias: `Hi, it's been a while! How are you feeling today?`
   }
 }
 export default en

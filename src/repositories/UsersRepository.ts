@@ -30,7 +30,7 @@ export interface IUsersRepository {
   add(params): Promise<IUser>
   getById(id: string): Promise<IUser>
   update(params): boolean
-  updateAccessFlags(user: IUser): void
+  updateAccessFlags(user: IUser): boolean
 }
 
 export default class UsersRepository implements IUsersRepository {
@@ -177,7 +177,7 @@ export default class UsersRepository implements IUsersRepository {
     }
   }
 
-  updateAccessFlags(user: IUser): void {
+  updateAccessFlags(user: IUser): boolean {
     const hoje = new Date()
     const mesmoDia = isSameDay(hoje, user.lastAccess)
 
@@ -198,5 +198,6 @@ export default class UsersRepository implements IUsersRepository {
         throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
       }
     }
+    return !mesmoDia
   }
 }

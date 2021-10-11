@@ -25,6 +25,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "../assets/notification-icon.png",
+          "color": "#F7C92A",
+          "sounds": [],
+          "androidMode": "default",
+          "iosDisplayInForeground": true
+        }
+      ]
+    ]
   }
 }

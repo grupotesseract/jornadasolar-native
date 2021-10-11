@@ -165,6 +165,9 @@ const pt = {
   },
   novidade: {
     novo: 'Novo'
+  },
+  notificacoes: {
+    tresDias: 'Ei, já faz um tempo. Como você está se sentindo hoje?'
   }
 }
 export default pt
