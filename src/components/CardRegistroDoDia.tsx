@@ -16,7 +16,7 @@ interface Props {
 
 const CardRegistroDoDia = ({ diario, navigation }: Props) => {
   const { t } = i18n
-  const data = diario.date.toDateString()
+  const data = format(diario.date, 'd-M-yyyy')
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
   const habitos = diario.gruposDeHabitos?.some(grupo => grupo.habitos.length)
     ? diario.gruposDeHabitos?.map(grupo => grupo.habitos).flat()

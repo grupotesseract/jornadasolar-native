@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import { addDays, isToday } from 'date-fns'
+import { addDays, isToday, parse } from 'date-fns'
 import { DiaNavigationProps } from '../../routes/App.routes'
 import BotaoVoltar from '../../components/BotaoVoltar'
 import CardDetalheCategoria from '../../components/CardDetalheCategoria'
@@ -19,7 +19,7 @@ import Telas from '../../enums/Telas'
 const Dia = ({ navigation, route }: DiaNavigationProps) => {
   const { data } = route.params
   const { userId } = useContext(AuthContext)
-  const [dia, setDia] = useState(new Date(data))
+  const [dia, setDia] = useState(parse(data, 'd-M-yyyy', new Date()))
   const [isFocused, setIsFocused] = useState(true)
 
   const { loading, registroDoDia } = useRegistroByDate({
