@@ -15,5 +15,11 @@ export default {
   ios: {
     bundleIdentifier: "com.grupotesseract.jornadasolar",
     googleServicesFile: "./GoogleService-Info.plist"
+  },
+  scheme: 'jornadasolar',
+  notification: {
+    icon: './assets/notification-icon.png',
+    color: '#F7C92A',
+    iosDisplayInForeground: true
   }
 };

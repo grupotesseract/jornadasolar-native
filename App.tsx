@@ -17,6 +17,7 @@ import { Routes } from './src/routes'
 import { AuthProvider } from './src/context/AuthContext'
 import * as Notifications from 'expo-notifications'
 import { Subscription } from '@unimodules/react-native-adapter'
+import * as Linking from 'expo-linking'
 
 export default function App() {
   const [fontsLoaded, error] = useFonts({
@@ -33,7 +34,18 @@ export default function App() {
     notificacaoAbertaListener.current =
       Notifications.addNotificationResponseReceivedListener(response => {
         // esse evento se ativa quando o usuário clica na notificação
-        console.log('clicou na notificacao', response.notification)
+        try {
+          const { data } = response.notification.request.content
+          if (data) {
+            const link = data.link as string
+            if (link) {
+              const url = Linking.makeUrl(link, data.params)
+              Linking.openURL(url)
+            }
+          }
+        } catch (err) {
+          console.log(err)
+        }
       })
 
     return () => {

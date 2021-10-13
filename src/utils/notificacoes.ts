@@ -3,6 +3,7 @@ import Constants from 'expo-constants'
 import { Platform } from 'react-native'
 import add from 'date-fns/add'
 import { t } from 'i18n-js'
+import { format } from 'date-fns'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -14,11 +15,16 @@ Notifications.setNotificationHandler({
 
 async function agendaNotificacaoTresDias() {
   const date = add(new Date(), { days: 3 })
-  console.log('notificacao agendada para: ', date.toLocaleDateString())
   await Notifications.scheduleNotificationAsync({
     content: {
       title: t('nomeApp'),
-      body: t('notificacoes.tresDias')
+      body: t('notificacoes.tresDias'),
+      data: {
+        link: 'dia',
+        params: {
+          data: format(date, 'd-M-yyyy')
+        }
+      }
     },
     trigger: {
       date
@@ -30,7 +36,13 @@ async function agendaNotificacaoTeste() {
   await Notifications.scheduleNotificationAsync({
     content: {
       title: t('nomeApp'),
-      body: t('notificacoes.tresDias')
+      body: t('notificacoes.tresDias'),
+      data: {
+        link: 'meditacao',
+        params: {
+          id: '7rf0w5Y8E2jiGNUp7xpG'
+        }
+      }
     },
 
     trigger: {
