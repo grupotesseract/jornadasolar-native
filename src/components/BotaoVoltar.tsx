@@ -6,11 +6,19 @@ import { theme } from '../../theme'
 import i18n from '../i18n'
 import { useNavigation } from '@react-navigation/core'
 
-const BotaoVoltar = () => {
+interface Props {
+  destino?: any
+}
+
+const BotaoVoltar = ({ destino }: Props) => {
   const { t } = i18n
   const navigation = useNavigation()
   const handlePress = () => {
-    navigation.goBack()
+    if (destino) {
+      navigation.navigate(destino)
+    } else {
+      navigation.goBack()
+    }
   }
   return (
     <Pressable onPress={handlePress} style={styles.botao}>

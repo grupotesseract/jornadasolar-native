@@ -71,7 +71,7 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <BotaoVoltar />
+        <BotaoVoltar destino="Diario" />
         <View style={styles.titulo}>
           <Titulo>{t('perfil.editarPerfil')}</Titulo>
         </View>

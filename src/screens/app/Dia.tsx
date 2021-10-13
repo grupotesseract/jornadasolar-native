@@ -45,7 +45,7 @@ const Dia = ({ navigation, route }: DiaNavigationProps) => {
   return (
     <Container>
       <ScrollView>
-        <BotaoVoltar />
+        <BotaoVoltar destino="Diario" />
         <View style={{ marginTop: 24 }}>
           <DateNavigator
             date={dia}

@@ -44,7 +44,6 @@ async function agendaNotificacaoTeste() {
         }
       }
     },
-
     trigger: {
       seconds: 5
     }

@@ -8,8 +8,7 @@
     "plugin:react/recommended",
     "standard",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/standard",
+    "prettier",
     "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
