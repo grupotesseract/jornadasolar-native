@@ -4,12 +4,15 @@ import { Text } from 'react-native-paper'
 
 interface Props {
   children: ReactNode
+  centralizado?: boolean
 }
 
-const Titulo = ({ children }: Props) => {
+const Titulo = ({ children, centralizado = false }: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{children}</Text>
+      <Text style={[styles.text, centralizado && styles.centralizado]}>
+        {children}
+      </Text>
     </View>
   )
 }
@@ -21,5 +24,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'NunitoSans_800ExtraBold',
     fontSize: 32
-  }
+  },
+  centralizado: { textAlign: 'center' }
 })

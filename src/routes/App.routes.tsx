@@ -7,6 +7,7 @@ import Dia from '../screens/app/Dia'
 import Sentimentos from '../screens/app/Sentimentos'
 import Habitos from '../screens/app/Habitos'
 import Anotacoes from '../screens/app/Anotacoes'
+import Player from '../screens/app/Player'
 import Perfil from '../screens/app/perfil/Perfil'
 import { BottomTabs } from './BottomTabs.routes'
 import AlterarSenha from '../screens/app/perfil/AlterarSenha'
@@ -21,6 +22,7 @@ type AppStackParams = {
   Habitos: { data: string }
   Anotacoes: { data: string }
   Perfil: undefined
+  Player: { id: string }
   MeusDados: undefined
   AlterarNome: undefined
   AlterarSenha: undefined
@@ -29,6 +31,7 @@ type AppStackParams = {
 
 type AppNavigationProps = NativeStackScreenProps<AppStackParams, 'Abas'>
 type DiaNavigationProps = NativeStackScreenProps<AppStackParams, 'Dia'>
+type PlayerNavigationProps = NativeStackScreenProps<AppStackParams, 'Player'>
 
 const { Navigator, Screen } = createNativeStackNavigator<AppStackParams>()
 
@@ -41,6 +44,7 @@ function AppRoutes() {
       <Screen name="Habitos" component={Habitos} />
       <Screen name="Anotacoes" component={Anotacoes} />
       <Screen name="Perfil" component={Perfil} />
+      <Screen name="Player" component={Player} />
       <Screen name="MeusDados" component={MeusDados} />
       <Screen name="AlterarNome" component={AlterarNome} />
       <Screen name="AlterarSenha" component={AlterarSenha} />
@@ -49,4 +53,9 @@ function AppRoutes() {
   )
 }
 
-export { AppRoutes, AppNavigationProps, DiaNavigationProps }
+export {
+  AppRoutes,
+  AppNavigationProps,
+  DiaNavigationProps,
+  PlayerNavigationProps
+}

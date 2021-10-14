@@ -159,6 +159,9 @@ const en = {
     confirmaSenha: 'Confirm your new password',
     erroConfirmaSenha: 'The confirmation is different from the new password',
     erroSenhaAtual: 'Incorrect current password'
+  },
+  audio: {
+    mensagemErro: 'There was a problem with the audio'
   }
 }
 export default en
