@@ -9,6 +9,8 @@ import useRegistroByDate from '../../hooks/useRegistroByDate'
 import { DiaNavigationProps } from '../../routes/App.routes'
 import CreateOrUpdateRegistro from '../../services/registros/CreateOrUpdateRegistro'
 import { getGruposDeHabitosTemplate } from '../../utils/getGruposDeHabitos'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Habitos = ({ navigation, route }: DiaNavigationProps) => {
   const dia = new Date(route.params.data)
@@ -54,6 +56,7 @@ const Habitos = ({ navigation, route }: DiaNavigationProps) => {
 
   return (
     <EdicaoDiario navigation={navigation} data={dia} onSalvar={onSalvarClick}>
+      <Novidade path={Telas.Habitos} isFocused />
       {loading ? (
         <Loading />
       ) : (

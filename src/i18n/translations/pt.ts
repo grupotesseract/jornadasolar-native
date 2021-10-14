@@ -162,6 +162,9 @@ const pt = {
   },
   audio: {
     mensagemErro: 'Houve um problema com o áudio'
+  },
+  novidade: {
+    novo: 'Novo'
   }
 }
 export default pt

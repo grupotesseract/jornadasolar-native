@@ -12,6 +12,8 @@ import Titulo from '../../../components/Titulo'
 import { appVersion } from '../../../utils/appVersion'
 import { t } from 'i18n-js'
 import Dialogo from '../../../components/Dialogo'
+import Novidade from '../../../components/Novidade'
+import Telas from '../../../enums/Telas'
 
 const Perfil = ({ navigation }: AppNavigationProps) => {
   const handleSair = () => {
@@ -74,6 +76,7 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
           <Titulo>{t('perfil.editarPerfil')}</Titulo>
         </View>
       </View>
+      <Novidade path={Telas.Perfil} isFocused={true} />
       <NavigationList itens={menus} />
       <Text style={styles.versao}>
         {t('home.versao')} {appVersion}

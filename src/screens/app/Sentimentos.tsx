@@ -9,6 +9,8 @@ import EdicaoDiario from '../../components/EdicaoDiario'
 import SentimentosCheckboxGroup from '../../components/SentimentosCheckboxGroup'
 import TextButton from '../../components/TextButton'
 import { t } from 'i18n-js'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
 
 const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
   const dia = new Date(route.params.data)
@@ -60,6 +62,7 @@ const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
       data={dia}
       onSalvar={onSalvarClick}
     >
+      <Novidade path={Telas.Sentimentos} isFocused />
       {loading ? (
         <Loading />
       ) : (

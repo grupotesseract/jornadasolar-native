@@ -9,17 +9,25 @@ import Titulo from '../../components/Titulo'
 import { IMeditacao } from '../../entities/Meditacao'
 import { AppNavigationProps } from '../../routes/App.routes'
 import GetAllMeditacoes from '../../services/meditacoes/GetAllMeditacoes'
+import Novidade from '../../components/Novidade'
+import Telas from '../../enums/Telas'
+import { useFocusEffect } from '@react-navigation/core'
 
 const Meditacoes = ({ navigation }: AppNavigationProps) => {
   const [meditacoes, setMeditacoes] = useState<Array<IMeditacao>>([])
+  const [isFocused, setIsFocused] = useState(true)
+  const getMeditacoes = async () => {
+    const meditacoesBanco = await new GetAllMeditacoes().call()
+    setMeditacoes(meditacoesBanco)
+  }
 
-  useEffect(() => {
-    const getMeditacoes = async () => {
-      const meditacoesBanco = await new GetAllMeditacoes().call()
-      setMeditacoes(meditacoesBanco)
-    }
-    getMeditacoes()
-  }, [])
+  useFocusEffect(
+    React.useCallback(() => {
+      setIsFocused(true)
+      getMeditacoes()
+      return () => setIsFocused(false)
+    }, [])
+  )
 
   const Item = ({ item }) => (
     <Surface style={styles.itemLista}>
@@ -39,11 +47,14 @@ const Meditacoes = ({ navigation }: AppNavigationProps) => {
       <View style={styles.titulo}>
         <Titulo>{t('menuInferior.meditacoes')}</Titulo>
       </View>
-      <FlatList
-        data={meditacoes}
-        renderItem={Item}
-        keyExtractor={item => item.id}
-      />
+      <Novidade path={Telas.Meditacoes} isFocused={isFocused} />
+      <View style={styles.lista}>
+        <FlatList
+          data={meditacoes}
+          renderItem={Item}
+          keyExtractor={item => item.id}
+        />
+      </View>
     </Container>
   )
 }
@@ -53,7 +64,11 @@ export default Meditacoes
 const styles = StyleSheet.create({
   titulo: {
     alignSelf: 'center',
-    marginBottom: 44
+    marginBottom: 32
+  },
+  lista: {
+    width: '100%',
+    marginTop: 12
   },
   itemLista: {
     borderRadius: 4,
