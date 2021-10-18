@@ -8,6 +8,9 @@ export default class UserFactory {
   build(userSnapshot: any): IUser {
     const { id } = userSnapshot
     const dados = userSnapshot.data()
+    if(!dados) {
+      throw new Error('dados vazios, userSnapshot id:' + id)
+    }
     const { nome, email, temLivro, objetivos, role, novidadesDispensadas } =
       dados
 

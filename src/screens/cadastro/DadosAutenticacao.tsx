@@ -27,7 +27,7 @@ const DadosAutenticacao = () => {
     { value: 'QueroSaberMais', label: t('cadastro.opcoesLivro.QueroSaberMais') }
   ]
 
-  const handlePronto = async () => {
+  const handleClickPronto = async () => {
     if (email.length < 6) {
       setErros({ email: t('errosAuth.emailInvalido') })
       return
@@ -42,8 +42,8 @@ const DadosAutenticacao = () => {
       logEvent('sign_up')
     } catch (e) {
       setErros(getMessageFromCode(e.code))
-      setIsLoading(false)
     }
+    setIsLoading(false)
   }
 
   const handleChangeEmail = (input: string) => {
@@ -60,7 +60,7 @@ const DadosAutenticacao = () => {
     <Layout
       exibirBotao
       textoBotao={t('cadastro.pronto')}
-      onButtonClick={handlePronto}
+      onButtonClick={handleClickPronto}
       loading={isLoading}
     >
       <ScrollView>

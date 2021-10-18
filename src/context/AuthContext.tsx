@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { IUser } from '../entities/User'
 import { auth } from '../firebase/firebase.config'
 import GetUserById from '../services/user/GetUserById'
+import delay from '../utils/delay'
 
 interface AuthContextData {
   userId?: string
@@ -20,6 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const subscription = auth.onAuthStateChanged(async user => {
+      await delay(1)
       refreshUser()
     })
     return subscription
