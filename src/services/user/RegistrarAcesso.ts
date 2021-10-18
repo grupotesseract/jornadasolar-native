@@ -19,7 +19,8 @@ export default class RegistrarAccesso implements IRegistrarAccesso {
   }
 
   async call(user: IUser): Promise<void> {
-    if (this.usersRepository.updateAccessFlags(user)) {
+    const accessFlagsUpdated = this.usersRepository.updateAccessFlags(user)
+    if (accessFlagsUpdated) {
       await cancelaNotificacoesAgendadas()
       await agendaNotificacaoTresDias()
     }
