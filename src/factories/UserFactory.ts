@@ -16,6 +16,7 @@ export default class UserFactory {
       role,
       novidadesDispensadas,
       canaisDeNotificacao,
+      tokens
     } = dados
 
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
@@ -32,6 +33,7 @@ export default class UserFactory {
       lastAccess: lastAccess,
       countAccess: countAccess,
       canaisDeNotificacao: canaisDeNotificacao || [],
+      tokens: tokens || []
     })
   }
 }

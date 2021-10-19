@@ -12,6 +12,7 @@ import GetUserSentimentos from '../services/user/GetUserSentimentos'
 import UserFactory, { IUserFactory } from '../factories/UserFactory'
 import { isSameDay } from 'date-fns'
 import GetAllCanais from '../services/notificacoes/getAllCanais'
+import { registraTokenParaNotificacoesExternas } from '../utils/notificacoes'
 
 interface ICreateParameters {
   nome: string
@@ -60,8 +61,10 @@ export default class UsersRepository implements IUsersRepository {
       displayName: nome
     })
 
+    // Inscreve o usuário em todos os canais de notificação e registra o ExpoToken
     const canais = await new GetAllCanais().call()
     const idsCanais = canais.map(canal => canal.id)
+    const token = await registraTokenParaNotificacoesExternas()
 
     // Cria usuário na collection user
     const data = {
@@ -74,6 +77,7 @@ export default class UsersRepository implements IUsersRepository {
       lastAccess: now,
       countAccess: 1,
       canaisDeNotificacao: idsCanais,
+      tokens: [token]
     }
     await this.collection.doc(user.uid).set(data)
 
