@@ -167,7 +167,11 @@ const en = {
     novo: 'New'
   },
   notificacoes: {
-    tresDias: `Hi, it's been a while! How are you feeling today?`
+    tresDias: `Hi, it's been a while! How are you feeling today?`,
+    canais: {
+      geral: 'Solar Journey Events',
+      novasMeditacoes: 'New meditations'
+    }
   }
 }
 export default en

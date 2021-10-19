@@ -8,8 +8,15 @@ export default class UserFactory {
   build(userSnapshot: any): IUser {
     const { id } = userSnapshot
     const dados = userSnapshot.data()
-    const { nome, email, temLivro, objetivos, role, novidadesDispensadas } =
-      dados
+    const {
+      nome,
+      email,
+      temLivro,
+      objetivos,
+      role,
+      novidadesDispensadas,
+      canaisDeNotificacao,
+    } = dados
 
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
     const countAccess = dados.countAccess ? dados.countAccess : 0
@@ -23,7 +30,8 @@ export default class UserFactory {
       role,
       novidadesDispensadas: novidadesDispensadas || [],
       lastAccess: lastAccess,
-      countAccess: countAccess
+      countAccess: countAccess,
+      canaisDeNotificacao: canaisDeNotificacao || [],
     })
   }
 }
