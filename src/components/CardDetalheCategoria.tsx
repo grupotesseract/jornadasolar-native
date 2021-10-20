@@ -7,6 +7,7 @@ import Categorias from '../enums/Categorias'
 import i18n from '../i18n'
 import EmojiComNome from './EmojiComNome'
 import TextButton from './TextButton'
+import { format } from 'date-fns'
 
 interface Props {
   navigation: any
@@ -31,7 +32,7 @@ const CardDetalheCategoria = ({
     categoria === Categorias.Anotacoes ? (conteudo as string) : null
 
   const handleEditar = () => {
-    navigation.navigate(categoria, { data: data.toDateString() })
+    navigation.navigate(categoria, { data: format(data, 'd-M-yyyy') })
   }
 
   const ConteudoSentimentos = sentimentos ? (

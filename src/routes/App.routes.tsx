@@ -55,6 +55,7 @@ function AppRoutes() {
 
 export {
   AppRoutes,
+  AppStackParams,
   AppNavigationProps,
   DiaNavigationProps,
   PlayerNavigationProps

@@ -7,6 +7,7 @@ import AuthContext from '../context/AuthContext'
 import { CadastroProvider } from '../context/ContextCadastro'
 import { AppRoutes } from './App.routes'
 import { AlertProvider } from '../context/AlertContext'
+import linking from './linking.config'
 
 function Routes() {
   const { userId } = useContext(AuthContext)
@@ -27,7 +28,9 @@ function Routes() {
 
   return (
     <Background>
-      <NavigationContainer theme={theme}>{Conteudo}</NavigationContainer>
+      <NavigationContainer theme={theme} linking={linking}>
+        {Conteudo}
+      </NavigationContainer>
     </Background>
   )
 }

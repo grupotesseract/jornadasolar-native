@@ -11,9 +11,11 @@ import CreateOrUpdateRegistro from '../../services/registros/CreateOrUpdateRegis
 import { getGruposDeHabitosTemplate } from '../../utils/getGruposDeHabitos'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
+import { parse } from 'date-fns'
 
 const Habitos = ({ navigation, route }: DiaNavigationProps) => {
-  const dia = new Date(route.params.data)
+  const { data } = route.params
+  const dia = parse(data, 'd-M-yyyy', new Date())
   const { userId } = useContext(AuthContext)
   const [itensSelecionados, setItensSelecionados] = useState<IGrupoDeHabitos[]>(
     []

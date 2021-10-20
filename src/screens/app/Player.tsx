@@ -30,7 +30,7 @@ const Player = ({ route }: PlayerNavigationProps) => {
 
   return (
     <Container>
-      <BotaoVoltar />
+      <BotaoVoltar destino="Meditacoes" />
       {meditacao ? (
         <View style={styles.conteudo}>
           <View>

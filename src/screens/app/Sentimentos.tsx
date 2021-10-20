@@ -11,9 +11,11 @@ import TextButton from '../../components/TextButton'
 import { t } from 'i18n-js'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
+import { parse } from 'date-fns'
 
 const Sentimentos = ({ navigation, route }: DiaNavigationProps) => {
-  const dia = new Date(route.params.data)
+  const { data } = route.params
+  const dia = parse(data, 'd-M-yyyy', new Date())
   const { userId } = useContext(AuthContext)
   const { loading, registroDoDia } = useRegistroByDate({
     userId,

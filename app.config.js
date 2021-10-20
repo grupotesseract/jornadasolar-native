@@ -1,6 +1,12 @@
 import 'dotenv/config';
 
 export default {
+  icon: './assets/icon.png',
+  splash: {
+    image: './assets/splash.png',
+    resizeMode: 'contain',
+    backgroundColor: '#000000'
+  },
   web: {
     config: {
       firebase: {
@@ -9,11 +15,19 @@ export default {
     }
   },
   android: {
-    package: "com.grupotesseract.jornadasolar",
-    googleServicesFile: "./google-services.json",
+    icon: './assets/icon.png',
+    package: 'com.grupotesseract.jornadasolar',
+    googleServicesFile: './google-services.json',
   },
   ios: {
-    bundleIdentifier: "com.grupotesseract.jornadasolar",
-    googleServicesFile: "./GoogleService-Info.plist"
+    icon: './assets/icon.png',
+    bundleIdentifier: 'com.grupotesseract.jornadasolar',
+    googleServicesFile: './GoogleService-Info.plist'
+  },
+  scheme: 'jornadasolar',
+  notification: {
+    icon: './assets/notification-icon.png',
+    color: '#F7C92A',
+    iosDisplayInForeground: true
   }
 };
