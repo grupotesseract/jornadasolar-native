@@ -38,7 +38,8 @@ const DadosAutenticacao = () => {
     }
     setIsLoading(true)
     try {
-      await new CreateUser().call({ ...dadosCadastro, email, senha, temLivro })
+      const createUserService = new CreateUser()
+      await createUserService.call({ ...dadosCadastro, email, senha, temLivro })
       logEvent('sign_up')
     } catch (e) {
       setErros(getMessageFromCode(e.code))

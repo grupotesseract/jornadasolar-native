@@ -55,6 +55,7 @@ export default class UsersRepository implements IUsersRepository {
 
     // Cria usuário no firebase auth
     const { user } = await auth.createUserWithEmailAndPassword(email, senha)
+    await auth.signOut()
     await user.updateProfile({
       displayName: nome
     })
@@ -138,6 +139,7 @@ export default class UsersRepository implements IUsersRepository {
       gruposDeHabitos: gruposDeHabitosAtualizados
     })
 
+    await auth.signInWithEmailAndPassword(email, senha)
     return new User({
       id: user.uid,
       nome,
