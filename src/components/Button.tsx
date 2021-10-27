@@ -9,6 +9,7 @@ interface Props {
   onPress?: () => void
   loading?: boolean
   icon?: string
+  testID?: string
 }
 
 const Button = ({
@@ -16,7 +17,8 @@ const Button = ({
   onPress,
   mode = 'contained',
   loading = false,
-  icon = ''
+  icon = '',
+  testID
 }: Props) => {
   return (
     <PaperButton
@@ -26,6 +28,7 @@ const Button = ({
       onPress={onPress}
       loading={loading}
       icon={icon}
+      testID={testID}
     >
       {children}
     </PaperButton>

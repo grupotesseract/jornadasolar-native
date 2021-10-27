@@ -33,10 +33,12 @@ export default function Home({ navigation }: HomeNavigationProps) {
       </View>
       <View style={styles.botoes}>
         <View style={styles.botao}>
-          <Button onPress={handleCadastro}>{t('home.comecarJornada')}</Button>
+          <Button onPress={handleCadastro} testID="botaoCadastro">
+            {t('home.comecarJornada')}
+          </Button>
         </View>
         <View style={styles.botao}>
-          <Button mode="outlined" onPress={handleLogin}>
+          <Button mode="outlined" onPress={handleLogin} testID="botaoLogin">
             {t('home.tenhoCadastro')}
           </Button>
         </View>
