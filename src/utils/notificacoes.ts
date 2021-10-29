@@ -32,24 +32,6 @@ async function agendaNotificacaoTresDias() {
   })
 }
 
-async function agendaNotificacaoTeste() {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: t('nomeApp'),
-      body: t('notificacoes.tresDias'),
-      data: {
-        link: 'meditacao',
-        params: {
-          id: '7rf0w5Y8E2jiGNUp7xpG'
-        }
-      }
-    },
-    trigger: {
-      seconds: 5
-    }
-  })
-}
-
 async function registraTokenParaNotificacoesExternas() {
   let token
   if (Constants.isDevice) {
@@ -80,9 +62,7 @@ async function cancelaNotificacoesAgendadas() {
 }
 
 export {
-  Notifications,
   agendaNotificacaoTresDias,
-  agendaNotificacaoTeste,
   registraTokenParaNotificacoesExternas,
   cancelaNotificacoesAgendadas
 }

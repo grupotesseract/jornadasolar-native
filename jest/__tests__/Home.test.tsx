@@ -1,27 +1,21 @@
 import React from 'react'
-import Home from '../Home'
+import Home from '../../src/screens/Home'
 import { fireEvent, render } from '@testing-library/react-native'
-
-const createTestProps = (props: Object) => ({
-  navigation: {
-    navigate: jest.fn()
-  },
-  ...props
-})
+import { navigationTestProps } from './utils'
 
 describe('Teste de componente: Tela Home', () => {
   let props: any
   let home: any
   beforeEach(() => {
-    props = createTestProps({})
+    props = navigationTestProps({})
     home = render(<Home {...props} />)
   })
 
-  it('renderiza igual ao último snapshot', () => {
+  test('renderiza igual ao último snapshot', () => {
     expect(home.toJSON()).toMatchSnapshot()
   })
 
-  it('botão Login chama navegação para Login', () => {
+  test('botão Login chama navegação para Login', () => {
     const { getByTestId } = home
 
     const botaoLogin = getByTestId('botaoLogin')
@@ -30,7 +24,7 @@ describe('Teste de componente: Tela Home', () => {
     expect(botaoLogin).toBeTruthy()
     expect(props.navigation.navigate).toHaveBeenCalledWith('Login')
   })
-  it('botão Cadastro chama navegação para Identificação', () => {
+  test('botão Cadastro chama navegação para Identificação', () => {
     const { getByTestId } = home
 
     const botaoCadastro = getByTestId('botaoCadastro')

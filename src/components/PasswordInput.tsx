@@ -8,9 +8,10 @@ interface Props {
   erro?: string
   value: string
   onChangeText?: (text: string) => void
+  testID?: string
 }
 
-const PasswordInput = ({ label, erro, value, onChangeText }: Props) => {
+const PasswordInput = ({ label, erro, value, onChangeText, testID }: Props) => {
   const [senhaVisivel, setSenhaVisivel] = useState(false)
   const icone = senhaVisivel ? 'eye' : 'eye-off'
 
@@ -33,9 +34,10 @@ const PasswordInput = ({ label, erro, value, onChangeText }: Props) => {
             onPress={handleChangeVisibilidadeSenha}
           />
         }
+        testID={testID}
       />
       {!!erro && (
-        <HelperText type="error" visible={!!erro}>
+        <HelperText type="error" visible={!!erro} testID={`${testID}Helper`}>
           {erro}
         </HelperText>
       )}
