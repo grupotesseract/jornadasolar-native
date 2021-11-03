@@ -64,6 +64,7 @@ const pt = {
   menuInferior: {
     registros: 'Registros',
     graficos: 'Gráficos',
+    perfil: 'Perfil',
     meditacoes: 'Meditações'
   },
   diario: {
@@ -75,7 +76,6 @@ const pt = {
       sol: 'Sol',
       final: 'está no signo de %{signo} e a Lua está na fase %{faseDaLua}.'
     },
-    perfil: 'Perfil',
     sentimentos: 'Preencher sentimentos',
     habitos: 'Preencher hábitos',
     anotacoes: 'Escrever sobre seu dia',

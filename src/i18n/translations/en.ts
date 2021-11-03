@@ -63,6 +63,7 @@ const en = {
   menuInferior: {
     registros: 'Entries',
     graficos: 'Charts',
+    perfil: 'Profile',
     meditacoes: 'Meditations'
   },
   diario: {
@@ -75,7 +76,6 @@ const en = {
       final:
         'is in the sign of %{signo} and the Moon is in its %{faseDaLua} phase.'
     },
-    perfil: 'Profile',
     sentimentos: 'Fill in feelings',
     habitos: 'Fill in habits',
     anotacoes: 'Write about your day',
