@@ -26,6 +26,7 @@ const Button = ({
       onPress={onPress}
       loading={loading}
       icon={icon}
+      disabled={loading}
     >
       {children}
     </PaperButton>
