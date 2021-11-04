@@ -19,7 +19,7 @@ type Parameters = {
 }
 
 interface ICreateOrUpdate {
-  call(params: Parameters): Promise<boolean>
+  call(params: Parameters): Promise<void>
 }
 
 export default class CreateOrUpdate implements ICreateOrUpdate {
@@ -29,7 +29,7 @@ export default class CreateOrUpdate implements ICreateOrUpdate {
     this.registrosRepository = new RegistrosRepository()
   }
 
-  async call({ id, ...attributes }: Parameters): Promise<boolean> {
+  async call({ id, ...attributes }: Parameters): Promise<void> {
     const parsedAttributes = { ...attributes }
     if (Object.keys(attributes).includes('gruposDeHabitos')) {
       parsedAttributes.gruposDeHabitos = []
