@@ -66,7 +66,7 @@ const Notificacoes = ({ navigation }: AppNavigationProps) => {
       <FlatList
         data={menus}
         renderItem={Item}
-        keyExtractor={item => item.texto}
+        keyExtractor={item => item.nome}
         ItemSeparatorComponent={Divisor}
         ListHeaderComponent={Divisor}
         ListFooterComponent={Divisor}
