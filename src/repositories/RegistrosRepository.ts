@@ -19,8 +19,8 @@ interface IUpdateParameters extends ICreateParameters {
 }
 
 export interface IRegistrosRepository {
-  add(params): boolean
-  update(params): boolean
+  add(params): Promise<void>
+  update(params): Promise<void>
   getByDate(userId, date): Promise<IRegistro>
   getByDateRange(
     userId: string,
@@ -36,19 +36,17 @@ export default class RegistrosRepository implements IRegistrosRepository {
     this.collection = firestore.collection('diario')
   }
 
-  add(attributes: ICreateParameters): boolean {
+  async add(attributes: ICreateParameters): Promise<void> {
     try {
-      this.collection.add(attributes)
-      return true
+      await this.collection.add(attributes)
     } catch (e) {
       throw new Error('Ocorreu um erro inesperado ao criar o registro do dia.')
     }
   }
 
-  update({ id, attributes }: IUpdateParameters): boolean {
+  async update({ id, attributes }: IUpdateParameters): Promise<void> {
     try {
-      this.collection.doc(id).update(attributes)
-      return true
+      await this.collection.doc(id).update(attributes)
     } catch {
       throw new Error(
         'Ocorreu um erro inesperado ao atualizar o registro do dia.'
