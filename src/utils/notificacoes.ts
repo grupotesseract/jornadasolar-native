@@ -32,26 +32,8 @@ async function agendaNotificacaoTresDias() {
   })
 }
 
-async function agendaNotificacaoTeste() {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: t('nomeApp'),
-      body: t('notificacoes.tresDias'),
-      data: {
-        link: 'meditacao',
-        params: {
-          id: '7rf0w5Y8E2jiGNUp7xpG'
-        }
-      }
-    },
-    trigger: {
-      seconds: 5
-    }
-  })
-}
-
 async function registraTokenParaNotificacoesExternas() {
-  let token
+  let token: string
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync()
     let finalStatus = existingStatus
@@ -60,7 +42,7 @@ async function registraTokenParaNotificacoesExternas() {
       finalStatus = status
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!')
+      console.log('Erro ao registrar token para notificações push')
       return
     }
     token = (await Notifications.getExpoPushTokenAsync()).data
@@ -82,7 +64,6 @@ async function cancelaNotificacoesAgendadas() {
 export {
   Notifications,
   agendaNotificacaoTresDias,
-  agendaNotificacaoTeste,
   registraTokenParaNotificacoesExternas,
   cancelaNotificacoesAgendadas
 }

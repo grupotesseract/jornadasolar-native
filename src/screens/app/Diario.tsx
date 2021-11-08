@@ -27,7 +27,7 @@ import getSigno from '../../utils/getSigno'
 import { useFocusEffect } from '@react-navigation/core'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
-import RegistrarAccesso from '../../services/user/RegistrarAcesso'
+import RegistrarAcesso from '../../services/user/RegistrarAcesso'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId, user } = useContext(AuthContext)
@@ -53,7 +53,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      new RegistrarAccesso().call(user)
+      new RegistrarAcesso().call(user)
       setIsFocused(true)
       return () => setIsFocused(false)
     }, [])

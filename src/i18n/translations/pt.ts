@@ -167,7 +167,11 @@ const pt = {
     novo: 'Novo'
   },
   notificacoes: {
-    tresDias: 'Ei, já faz um tempo. Como você está se sentindo hoje?'
+    tresDias: 'Ei, já faz um tempo. Como você está se sentindo hoje?',
+    canais: {
+      geral: 'Eventos do Jornada Solar',
+      novasMeditacoes: 'Novas meditações'
+    }
   }
 }
 export default pt
