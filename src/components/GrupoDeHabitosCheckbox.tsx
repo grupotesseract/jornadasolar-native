@@ -38,6 +38,7 @@ const GrupoDeHabitosCheckbox = ({
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [habitoEdicao, setHabitoEdicao] = useState<IItemEdicao>(null)
+  const isCadastro = !userId
 
   const { displayAlert } = useContext(AlertContext)
   useEffect(() => {
@@ -106,12 +107,14 @@ const GrupoDeHabitosCheckbox = ({
     <Card style={styles.cardGruposDeHabitos}>
       <Card.Content>
         <Text style={styles.tituloCard}>{grupoDeHabitos.nome}</Text>
-        <View style={styles.botaoEditar}>
-          <TextButton
-            texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
-            onPress={toggleEmEdicao}
-          />
-        </View>
+        {isCadastro || (
+          <View style={styles.botaoEditar}>
+            <TextButton
+              texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
+              onPress={toggleEmEdicao}
+            />
+          </View>
+        )}
         <View style={styles.habitosDoGrupo}>
           {grupoDeHabitos.habitos.map(habito => (
             <HabitoCheckbox
@@ -125,7 +128,7 @@ const GrupoDeHabitosCheckbox = ({
               )}
             />
           ))}
-          {grupoDeHabitos.habitos.length < 6 && (
+          {grupoDeHabitos.habitos.length < 6 && !isCadastro && (
             <BotaoNovoHabito onPress={handleStartEdit} loading={isLoading} />
           )}
         </View>
