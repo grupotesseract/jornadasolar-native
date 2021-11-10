@@ -7,11 +7,11 @@ import {
   cancelaNotificacoesAgendadas
 } from '../../utils/notificacoes'
 
-interface IRegistrarAccesso {
+interface IRegistrarAcesso {
   call(user: IUser): Promise<void>
 }
 
-export default class RegistrarAccesso implements IRegistrarAccesso {
+export default class RegistrarAcesso implements IRegistrarAcesso {
   private usersRepository: IUsersRepository
 
   constructor() {

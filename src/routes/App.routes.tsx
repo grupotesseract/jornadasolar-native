@@ -8,7 +8,6 @@ import Sentimentos from '../screens/app/Sentimentos'
 import Habitos from '../screens/app/Habitos'
 import Anotacoes from '../screens/app/Anotacoes'
 import Player from '../screens/app/Player'
-import Perfil from '../screens/app/perfil/Perfil'
 import { BottomTabs } from './BottomTabs.routes'
 import AlterarSenha from '../screens/app/perfil/AlterarSenha'
 import MeusDados from '../screens/app/perfil/MeusDados'
@@ -21,7 +20,6 @@ type AppStackParams = {
   Sentimentos: { data: string }
   Habitos: { data: string }
   Anotacoes: { data: string }
-  Perfil: undefined
   Player: { id: string }
   MeusDados: undefined
   AlterarNome: undefined
@@ -43,7 +41,6 @@ function AppRoutes() {
       <Screen name="Sentimentos" component={Sentimentos} />
       <Screen name="Habitos" component={Habitos} />
       <Screen name="Anotacoes" component={Anotacoes} />
-      <Screen name="Perfil" component={Perfil} />
       <Screen name="Player" component={Player} />
       <Screen name="MeusDados" component={MeusDados} />
       <Screen name="AlterarNome" component={AlterarNome} />

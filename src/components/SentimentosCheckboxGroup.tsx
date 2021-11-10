@@ -33,6 +33,7 @@ const SentimentosCheckboxGroup = ({
   const [isModalAberto, setIsModalAberto] = useState(false)
   const [sentimentoEdicao, setSentimentoEdicao] = useState(null)
   const { displayAlert } = useContext(AlertContext)
+  const isCadastro = !userId
 
   const getSentimentos = async () => {
     setIsLoading(true)
@@ -124,12 +125,14 @@ const SentimentosCheckboxGroup = ({
               checked={idsSelecionados.includes(opcao.id) && !isEmEdicao}
             />
           ))}
-          <SentimentoCheckbox
-            key="novo"
-            isEmEdicao={isEmEdicao}
-            onPress={handleChangeSelected}
-            checked={false}
-          />
+          {isCadastro || (
+            <SentimentoCheckbox
+              key="novo"
+              isEmEdicao={isEmEdicao}
+              onPress={handleChangeSelected}
+              checked={false}
+            />
+          )}
         </>
       )}
       <ModalEdicao

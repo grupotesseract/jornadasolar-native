@@ -27,7 +27,7 @@ import getSigno from '../../utils/getSigno'
 import { useFocusEffect } from '@react-navigation/core'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
-import RegistrarAccesso from '../../services/user/RegistrarAcesso'
+import RegistrarAcesso from '../../services/user/RegistrarAcesso'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId, user } = useContext(AuthContext)
@@ -39,9 +39,6 @@ const Diario = ({ navigation }: AppNavigationProps) => {
     end: isThisMonth(mes) ? new Date() : lastDayOfMonth(mes)
   })
 
-  const handlePerfil = () => {
-    navigation.navigate('Perfil')
-  }
   const signo = getSigno(new Date())
   const faseDaLua = getFaseDaLua(new Date())
 
@@ -53,7 +50,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      new RegistrarAccesso().call(user)
+      new RegistrarAcesso().call(user)
       setIsFocused(true)
       return () => setIsFocused(false)
     }, [])
@@ -84,9 +81,6 @@ const Diario = ({ navigation }: AppNavigationProps) => {
 
   return (
     <ScrollView>
-      <Pressable style={styles.botaoPerfil} onPress={handlePerfil}>
-        <Text style={styles.linkPerfil}>{t('diario.perfil')}</Text>
-      </Pressable>
       <View style={styles.conteudo}>
         <View style={styles.topo}>
           <Saudacao nome={userName} />
@@ -143,16 +137,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 14,
     fontSize: 16
-  },
-  botaoPerfil: {
-    zIndex: 1
-  },
-  linkPerfil: {
-    color: corPreta,
-    textAlign: 'right',
-    fontSize: 10,
-    paddingTop: 4,
-    paddingRight: 8
   },
   negrito: {
     color: corPreta,

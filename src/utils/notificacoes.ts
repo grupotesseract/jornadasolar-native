@@ -33,7 +33,7 @@ async function agendaNotificacaoTresDias() {
 }
 
 async function registraTokenParaNotificacoesExternas() {
-  let token
+  let token: string
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync()
     let finalStatus = existingStatus
@@ -42,7 +42,7 @@ async function registraTokenParaNotificacoesExternas() {
       finalStatus = status
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!')
+      console.log('Erro ao registrar token para notificações push')
       return
     }
     token = (await Notifications.getExpoPushTokenAsync()).data

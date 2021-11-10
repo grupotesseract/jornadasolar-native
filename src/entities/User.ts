@@ -9,6 +9,8 @@ interface IUserAttributes {
   novidadeDispensada?(slug: string): boolean
   lastAccess?: Date
   countAccess?: number
+  canaisDeNotificacao?: Array<string>
+  tokens?: Array<string>
 }
 
 export type IUser = IUserAttributes
@@ -23,6 +25,8 @@ export default class User implements IUser {
   public novidadesDispensadas: Array<string>
   public lastAccess?: Date
   public countAccess?: number
+  public canaisDeNotificacao?: Array<string>
+  public tokens?: Array<string>
 
   constructor({
     id,
@@ -33,7 +37,9 @@ export default class User implements IUser {
     role,
     novidadesDispensadas,
     lastAccess,
-    countAccess
+    countAccess,
+    canaisDeNotificacao,
+    tokens
   }: IUserAttributes) {
     this.id = id
     this.nome = nome
@@ -44,6 +50,8 @@ export default class User implements IUser {
     this.novidadesDispensadas = novidadesDispensadas
     this.lastAccess = lastAccess
     this.countAccess = countAccess
+    this.canaisDeNotificacao = canaisDeNotificacao
+    this.tokens = tokens
   }
 
   novidadeDispensada(slug: string): boolean {

@@ -7,7 +7,6 @@ import { AppNavigationProps } from '../../../routes/App.routes'
 import SignOutUser from '../../../services/user/SignOutUser'
 import { MaterialIcons } from '@expo/vector-icons'
 import { theme } from '../../../../theme'
-import BotaoVoltar from '../../../components/BotaoVoltar'
 import Titulo from '../../../components/Titulo'
 import { appVersion } from '../../../utils/appVersion'
 import { t } from 'i18n-js'
@@ -71,7 +70,6 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <BotaoVoltar destino="Diario" />
         <View style={styles.titulo}>
           <Titulo>{t('perfil.editarPerfil')}</Titulo>
         </View>

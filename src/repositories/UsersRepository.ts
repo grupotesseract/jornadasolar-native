@@ -11,6 +11,8 @@ import CreateOrUpdateRegistro from '../services/registros/CreateOrUpdateRegistro
 import GetUserSentimentos from '../services/user/GetUserSentimentos'
 import UserFactory, { IUserFactory } from '../factories/UserFactory'
 import { isSameDay } from 'date-fns'
+import GetAllCanais from '../services/notificacoes/getAllCanais'
+import { registraTokenParaNotificacoesExternas } from '../utils/notificacoes'
 
 interface ICreateParameters {
   nome: string
@@ -29,7 +31,7 @@ interface IUpdateParameters {
 export interface IUsersRepository {
   add(params): Promise<IUser>
   getById(id: string): Promise<IUser>
-  update(params): boolean
+  update(params: IUpdateParameters): boolean
   updateAccessFlags(user: IUser): boolean
 }
 
@@ -55,9 +57,15 @@ export default class UsersRepository implements IUsersRepository {
 
     // Cria usuário no firebase auth
     const { user } = await auth.createUserWithEmailAndPassword(email, senha)
+    await auth.signOut()
     await user.updateProfile({
       displayName: nome
     })
+
+    // Inscreve o usuário em todos os canais de notificação e registra o ExpoToken
+    const canais = await new GetAllCanais().call()
+    const idsCanais = canais.map(canal => canal.id)
+    const token = await registraTokenParaNotificacoesExternas()
 
     // Cria usuário na collection user
     const data = {
@@ -68,7 +76,9 @@ export default class UsersRepository implements IUsersRepository {
       created_at: now,
       updated_at: now,
       lastAccess: now,
-      countAccess: 1
+      countAccess: 1,
+      canaisDeNotificacao: idsCanais,
+      tokens: [token]
     }
     await this.collection.doc(user.uid).set(data)
 
@@ -138,6 +148,7 @@ export default class UsersRepository implements IUsersRepository {
       gruposDeHabitos: gruposDeHabitosAtualizados
     })
 
+    await auth.signInWithEmailAndPassword(email, senha)
     return new User({
       id: user.uid,
       nome,

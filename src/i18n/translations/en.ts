@@ -63,6 +63,7 @@ const en = {
   menuInferior: {
     registros: 'Entries',
     graficos: 'Charts',
+    perfil: 'Profile',
     meditacoes: 'Meditations'
   },
   diario: {
@@ -75,7 +76,6 @@ const en = {
       final:
         'is in the sign of %{signo} and the Moon is in its %{faseDaLua} phase.'
     },
-    perfil: 'Profile',
     sentimentos: 'Fill in feelings',
     habitos: 'Fill in habits',
     anotacoes: 'Write about your day',
@@ -167,7 +167,11 @@ const en = {
     novo: 'New'
   },
   notificacoes: {
-    tresDias: `Hi, it's been a while! How are you feeling today?`
+    tresDias: `Hi, it's been a while! How are you feeling today?`,
+    canais: {
+      geral: 'Solar Journey Events',
+      novasMeditacoes: 'New meditations'
+    }
   }
 }
 export default en
