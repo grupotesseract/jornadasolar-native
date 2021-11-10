@@ -62,7 +62,6 @@ async function cancelaNotificacoesAgendadas() {
 }
 
 export {
-  Notifications,
   agendaNotificacaoTresDias,
   registraTokenParaNotificacoesExternas,
   cancelaNotificacoesAgendadas

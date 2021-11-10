@@ -15,6 +15,7 @@ interface ILayoutProps {
   onButtonClick?: () => void
   loading?: boolean
   iconeBotao?: string
+  testIdBotao?: string
 }
 
 const Layout = ({
@@ -23,7 +24,8 @@ const Layout = ({
   exibirBotao,
   onButtonClick,
   loading = false,
-  iconeBotao
+  iconeBotao,
+  testIdBotao
 }: ILayoutProps) => {
   const handlePress = () => {
     Keyboard.dismiss()
@@ -39,7 +41,12 @@ const Layout = ({
         {children}
         {exibirBotao && (
           <View style={styles.botao}>
-            <Button onPress={handlePress} loading={loading} icon={iconeBotao}>
+            <Button
+              onPress={handlePress}
+              loading={loading}
+              icon={iconeBotao}
+              testID={testIdBotao}
+            >
               {textoBotao}
             </Button>
           </View>

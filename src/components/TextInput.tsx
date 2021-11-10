@@ -9,6 +9,7 @@ interface Props {
   value: string
   onChangeText?: (((text: string) => void) & Function) | undefined
   keyboardType?: KeyboardTypeOptions
+  testID?: string
 }
 
 const TextInput = ({
@@ -16,7 +17,8 @@ const TextInput = ({
   erro,
   value,
   onChangeText,
-  keyboardType = 'default'
+  keyboardType = 'default',
+  testID
 }: Props) => {
   return (
     <View>
@@ -29,9 +31,10 @@ const TextInput = ({
         value={value}
         keyboardType={keyboardType}
         style={{ backgroundColor: 'transparent' }}
+        testID={testID}
       />
       {!!erro && (
-        <HelperText type="error" visible={!!erro}>
+        <HelperText type="error" visible={!!erro} testID={`${testID}Helper`}>
           {erro}
         </HelperText>
       )}

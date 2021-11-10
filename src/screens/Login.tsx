@@ -49,6 +49,7 @@ const Login = ({ navigation }: HomeNavigationProps) => {
       textoBotao={t('login.entrar')}
       onButtonClick={handleLogin}
       loading={isLoading}
+      testIdBotao="botaoEntrar"
     >
       <ScrollView>
         <Titulo>
@@ -62,16 +63,19 @@ const Login = ({ navigation }: HomeNavigationProps) => {
             erro={erros.email}
             onChangeText={handleChangeEmail}
             keyboardType="email-address"
+            testID="inputEmail"
           />
           <PasswordInput
             label={t('login.senha')}
             value={senha}
             erro={erros.senha}
             onChangeText={handleChangeSenha}
+            testID="inputSenha"
           />
           <ButtonLink
             texto={t('login.esqueciSenha')}
             onPress={handleEsqueciSenha}
+            testID="botaoEsqueciSenha"
           />
         </View>
       </ScrollView>
