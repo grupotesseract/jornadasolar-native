@@ -1,3 +1,4 @@
+import { t } from 'i18n-js'
 import GrupoDeHabitos from '../entities/GrupoDeHabitos'
 import GetAllGruposDeHabitosModelos from '../services/gruposDeHabitos/GetAllGruposDeHabitosModelos'
 import GetUserGruposDeHabitos from '../services/user/GetUserGruposDeHabitos'
@@ -22,7 +23,11 @@ const getGruposDeHabitosTemplate = async (
 }
 
 const tiraGrupoPersonalizado = (grupos: GrupoDeHabitos[]) => {
-  return grupos.filter(grupo => grupo.nome != 'Personalizados')
+  return grupos.filter(
+    grupo =>
+      grupo.nome != t('comum.nomeGrupoPersonalizado') &&
+      grupo.nome != 'Personalizados'
+  )
 }
 
 export { getGruposDeHabitosTemplate, getGruposDeHabitosIniciais }
