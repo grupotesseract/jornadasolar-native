@@ -1,8 +1,8 @@
-import Sentimento, { ISentimento } from '../entities/Sentimento'
+import Sentimento from '../entities/Sentimento'
 import { firestore } from '../firebase/firebase.config'
 
 export interface ISentimentosModelosRepository {
-  getAll(): Promise<Array<Sentimento>>
+  getAll(idIdioma?: string): Promise<Array<Sentimento>>
 }
 
 export default class SentimentosModelosRepository
@@ -14,8 +14,14 @@ export default class SentimentosModelosRepository
     this.collection = firestore.collection('sentimentosModelos')
   }
 
-  async getAll(): Promise<Array<Sentimento>> {
+  async getAll(idIdioma?: string): Promise<Array<Sentimento>> {
     try {
+      if (idIdioma) {
+        this.collection = firestore.collection(
+          `modelos/${idIdioma}/sentimentosModelos`
+        )
+      }
+
       const querySnapshot = await this.collection.get()
 
       const sentimentosModelos: Sentimento[] = []

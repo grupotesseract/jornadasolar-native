@@ -16,6 +16,18 @@ i18n.locale = locale
 // Quando uma chave não estiver presente em um idioma, usa o idioma padrão
 i18n.fallbacks = true
 
-export const dateLocale = locale.startsWith('pt') ? ptBR : enUS
+const idiomaDispositivo = locale.slice(0, 2)
+
+const idiomasSuportados = ['pt', 'en']
+
+// exporta o idioma que a internacionalização está usando
+// pode ser diferente do idioma do dispositivo no caso de o dispositivo não estar em um idioma suportado
+const idiomaAtual = idiomasSuportados.includes(idiomaDispositivo)
+  ? idiomaDispositivo
+  : 'pt'
+
+const dateLocale = locale.startsWith('en') ? enUS : ptBR
 
 export default i18n
+
+export { idiomaAtual, dateLocale }
