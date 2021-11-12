@@ -81,6 +81,13 @@ const en = {
     anotacoes: 'Write about your day',
     verMais: 'More'
   },
+  aceitePolitica: {
+    respeitamos: 'We respect your privacy.',
+    declaracao:
+      'By using this app, you agree to our use of local storage to improve your experience.',
+    conheca: 'Learn about our Privacy Policy',
+    botao: 'Ok, I get it'
+  },
   signos: {
     capricornio: 'Capricorn',
     aquario: 'Aquarius',

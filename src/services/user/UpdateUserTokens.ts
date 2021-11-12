@@ -32,9 +32,11 @@ export default class UpdateUserTokens implements IUpdateUserTokens {
   }
 
   async remove(userId: string): Promise<void> {
-    const token = (await Notifications.getExpoPushTokenAsync()).data
+    const token = await Notifications.getExpoPushTokenAsync()
     const user = await this.userRepository.getById(userId)
-    const novosTokens = user.tokens?.filter(userToken => userToken !== token)
+    const novosTokens = user.tokens?.filter(
+      userToken => userToken !== token.data
+    )
     if (token && novosTokens) {
       this.userRepository.update({
         id: userId,

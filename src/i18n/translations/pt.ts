@@ -81,6 +81,13 @@ const pt = {
     anotacoes: 'Escrever sobre seu dia',
     verMais: 'Ver mais'
   },
+  aceitePolitica: {
+    respeitamos: 'Respeitamos sua privacidade.',
+    declaracao:
+      'Ao utilizar este app, você aceita a utilização do armazenamento local para melhorarmos a sua experiência.',
+    conheca: 'Conheça nossa Política de privacidade',
+    botao: 'Ok, entendi'
+  },
   signos: {
     capricornio: 'Capricórnio',
     aquario: 'Aquário',
