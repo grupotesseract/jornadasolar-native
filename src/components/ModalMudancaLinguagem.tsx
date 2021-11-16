@@ -1,3 +1,4 @@
+import { logEvent } from 'expo-firebase-analytics'
 import { t } from 'i18n-js'
 import React, { useState } from 'react'
 import { Modal, Pressable, StyleSheet } from 'react-native'
@@ -14,6 +15,7 @@ const ModalMudancaLinguagem = ({ isOpen, onFecha }: Props) => {
   const handleChangeIdioma = (idioma: string) => {
     setIdiomaSelecionado(idioma)
     setLocale(idioma)
+    logEvent('altera_idioma_cadastro')
     onFecha()
   }
 
