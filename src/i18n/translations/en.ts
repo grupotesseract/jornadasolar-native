@@ -27,6 +27,8 @@ const en = {
   cadastro: {
     parabens: 'Hello! Congratulations on starting your journey',
     perguntaNome: 'For starters, what would you like to be called?',
+    mudarIdioma: 'Do you want to change the language?',
+    selecioneIdioma: 'Select language',
     continuar: 'Continue',
     prazerConhecer: 'Nice to meet you, %{nome}!',
     perguntaObjetivos: 'What are your main goals?',

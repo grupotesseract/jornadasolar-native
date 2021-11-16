@@ -6,7 +6,7 @@ const pt = {
     emailJaCadastrado: 'E-mail já cadastrado',
     senhaFraca: 'A senha deve ter 6 caracteres ou mais',
     senhaErrada:
-      'Senha incorreta. Tente novamente ou clique em "Esqueceu a senha?" para redefini-la',
+      'Senha incorreta. Tente novamente ou clique em "Esqueci minha senha" para redefini-la',
     emailNaoEncontrado: 'E-mail não encontrado',
     linkExpirado:
       'O link para redefinir a senha expirou. Clique em "Esqueci minha senha" na tela de login e solicite novamente.'
@@ -25,9 +25,16 @@ const pt = {
     frase:
       'Embarque em uma jornada de autoconhecimento e monitore seus hábitos e emoções'
   },
+  idiomas: {
+    pt: 'Português',
+    en: 'English',
+    es: 'Español'
+  },
   cadastro: {
     parabens: 'Olá! Parabéns por começar sua jornada',
     perguntaNome: 'Para começar, como gostaria de ser chamado?',
+    mudarIdioma: 'Deseja mudar o idioma?',
+    selecioneIdioma: 'Selecione o idioma',
     continuar: 'Continuar',
     prazerConhecer: 'É um prazer te conhecer, %{nome}!',
     perguntaObjetivos: 'Quais são seus principais objetivos?',
