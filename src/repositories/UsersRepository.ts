@@ -22,6 +22,7 @@ interface ICreateParameters {
   temLivro: string
   sentimentos: Array<string>
   gruposDeHabitos: Array<IGrupoDeHabitos>
+  idioma: string
 }
 
 interface IUpdateParameters {
@@ -51,7 +52,8 @@ export default class UsersRepository implements IUsersRepository {
     objetivos,
     temLivro,
     sentimentos,
-    gruposDeHabitos
+    gruposDeHabitos,
+    idioma
   }: ICreateParameters): Promise<IUser> {
     const now = firebase.firestore.FieldValue.serverTimestamp()
 
@@ -78,7 +80,8 @@ export default class UsersRepository implements IUsersRepository {
       lastAccess: now,
       countAccess: 1,
       canaisDeNotificacao: idsCanais,
-      tokens: [token]
+      tokens: [token],
+      idioma
     }
     await this.collection.doc(user.uid).set(data)
 

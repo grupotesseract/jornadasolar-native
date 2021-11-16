@@ -12,6 +12,7 @@ type Parameters = {
   temLivro: string
   sentimentos: Array<string>
   gruposDeHabitos: Array<IGrupoDeHabitos>
+  idioma: string
 }
 
 interface ICreate {
