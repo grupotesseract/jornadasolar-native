@@ -46,6 +46,7 @@ const Habitos = ({ navigation }: HomeNavigationProps) => {
       textoBotao={t('cadastro.faltaUmPasso')}
       onButtonClick={handleContinuar}
       exibirBotao={botaoVisivel}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>{t('cadastro.perguntaHabitos')}</Titulo>

@@ -63,6 +63,7 @@ const DadosAutenticacao = () => {
       textoBotao={t('cadastro.pronto')}
       onButtonClick={handleClickPronto}
       loading={isLoading}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>

@@ -28,6 +28,7 @@ const Identificacao = ({ navigation }: HomeNavigationProps) => {
       textoBotao={t('cadastro.continuar')}
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>

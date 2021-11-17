@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View
 } from 'react-native'
+import BotaoVoltar from './BotaoVoltar'
 import Button from './Button'
 
 interface ILayoutProps {
@@ -16,6 +17,7 @@ interface ILayoutProps {
   loading?: boolean
   iconeBotao?: string
   testIdBotao?: string
+  botaoVoltar?: boolean
 }
 
 const Layout = ({
@@ -25,7 +27,8 @@ const Layout = ({
   onButtonClick,
   loading = false,
   iconeBotao,
-  testIdBotao
+  testIdBotao,
+  botaoVoltar
 }: ILayoutProps) => {
   const handlePress = () => {
     Keyboard.dismiss()
@@ -37,7 +40,8 @@ const Layout = ({
       style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
     >
-      <View style={[exibirBotao && styles.padding]}>
+      {botaoVoltar && <BotaoVoltar semTexto marginLeft={12} />}
+      <View style={[styles.conteudo, exibirBotao && styles.padding]}>
         {children}
         {exibirBotao && (
           <View style={styles.botao}>
@@ -61,8 +65,12 @@ export default Layout
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%'
+  },
+  conteudo: {
     alignSelf: 'center',
-    width: '80%'
+    width: '80%',
+    flex: 1
   },
   padding: {
     flex: 1,

@@ -43,6 +43,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       textoBotao={t('cadastro.continuar')}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>{t('cadastro.prazerConhecer', { nome })}</Titulo>
