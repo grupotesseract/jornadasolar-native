@@ -8,7 +8,8 @@ const en = {
       'Incorrect password. Try again or click "Forgot password?" to reset it',
     emailNaoEncontrado: 'User not found',
     linkExpirado:
-      'The link to reset your password has expired. Click "Forgot password?" to ask for a new link'
+      'The link to reset your password has expired. Click "Forgot password?" ' +
+      'to ask for a new link'
   },
   login: {
     saudacao: 'Hi! Good to see you here',
@@ -22,7 +23,8 @@ const en = {
     tenhoCadastro: 'I have an account',
     versao: 'version',
     frase:
-      'Embark on a journey of self-awareness and monitor your habits and emotions'
+      'Embark on a journey of self-awareness and monitor your ' +
+      'habits and emotions'
   },
   cadastro: {
     parabens: 'Hello! Congratulations on starting your journey',
@@ -59,7 +61,8 @@ const en = {
     enviaremosLink:
       'We will send you a link by email to create a new password.',
     linkEnviado:
-      'A link to reset your password has been sent to %{email}, please check your inbox or spam folder.',
+      'A link to reset your password has been sent to %{email}, ' +
+      'please check your inbox or spam folder.',
     enviar: 'Send'
   },
   menuInferior: {

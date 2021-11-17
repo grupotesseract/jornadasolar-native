@@ -6,10 +6,13 @@ const es = {
     emailJaCadastrado: 'E-mail ya registrado',
     senhaFraca: 'La contraseña debe tener 6 caracteres o más',
     senhaErrada:
-      'Contraseña incorrecta. Vuelva a intentarlo o haga clic en "Olvidé mi contraseña" para restablecerla',
+      'Contraseña incorrecta. Vuelva a intentarlo o haga clic en ' +
+      '"Olvidé mi contraseña" para restablecerla',
     emailNaoEncontrado: 'E-mail no encontrado',
     linkExpirado:
-      'El enlace para restablecer la contraseña ha caducado. Haga clic en "Olvidé mi contraseña" en la pantalla de inicio de sesión y vuelva a solicitarla.'
+      'El enlace para restablecer la contraseña ha caducado. Haga clic en ' +
+      '"Olvidé mi contraseña" en la pantalla de inicio de sesión ' +
+      'y vuelva a solicitarla.'
   },
   login: {
     saudacao: '¡Hola! Qué bueno verte por aquí',
@@ -58,9 +61,11 @@ const es = {
   recuperarSenha: {
     titulo: '¡Opa! Vamos a controlar esto',
     enviaremosLink:
-      'Le enviaremos un enlace por correo electrónico para crear una nueva contraseña.',
+      'Le enviaremos un enlace por correo electrónico para crear una ' +
+      'nueva contraseña.',
     linkEnviado:
-      'Se ha enviado un enlace para restablecer tu contraseña a %{email}, busca en tu bandeja de entrada o en el correo no deseado.',
+      'Se ha enviado un enlace para restablecer tu contraseña a %{email}, ' +
+      'busca en tu bandeja de entrada o en el correo no deseado.',
     enviar: 'Enviar'
   },
   menuInferior: {

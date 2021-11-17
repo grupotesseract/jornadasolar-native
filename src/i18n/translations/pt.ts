@@ -6,10 +6,12 @@ const pt = {
     emailJaCadastrado: 'E-mail já cadastrado',
     senhaFraca: 'A senha deve ter 6 caracteres ou mais',
     senhaErrada:
-      'Senha incorreta. Tente novamente ou clique em "Esqueci minha senha" para redefini-la',
+      'Senha incorreta. Tente novamente ou clique em "Esqueci minha senha"' +
+      ' para redefini-la',
     emailNaoEncontrado: 'E-mail não encontrado',
     linkExpirado:
-      'O link para redefinir a senha expirou. Clique em "Esqueci minha senha" na tela de login e solicite novamente.'
+      'O link para redefinir a senha expirou. Clique em "Esqueci minha senha"' +
+      ' na tela de login e solicite novamente.'
   },
   login: {
     saudacao: 'Oi! Que bom te ver por aqui',
@@ -23,7 +25,8 @@ const pt = {
     tenhoCadastro: 'Já tenho cadastro',
     versao: 'versão',
     frase:
-      'Embarque em uma jornada de autoconhecimento e monitore seus hábitos e emoções'
+      'Embarque em uma jornada de autoconhecimento e ' +
+      'monitore seus hábitos e emoções'
   },
   idiomas: {
     pt: 'Português',
@@ -65,7 +68,8 @@ const pt = {
     enviaremosLink:
       'Te enviaremos um link por email para criar uma nova senha.',
     linkEnviado:
-      'Um link para redefinir sua senha foi enviado para %{email}, verifique sua caixa de entrada ou spam.',
+      'Um link para redefinir sua senha foi enviado para %{email}, ' +
+      'verifique sua caixa de entrada ou spam.',
     enviar: 'Enviar'
   },
   menuInferior: {
