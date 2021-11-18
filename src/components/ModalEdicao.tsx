@@ -39,7 +39,7 @@ const ModalEdicao = ({
   itemEdicao,
   onConfirma
 }: Props) => {
-  const tituloModal = itemEdicao
+  const tituloModal = itemEdicao?.nome
     ? t('edicao.tituloEdicao', { tipo: labelNome })
     : t('edicao.tituloNovo', { tipo: labelNome })
 

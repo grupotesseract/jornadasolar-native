@@ -9,7 +9,8 @@ const Loading = () => {
       style={{
         justifyContent: 'center',
         alignItems: 'center',
-        height: tela / 2
+        height: tela / 2,
+        width: '100%'
       }}
     >
       <ActivityIndicator size="large" />
