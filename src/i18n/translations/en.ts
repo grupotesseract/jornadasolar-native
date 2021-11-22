@@ -50,7 +50,7 @@ const en = {
       NaoTemLivro: `I don't`,
       QueroSaberMais: 'No, but I want to know more'
     },
-    pronto: 'Pronto!'
+    pronto: 'Done!'
   },
   recuperarSenha: {
     titulo: "Oops, let's fix that",
@@ -113,7 +113,8 @@ const en = {
     editar: 'Edit',
     concluir: 'Done',
     voltar: 'Back',
-    salvar: 'Save'
+    salvar: 'Save',
+    nomeGrupoPersonalizado: 'Personalized'
   },
   mensagensAlerta: {
     registroSucesso: 'The entry was saved successfully',

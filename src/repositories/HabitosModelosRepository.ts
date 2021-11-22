@@ -2,22 +2,30 @@ import { IHabito } from '../entities/Habito'
 import { firestore } from '../firebase/firebase.config'
 
 export interface IHabitosModelosRepository {
-  getAll(): Promise<Array<IHabito>>
+  getAll(idIdioma?: string): Promise<Array<IHabito>>
 }
 
 export default class HabitosModelosRepository
   implements IHabitosModelosRepository
 {
   private collection
+  private idGrupoDeHabitoModelo
 
   constructor(grupoDeHabitoModeloId: string) {
+    this.idGrupoDeHabitoModelo = grupoDeHabitoModeloId
     this.collection = firestore.collection(
       `gruposDeHabitosModelos/${grupoDeHabitoModeloId}/habitosModelos`
     )
   }
 
-  async getAll(): Promise<Array<IHabito>> {
+  async getAll(idIdioma?: string): Promise<Array<IHabito>> {
     try {
+      if (idIdioma) {
+        this.collection = firestore.collection(
+          `modelos/${idIdioma}/gruposDeHabitosModelos/${this.idGrupoDeHabitoModelo}/habitosModelos`
+        )
+      }
+
       const habitosModelosSnapshot = await this.collection
         .orderBy('posicao', 'asc')
         .get()

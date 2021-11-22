@@ -4,7 +4,7 @@ import { firestore } from '../firebase/firebase.config'
 import Habito from '../entities/Habito'
 
 export interface IGruposDeHabitosModelosRepository {
-  getAll(): Promise<Array<IGrupoDeHabitos>>
+  getAll(idIdioma?: string): Promise<Array<IGrupoDeHabitos>>
 }
 
 export default class GruposDeHabitosModelosRepository
@@ -16,8 +16,14 @@ export default class GruposDeHabitosModelosRepository
     this.collection = firestore.collection('gruposDeHabitosModelos')
   }
 
-  async getAll(): Promise<Array<IGrupoDeHabitos>> {
+  async getAll(idIdioma?: string): Promise<Array<IGrupoDeHabitos>> {
     try {
+      if (idIdioma) {
+        this.collection = firestore.collection(
+          `modelos/${idIdioma}/gruposDeHabitosModelos`
+        )
+      }
+
       const querySnapshot = await this.collection
         .orderBy('posicao', 'asc')
         .get()
@@ -42,7 +48,7 @@ export default class GruposDeHabitosModelosRepository
 
         const habitos = await new GelAllHabitosModelos(
           grupoDeHabitosModelo.id
-        ).call()
+        ).call(idIdioma)
         grupoDeHabitosModelo.habitos = habitos.map(
           habitos => new Habito(habitos)
         )

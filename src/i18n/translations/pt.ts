@@ -113,7 +113,8 @@ const pt = {
     editar: 'Editar',
     concluir: 'Concluir',
     voltar: 'Voltar',
-    salvar: 'Salvar'
+    salvar: 'Salvar',
+    nomeGrupoPersonalizado: 'Personalizados'
   },
   mensagensAlerta: {
     registroSucesso: 'Cadastro realizado com sucesso',
