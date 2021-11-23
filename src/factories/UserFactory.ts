@@ -22,7 +22,8 @@ export default class UserFactory {
       novidadesDispensadas,
       canaisDeNotificacao,
       tokens,
-      idioma
+      idioma,
+      aceitouPolitica
     } = dados
 
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
@@ -40,7 +41,8 @@ export default class UserFactory {
       countAccess: countAccess,
       canaisDeNotificacao: canaisDeNotificacao || [],
       tokens: tokens || [],
-      idioma: idioma || idiomaAtual
+      idioma: idioma || idiomaAtual,
+      aceitouPolitica
     })
   }
 }

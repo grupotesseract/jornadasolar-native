@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 export default {
   name: 'Jornada Solar',
-  slug: 'jornada-solar',
+  slug: 'jornadasolar',
   icon: './assets/icon.png',
   splash: {
     image: './assets/splash.png',
