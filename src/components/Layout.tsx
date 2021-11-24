@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
     width: '80%',
     flex: 1
   },
+  conteudo: {
+    flex: 1
+  },
   padding: {
     flex: 1,
     paddingBottom: 80

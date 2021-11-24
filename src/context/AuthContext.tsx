@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react'
 import { useEffect } from 'react'
 import { IUser } from '../entities/User'
 import { auth } from '../firebase/firebase.config'
+import { setLocale } from '../i18n'
 import GetUserById from '../services/user/GetUserById'
 
 interface AuthContextData {
@@ -30,6 +31,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     if (currentUser) {
       const usuario = await new GetUserById().call(currentUser.uid)
       setUser(usuario)
+      setLocale(usuario.idioma)
     } else {
       setUser(null)
     }

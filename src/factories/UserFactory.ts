@@ -1,4 +1,5 @@
 import User, { IUser } from '../entities/User'
+import { idiomaAtual } from '../i18n'
 
 export interface IUserFactory {
   build(userSnapshot: any): IUser
@@ -9,7 +10,7 @@ export default class UserFactory {
     const { id } = userSnapshot
     const dados = userSnapshot.data()
 
-    if(!dados) {
+    if (!dados) {
       throw new Error('dados vazios, userSnapshot id:' + id)
     }
     const {
@@ -20,7 +21,9 @@ export default class UserFactory {
       role,
       novidadesDispensadas,
       canaisDeNotificacao,
-      tokens
+      tokens,
+      idioma,
+      aceitouPolitica
     } = dados
 
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
@@ -37,7 +40,9 @@ export default class UserFactory {
       lastAccess: lastAccess,
       countAccess: countAccess,
       canaisDeNotificacao: canaisDeNotificacao || [],
-      tokens: tokens || []
+      tokens: tokens || [],
+      idioma: idioma || idiomaAtual,
+      aceitouPolitica
     })
   }
 }

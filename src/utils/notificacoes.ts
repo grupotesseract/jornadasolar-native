@@ -13,7 +13,7 @@ Notifications.setNotificationHandler({
   })
 })
 
-async function agendaNotificacaoTresDias() {
+async function agendaNotificacaoTresDias(): Promise<void> {
   const date = add(new Date(), { days: 3 })
   await Notifications.scheduleNotificationAsync({
     content: {
@@ -32,7 +32,7 @@ async function agendaNotificacaoTresDias() {
   })
 }
 
-async function registraTokenParaNotificacoesExternas() {
+async function registraTokenParaNotificacoesExternas(): Promise<string> {
   let token: string
   if (Constants.isDevice) {
     const { status: existingStatus } = await Notifications.getPermissionsAsync()
@@ -57,12 +57,13 @@ async function registraTokenParaNotificacoesExternas() {
   return token
 }
 
-async function cancelaNotificacoesAgendadas() {
+async function cancelaNotificacoesAgendadas(): Promise<void> {
   await Notifications.cancelAllScheduledNotificationsAsync()
 }
 
 export {
   agendaNotificacaoTresDias,
   registraTokenParaNotificacoesExternas,
-  cancelaNotificacoesAgendadas
+  cancelaNotificacoesAgendadas,
+  Notifications
 }

@@ -73,8 +73,8 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
         <View style={styles.titulo}>
           <Titulo>{t('perfil.editarPerfil')}</Titulo>
         </View>
+        <Novidade path={Telas.Perfil} isFocused={true} />
       </View>
-      <Novidade path={Telas.Perfil} isFocused={true} />
       <NavigationList itens={menus} />
       <Text style={styles.versao}>
         {t('home.versao')} {appVersion}

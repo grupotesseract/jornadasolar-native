@@ -1,7 +1,9 @@
 import GrupoDeHabitos from '../../entities/GrupoDeHabitos'
+import { idiomaAtual } from '../../i18n'
 import GruposDeHabitosModelosRepository, {
   IGruposDeHabitosModelosRepository
 } from '../../repositories/GruposDeHabitosModelosRepository'
+import { GetIdIdioma } from '../GetIdIdioma'
 
 interface IGetAll {
   call(): Promise<Array<GrupoDeHabitos>>
@@ -16,6 +18,7 @@ export default class GetAllGruposDeHabitosModelos implements IGetAll {
   }
 
   async call(): Promise<Array<GrupoDeHabitos>> {
-    return await this.gruposDeHabitosModelosRepository.getAll()
+    const idIdioma = await new GetIdIdioma().call(idiomaAtual)
+    return await this.gruposDeHabitosModelosRepository.getAll(idIdioma)
   }
 }
