@@ -1,4 +1,5 @@
 import User, { IUser } from '../entities/User'
+import { idiomaAtual } from '../i18n'
 
 export interface IUserFactory {
   build(userSnapshot: any): IUser
@@ -21,6 +22,7 @@ export default class UserFactory {
       novidadesDispensadas,
       canaisDeNotificacao,
       tokens,
+      idioma,
       aceitouPolitica
     } = dados
 
@@ -39,6 +41,7 @@ export default class UserFactory {
       countAccess: countAccess,
       canaisDeNotificacao: canaisDeNotificacao || [],
       tokens: tokens || [],
+      idioma: idioma || idiomaAtual,
       aceitouPolitica
     })
   }

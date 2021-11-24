@@ -25,8 +25,8 @@ const getGruposDeHabitosTemplate = async (
 const tiraGrupoPersonalizado = (grupos: GrupoDeHabitos[]) => {
   return grupos.filter(
     grupo =>
-      grupo.nome != t('comum.nomeGrupoPersonalizado') &&
-      grupo.nome != 'Personalizados'
+      grupo.nome !== t('comum.nomeGrupoPersonalizado') &&
+      grupo.nome !== 'Personalizados'
   )
 }
 

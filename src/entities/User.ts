@@ -11,6 +11,7 @@ interface IUserAttributes {
   countAccess?: number
   canaisDeNotificacao?: Array<string>
   tokens?: Array<string>
+  idioma?: string
   aceitouPolitica?: boolean
 }
 
@@ -28,6 +29,7 @@ export default class User implements IUser {
   public countAccess?: number
   public canaisDeNotificacao?: Array<string>
   public tokens?: Array<string>
+  public idioma: string
   public aceitouPolitica?: boolean
 
   constructor({
@@ -42,6 +44,7 @@ export default class User implements IUser {
     countAccess,
     canaisDeNotificacao,
     tokens,
+    idioma,
     aceitouPolitica
   }: IUserAttributes) {
     this.id = id
@@ -55,6 +58,7 @@ export default class User implements IUser {
     this.countAccess = countAccess
     this.canaisDeNotificacao = canaisDeNotificacao
     this.tokens = tokens
+    this.idioma = idioma
     this.aceitouPolitica = aceitouPolitica
   }
 

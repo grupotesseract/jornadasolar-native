@@ -37,7 +37,7 @@ const Layout = ({
       style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
     >
-      <View style={[exibirBotao && styles.padding]}>
+      <View style={[styles.conteudo, exibirBotao && styles.padding]}>
         {children}
         {exibirBotao && (
           <View style={styles.botao}>
@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     width: '80%'
+  },
+  conteudo: {
+    flex: 1
   },
   padding: {
     flex: 1,

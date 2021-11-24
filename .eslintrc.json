@@ -8,8 +8,7 @@
     "plugin:react/recommended",
     "standard",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -25,8 +24,8 @@
     "prettier/prettier": "error",
     "react/prop-types": "off",
     "space-before-function-paren": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "indent": "off"
+    "indent": "off",
+    "max-len": ["error", { "code": 80, "ignorePattern": "^import .*" }]
   },
   "settings": {
     "react": {
