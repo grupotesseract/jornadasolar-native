@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { StyleSheet } from 'react-native'
-import { View } from 'react-native'
+import React, { useContext } from 'react'
+import { StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import InputLabel from '../../components/InputLabel'
 import Layout from '../../components/Layout'
@@ -10,12 +9,11 @@ import CadastroContext from '../../context/ContextCadastro'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes/Home.routes'
 
-const Objetivos = ({ navigation }: HomeNavigationProps) => {
+const Objetivos = ({ navigation }: HomeNavigationProps): React.ReactElement => {
   const { t } = i18n
-  const { AvancoParaEtapa3, dadosCadastro } = useContext(CadastroContext)
+  const { salvaObjetivos, dadosCadastro } = useContext(CadastroContext)
   const nome = dadosCadastro.nome
-  const [itensSelecionados, setItensSelecionados] = useState<string[]>([])
-  const botaoVisivel = itensSelecionados.length > 0
+  const botaoVisivel = dadosCadastro.objetivos.length > 0
   const opcoes: string[] = [
     'autoconhecimento',
     'habitos',
@@ -25,16 +23,15 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
   ]
 
   const handleChangeSelected = (item: string) => {
-    if (itensSelecionados.includes(item)) {
-      const novosSelecionados = itensSelecionados.filter(i => i !== item)
-      setItensSelecionados(novosSelecionados)
+    if (dadosCadastro.objetivos.includes(item)) {
+      const novosSelecionados = dadosCadastro.objetivos.filter(i => i !== item)
+      salvaObjetivos(novosSelecionados)
     } else {
-      setItensSelecionados([...itensSelecionados, item])
+      salvaObjetivos([...dadosCadastro.objetivos, item])
     }
   }
 
   const handleContinuar = () => {
-    AvancoParaEtapa3(itensSelecionados)
     navigation.navigate('CadastroSentimentos')
   }
 
@@ -53,6 +50,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
             <TextCheckbox
               key={opcao}
               value={opcao}
+              isChecked={dadosCadastro.objetivos.includes(opcao)}
               texto={t(`cadastro.objetivos.${opcao}`)}
               onPress={handleChangeSelected}
             />

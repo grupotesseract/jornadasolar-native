@@ -29,7 +29,7 @@ const Layout = ({
   iconeBotao,
   testIdBotao,
   botaoVoltar
-}: ILayoutProps) => {
+}: ILayoutProps): React.ReactElement => {
   const handlePress = () => {
     Keyboard.dismiss()
     onButtonClick()
@@ -38,7 +38,7 @@ const Layout = ({
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       {botaoVoltar && <BotaoVoltar semTexto marginLeft={12} />}
       <View style={[styles.conteudo, exibirBotao && styles.padding]}>
@@ -70,9 +70,6 @@ const styles = StyleSheet.create({
   conteudo: {
     alignSelf: 'center',
     width: '80%',
-    flex: 1
-  },
-  conteudo: {
     flex: 1
   },
   padding: {
