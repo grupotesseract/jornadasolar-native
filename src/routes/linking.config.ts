@@ -15,7 +15,8 @@ const config = {
     },
     Dia: 'dia',
     Perfil: 'perfil',
-    Player: 'meditacao'
+    Player: 'meditacao',
+    Premium: 'premium'
   }
 }
 

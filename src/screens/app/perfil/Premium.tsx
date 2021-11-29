@@ -6,15 +6,26 @@ import BotaoVoltar from '../../../components/BotaoVoltar'
 import Button from '../../../components/Button'
 import Container from '../../../components/Container'
 import Titulo from '../../../components/Titulo'
+import { RootStackScreenProps } from '../../../routes/App.routes'
 
-const Premium = () => {
+const Premium = ({ navigation, route }: RootStackScreenProps<'Premium'>) => {
+  const destino = route.params?.origem ? null : 'Abas'
+
+  const handleAtivar = () => {
+    if (destino) {
+      navigation.navigate(destino)
+    } else {
+      navigation.goBack()
+    }
+  }
+
   return (
     <Container>
-      <BotaoVoltar />
+      <BotaoVoltar destino={destino} />
       <View style={styles.conteudo}>
         <Titulo centralizado>{t('perfil.tituloPremium')}</Titulo>
         <Paragraph style={styles.texto}>{t('perfil.textoPremium')}</Paragraph>
-        <Button>{t('perfil.ativarPremium')}</Button>
+        <Button onPress={handleAtivar}>{t('perfil.ativarPremium')}</Button>
       </View>
     </Container>
   )

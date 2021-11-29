@@ -85,4 +85,4 @@ function BottomTabs() {
   )
 }
 
-export { BottomTabs, TabsNavigationProps }
+export { BottomTabs, BottomTabsParams, TabsNavigationProps }
