@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
 import Emoji from '../../../components/Emoji'
-import NavigationList from '../../../components/NavigationList'
+import NavigationList, {
+  INavigationItem
+} from '../../../components/NavigationList'
 import { AppNavigationProps } from '../../../routes/App.routes'
 import SignOutUser from '../../../services/user/SignOutUser'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -13,8 +15,10 @@ import { t } from 'i18n-js'
 import Dialogo from '../../../components/Dialogo'
 import Novidade from '../../../components/Novidade'
 import Telas from '../../../enums/Telas'
+import AuthContext from '../../../context/AuthContext'
 
 const Perfil = ({ navigation }: AppNavigationProps) => {
+  const { user } = useContext(AuthContext)
   const handleSair = () => {
     new SignOutUser().call()
   }
@@ -36,11 +40,15 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
     navigation.navigate('Notificacoes')
   }
 
+  const handlePremium = () => {
+    navigation.navigate('Premium', { origem: 'Perfil' })
+  }
+
   const ChevronRight = (
     <MaterialIcons name="chevron-right" size={24} color={theme.colors.text} />
   )
 
-  const menus = [
+  const menus: INavigationItem[] = [
     {
       icone: <Emoji nome="perfil" />,
       texto: t('perfil.meusDados'),
@@ -66,6 +74,22 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
       iconeSecundario: ChevronRight
     }
   ]
+
+  const botaoPremium = user.premium
+    ? {
+        icone: <Emoji emoji={'\u{2B50}'} />,
+        texto: t('perfil.premiumAtivo')
+      }
+    : {
+        icone: <Emoji emoji={'\u{2B50}'} />,
+        texto: t('perfil.ativarPremium'),
+        onPress: handlePremium,
+        iconeSecundario: ChevronRight
+      }
+
+  if (user.temLivroPromocode) {
+    menus.unshift(botaoPremium)
+  }
 
   return (
     <View style={styles.container}>

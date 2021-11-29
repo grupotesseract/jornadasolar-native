@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text } from 'react-native'
 import { Divider, List } from 'react-native-paper'
 import { theme } from '../../theme'
 
-interface INavigationItem {
+export interface INavigationItem {
   icone?: ReactNode
   texto: string
   onPress?: () => void

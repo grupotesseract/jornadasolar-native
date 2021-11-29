@@ -156,6 +156,12 @@ const en = {
     notificacoes: 'Notifications',
     ajuda: 'Help',
     textoAjuda: 'Need help? Send an email to jornadasolar@gmail.com',
+    ativarPremium: 'Activate Premium',
+    premiumAtivo: 'Congratulations! You are Premium',
+    tituloPremium: 'Congratulations',
+    textoPremium:
+      'For buying the Solar Journey 2022 book, you win' +
+      ' one month of Premium access',
     sair: 'Sign Out',
     ok: 'Ok',
     notificaEventos: 'Solar Journey Events',

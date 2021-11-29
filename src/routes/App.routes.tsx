@@ -13,6 +13,7 @@ import AlterarSenha from '../screens/app/perfil/AlterarSenha'
 import MeusDados from '../screens/app/perfil/MeusDados'
 import Notificacoes from '../screens/app/perfil/Notificacoes'
 import AlterarNome from '../screens/app/perfil/AlterarNome'
+import Premium from '../screens/app/perfil/Premium'
 
 type AppStackParams = {
   Abas: undefined
@@ -25,6 +26,7 @@ type AppStackParams = {
   AlterarNome: undefined
   AlterarSenha: undefined
   Notificacoes: undefined
+  Premium: undefined
 }
 
 type AppNavigationProps = NativeStackScreenProps<AppStackParams, 'Abas'>
@@ -46,6 +48,7 @@ function AppRoutes() {
       <Screen name="AlterarNome" component={AlterarNome} />
       <Screen name="AlterarSenha" component={AlterarSenha} />
       <Screen name="Notificacoes" component={Notificacoes} />
+      <Screen name="Premium" component={Premium} />
     </Navigator>
   )
 }
