@@ -21,11 +21,17 @@ export default class UserFactory {
       novidadesDispensadas,
       canaisDeNotificacao,
       tokens,
-      aceitouPolitica
+      aceitouPolitica,
+      premium,
+      temLivroPromocode
     } = dados
 
     const lastAccess = dados.lastAccess ? dados.lastAccess.toDate() : null
     const countAccess = dados.countAccess ? dados.countAccess : 0
+    const inicioPromocode = dados.inicioPromocode
+      ? dados.inicioPromocode.toDate()
+      : null
+    const duracaoPromocode = dados.duracaoPromocode ? dados.duracaoPromocode : 0
 
     return new User({
       id,
@@ -39,7 +45,11 @@ export default class UserFactory {
       countAccess: countAccess,
       canaisDeNotificacao: canaisDeNotificacao || [],
       tokens: tokens || [],
-      aceitouPolitica
+      aceitouPolitica,
+      premium,
+      temLivroPromocode,
+      inicioPromocode,
+      duracaoPromocode
     })
   }
 }

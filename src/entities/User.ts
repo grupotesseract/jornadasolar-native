@@ -12,6 +12,10 @@ interface IUserAttributes {
   canaisDeNotificacao?: Array<string>
   tokens?: Array<string>
   aceitouPolitica?: boolean
+  premium?: boolean
+  temLivroPromocode?: boolean
+  inicioPromocode?: Date
+  duracaoPromocode?: number
 }
 
 export type IUser = IUserAttributes
@@ -29,6 +33,10 @@ export default class User implements IUser {
   public canaisDeNotificacao?: Array<string>
   public tokens?: Array<string>
   public aceitouPolitica?: boolean
+  public premium?: boolean
+  public temLivroPromocode?: boolean
+  public inicioPromocode?: Date
+  public duracaoPromocode?: number
 
   constructor({
     id,
@@ -42,7 +50,11 @@ export default class User implements IUser {
     countAccess,
     canaisDeNotificacao,
     tokens,
-    aceitouPolitica
+    aceitouPolitica,
+    premium,
+    temLivroPromocode,
+    inicioPromocode,
+    duracaoPromocode
   }: IUserAttributes) {
     this.id = id
     this.nome = nome
@@ -56,6 +68,10 @@ export default class User implements IUser {
     this.canaisDeNotificacao = canaisDeNotificacao
     this.tokens = tokens
     this.aceitouPolitica = aceitouPolitica
+    this.premium = premium
+    this.temLivroPromocode = temLivroPromocode
+    this.inicioPromocode = inicioPromocode
+    this.duracaoPromocode = duracaoPromocode
   }
 
   novidadeDispensada(slug: string): boolean {
