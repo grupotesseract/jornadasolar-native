@@ -11,6 +11,7 @@ interface IUserAttributes {
   countAccess?: number
   canaisDeNotificacao?: Array<string>
   tokens?: Array<string>
+  idioma?: string
   aceitouPolitica?: boolean
   premium?: boolean
   temLivroPromocode?: boolean
@@ -32,6 +33,7 @@ export default class User implements IUser {
   public countAccess?: number
   public canaisDeNotificacao?: Array<string>
   public tokens?: Array<string>
+  public idioma: string
   public aceitouPolitica?: boolean
   public premium?: boolean
   public temLivroPromocode?: boolean
@@ -50,6 +52,7 @@ export default class User implements IUser {
     countAccess,
     canaisDeNotificacao,
     tokens,
+    idioma,
     aceitouPolitica,
     premium,
     temLivroPromocode,
@@ -67,6 +70,7 @@ export default class User implements IUser {
     this.countAccess = countAccess
     this.canaisDeNotificacao = canaisDeNotificacao
     this.tokens = tokens
+    this.idioma = idioma
     this.aceitouPolitica = aceitouPolitica
     this.premium = premium
     this.temLivroPromocode = temLivroPromocode

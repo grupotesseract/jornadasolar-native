@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View } from 'react-native'
 import { RadioButton, Text } from 'react-native-paper'
-import i18n from '../../i18n'
+import i18n, { idiomaAtual } from '../../i18n'
 import Layout from '../../components/Layout'
 import Titulo from '../../components/Titulo'
 import Emoji from '../../components/Emoji'
@@ -39,7 +39,13 @@ const DadosAutenticacao = () => {
     setIsLoading(true)
     try {
       const createUserService = new CreateUser()
-      await createUserService.call({ ...dadosCadastro, email, senha, temLivro })
+      await createUserService.call({
+        ...dadosCadastro,
+        email,
+        senha,
+        temLivro,
+        idioma: idiomaAtual
+      })
       logEvent('sign_up')
     } catch (e) {
       setErros(getMessageFromCode(e.code))
