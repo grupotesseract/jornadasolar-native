@@ -40,6 +40,7 @@ const EsqueciSenha = () => {
       textoBotao={t('recuperarSenha.enviar')}
       onButtonClick={handleEnviar}
       loading={isLoading}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>

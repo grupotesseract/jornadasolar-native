@@ -1,5 +1,4 @@
-import React from 'react'
-import { createContext, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
 
 interface DadosCadastro {
@@ -10,10 +9,11 @@ interface DadosCadastro {
 }
 
 interface CadastroContextData {
-  AvancoParaEtapa2: (nome: string) => void
-  AvancoParaEtapa3: (objetivos: string[]) => void
-  AvancoParaEtapa4: (sentimentos: String[]) => void
-  AvancoParaEtapa5: (gruposDeHabitos: IGrupoDeHabitos[]) => void
+  salvaNome: (nome: string) => void
+  salvaObjetivos: (objetivos: string[]) => void
+  salvaSentimentos: (sentimentos: string[]) => void
+  salvaGruposDeHabitos: (gruposDeHabitos: IGrupoDeHabitos[]) => void
+  limparDados: () => void
   dadosCadastro: DadosCadastro
 }
 
@@ -31,29 +31,34 @@ export const CadastroProvider: React.FC = ({ children }) => {
   const [dadosCadastro, setDadosCadastro] =
     useState<DadosCadastro>(estadoInicial)
 
-  const AvancoParaEtapa2 = (nome: string) => {
+  const salvaNome = (nome: string) => {
     setDadosCadastro({ ...dadosCadastro, nome })
   }
 
-  const AvancoParaEtapa3 = (objetivos: string[]) => {
+  const salvaObjetivos = (objetivos: string[]) => {
     setDadosCadastro({ ...dadosCadastro, objetivos })
   }
 
-  const AvancoParaEtapa4 = (sentimentos: string[]) => {
+  const salvaSentimentos = (sentimentos: string[]) => {
     setDadosCadastro({ ...dadosCadastro, sentimentos })
   }
 
-  const AvancoParaEtapa5 = (gruposDeHabitos: IGrupoDeHabitos[]) => {
+  const salvaGruposDeHabitos = (gruposDeHabitos: IGrupoDeHabitos[]) => {
     setDadosCadastro({ ...dadosCadastro, gruposDeHabitos })
+  }
+
+  const limparDados = () => {
+    setDadosCadastro(estadoInicial)
   }
 
   return (
     <CadastroContext.Provider
       value={{
-        AvancoParaEtapa2,
-        AvancoParaEtapa3,
-        AvancoParaEtapa4,
-        AvancoParaEtapa5,
+        salvaNome,
+        salvaObjetivos,
+        salvaSentimentos,
+        salvaGruposDeHabitos,
+        limparDados,
         dadosCadastro
       }}
     >

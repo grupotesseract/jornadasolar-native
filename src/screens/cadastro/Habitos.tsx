@@ -11,34 +11,32 @@ import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes/Home.routes'
 import { getGruposDeHabitosTemplate } from '../../utils/getGruposDeHabitos'
 
-const Habitos = ({ navigation }: HomeNavigationProps) => {
+const Habitos = ({ navigation }: HomeNavigationProps): React.ReactElement => {
   const { t } = i18n
-  const { AvancoParaEtapa5 } = useContext(CadastroContext)
+  const { salvaGruposDeHabitos, dadosCadastro } = useContext(CadastroContext)
 
   const [isLoading, setIsLoading] = useState(true)
-  const [gruposSelecionados, setGruposSelecionados] = useState<
-    Array<IGrupoDeHabitos>
-  >([])
 
   useEffect(() => {
     const getTemplate = async () => {
-      const template = await getGruposDeHabitosTemplate()
-      setGruposSelecionados(template)
+      if (!dadosCadastro.gruposDeHabitos.length) {
+        const template = await getGruposDeHabitosTemplate()
+        salvaGruposDeHabitos(template)
+      }
       setIsLoading(false)
     }
     getTemplate()
   }, [])
 
-  const botaoVisivel = gruposSelecionados.some(
+  const botaoVisivel = dadosCadastro.gruposDeHabitos.some(
     grupo => grupo.habitos.length > 0
   )
   const handleContinuar = () => {
-    AvancoParaEtapa5(gruposSelecionados)
     navigation.navigate('DadosAutenticacao')
   }
 
   const handleChangeSelected = (selecionados: Array<IGrupoDeHabitos>) => {
-    setGruposSelecionados(selecionados)
+    salvaGruposDeHabitos(selecionados)
   }
 
   return (
@@ -46,6 +44,7 @@ const Habitos = ({ navigation }: HomeNavigationProps) => {
       textoBotao={t('cadastro.faltaUmPasso')}
       onButtonClick={handleContinuar}
       exibirBotao={botaoVisivel}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>{t('cadastro.perguntaHabitos')}</Titulo>
@@ -55,7 +54,7 @@ const Habitos = ({ navigation }: HomeNavigationProps) => {
           ) : (
             <GrupoDeHabitosCheckboxGroup
               onChangeSelection={handleChangeSelected}
-              gruposSelecionados={gruposSelecionados}
+              gruposSelecionados={dadosCadastro.gruposDeHabitos}
             />
           )}
         </View>
