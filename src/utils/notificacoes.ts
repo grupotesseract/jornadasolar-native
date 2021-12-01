@@ -45,7 +45,7 @@ async function registraTokenParaNotificacoesExternas() {
       console.log('Erro ao registrar token para notificações push')
       return
     }
-    token = (await Notifications.getExpoPushTokenAsync()).data
+    token = (await Notifications.getExpoPushTokenAsync())?.data
   }
 
   if (Platform.OS === 'android') {
@@ -64,5 +64,6 @@ async function cancelaNotificacoesAgendadas() {
 export {
   agendaNotificacaoTresDias,
   registraTokenParaNotificacoesExternas,
-  cancelaNotificacoesAgendadas
+  cancelaNotificacoesAgendadas,
+  Notifications
 }
