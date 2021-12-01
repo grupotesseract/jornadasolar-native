@@ -28,6 +28,7 @@ import { useFocusEffect } from '@react-navigation/core'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
 import RegistrarAcesso from '../../services/user/RegistrarAcesso'
+import ModalAceiteLgpd from '../../components/ModalAceiteLgpd'
 
 const Diario = ({ navigation }: AppNavigationProps) => {
   const { userName, userId, user } = useContext(AuthContext)
@@ -101,7 +102,7 @@ const Diario = ({ navigation }: AppNavigationProps) => {
           />
         </View>
         <Novidade path={Telas.Diario} isFocused={isFocused} />
-
+        {user.aceitouPolitica || <ModalAceiteLgpd />}
         {loading ? <Loading /> : registros}
       </View>
     </ScrollView>

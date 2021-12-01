@@ -8,7 +8,8 @@ const en = {
       'Incorrect password. Try again or click "Forgot password?" to reset it',
     emailNaoEncontrado: 'User not found',
     linkExpirado:
-      'The link to reset your password has expired. Click "Forgot password?" to ask for a new link'
+      'The link to reset your password has expired. Click "Forgot password?" ' +
+      'to ask for a new link'
   },
   login: {
     saudacao: 'Hi! Good to see you here',
@@ -22,11 +23,14 @@ const en = {
     tenhoCadastro: 'I have an account',
     versao: 'version',
     frase:
-      'Embark on a journey of self-awareness and monitor your habits and emotions'
+      'Embark on a journey of self-awareness and monitor your ' +
+      'habits and emotions'
   },
   cadastro: {
     parabens: 'Hello! Congratulations on starting your journey',
     perguntaNome: 'For starters, what would you like to be called?',
+    mudarIdioma: 'Do you want to change the language?',
+    selecioneIdioma: 'Select language',
     continuar: 'Continue',
     prazerConhecer: 'Nice to meet you, %{nome}!',
     perguntaObjetivos: 'What are your main goals?',
@@ -50,14 +54,15 @@ const en = {
       NaoTemLivro: `I don't`,
       QueroSaberMais: 'No, but I want to know more'
     },
-    pronto: 'Pronto!'
+    pronto: 'Done!'
   },
   recuperarSenha: {
     titulo: "Oops, let's fix that",
     enviaremosLink:
       'We will send you a link by email to create a new password.',
     linkEnviado:
-      'A link to reset your password has been sent to %{email}, please check your inbox or spam folder.',
+      'A link to reset your password has been sent to %{email}, ' +
+      'please check your inbox or spam folder.',
     enviar: 'Send'
   },
   menuInferior: {
@@ -80,6 +85,13 @@ const en = {
     habitos: 'Fill in habits',
     anotacoes: 'Write about your day',
     verMais: 'More'
+  },
+  aceitePolitica: {
+    respeitamos: 'We respect your privacy.',
+    declaracao:
+      'By using this app, you agree to our use of local storage to improve your experience.',
+    conheca: 'Learn about our Privacy Policy',
+    botao: 'Ok, I get it'
   },
   signos: {
     capricornio: 'Capricorn',
@@ -113,7 +125,8 @@ const en = {
     editar: 'Edit',
     concluir: 'Done',
     voltar: 'Back',
-    salvar: 'Save'
+    salvar: 'Save',
+    nomeGrupoPersonalizado: 'Personalized'
   },
   mensagensAlerta: {
     registroSucesso: 'The entry was saved successfully',

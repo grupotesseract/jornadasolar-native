@@ -4,7 +4,7 @@ import HabitosModelosRepository, {
 } from '../../repositories/HabitosModelosRepository'
 
 interface IGetAll {
-  call(): Promise<Array<IHabito>>
+  call(idIdioma?: string): Promise<Array<IHabito>>
 }
 
 export default class GetAll implements IGetAll {
@@ -16,7 +16,7 @@ export default class GetAll implements IGetAll {
     )
   }
 
-  call(): Promise<Array<IHabito>> {
-    return this.habitosModelosRepository.getAll()
+  call(idIdioma?: string): Promise<Array<IHabito>> {
+    return this.habitosModelosRepository.getAll(idIdioma)
   }
 }

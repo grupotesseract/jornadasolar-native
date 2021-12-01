@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StyleSheet, View } from 'react-native'
 import { RadioButton, Text } from 'react-native-paper'
-import i18n from '../../i18n'
+import i18n, { idiomaAtual } from '../../i18n'
 import Layout from '../../components/Layout'
 import Titulo from '../../components/Titulo'
 import Emoji from '../../components/Emoji'
@@ -13,14 +13,14 @@ import { ErrosAuth, getMessageFromCode } from '../../utils/getMessageFromCode'
 import CreateUser from '../../services/user/CreateUser'
 import { logEvent } from 'expo-firebase-analytics'
 
-const DadosAutenticacao = () => {
+const DadosAutenticacao = (): React.ReactElement => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<ErrosAuth>({})
   const [isLoading, setIsLoading] = useState(false)
   const [temLivro, setTemLivro] = React.useState('TemLivro')
-  const { dadosCadastro } = useContext(CadastroContext)
+  const { dadosCadastro, limparDados } = useContext(CadastroContext)
   const opcoesLivro = [
     { value: 'TemLivro', label: t('cadastro.opcoesLivro.TemLivro') },
     { value: 'NaoTemLivro', label: t('cadastro.opcoesLivro.NaoTemLivro') },
@@ -39,8 +39,15 @@ const DadosAutenticacao = () => {
     setIsLoading(true)
     try {
       const createUserService = new CreateUser()
-      await createUserService.call({ ...dadosCadastro, email, senha, temLivro })
+      await createUserService.call({
+        ...dadosCadastro,
+        email,
+        senha,
+        temLivro,
+        idioma: idiomaAtual
+      })
       logEvent('sign_up')
+      limparDados()
     } catch (e) {
       setErros(getMessageFromCode(e.code))
     }
