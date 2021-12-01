@@ -53,38 +53,44 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
       icone: <Emoji nome="perfil" />,
       texto: t('perfil.meusDados'),
       onPress: handleMeusDados,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'perfilMeusDados'
     },
     {
       icone: <Emoji nome="sino" />,
       texto: t('perfil.notificacoes'),
       onPress: handleNotificacoes,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'perfilNotificacao'
     },
     {
       icone: <Emoji nome="duvida" />,
       texto: t('perfil.ajuda'),
       onPress: abrirDialogo,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'perfilAjuda'
     },
     {
       icone: <Emoji nome="sair" />,
       texto: t('perfil.sair'),
       onPress: handleSair,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'perfilSair'
     }
   ]
 
   const botaoPremium = user.premium
     ? {
         icone: <Emoji emoji={'\u{2B50}'} />,
-        texto: t('perfil.premiumAtivo')
+        texto: t('perfil.premiumAtivo'),
+        testID: 'perfilPremiumAtivo'
       }
     : {
         icone: <Emoji emoji={'\u{2B50}'} />,
         texto: t('perfil.ativarPremium'),
         onPress: handlePremium,
-        iconeSecundario: ChevronRight
+        iconeSecundario: ChevronRight,
+        testID: 'perfilAtivarPremium'
       }
 
   if (user.temLivroPromocode) {

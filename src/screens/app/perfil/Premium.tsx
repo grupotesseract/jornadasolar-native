@@ -52,11 +52,15 @@ const Premium = ({ navigation, route }: RootStackScreenProps<'Premium'>) => {
 
   return (
     <Container>
-      <BotaoVoltar destino={destino} />
+      <BotaoVoltar destino={destino} testID="botaoVoltarPremium" />
       <View style={styles.conteudo}>
         <Titulo centralizado>{t('perfil.tituloPremium')}</Titulo>
         <Paragraph style={styles.texto}>{t('perfil.textoPremium')}</Paragraph>
-        <Button loading={isLoading} onPress={handleAtivar}>
+        <Button
+          loading={isLoading}
+          onPress={handleAtivar}
+          testID="botaoAtivarPremium"
+        >
           {t('perfil.ativarPremium')}
         </Button>
       </View>
