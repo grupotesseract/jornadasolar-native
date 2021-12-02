@@ -50,6 +50,7 @@ const Login = ({ navigation }: HomeNavigationProps) => {
       onButtonClick={handleLogin}
       loading={isLoading}
       testIdBotao="botaoEntrar"
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>

@@ -13,14 +13,14 @@ import { ErrosAuth, getMessageFromCode } from '../../utils/getMessageFromCode'
 import CreateUser from '../../services/user/CreateUser'
 import { logEvent } from 'expo-firebase-analytics'
 
-const DadosAutenticacao = () => {
+const DadosAutenticacao = (): React.ReactElement => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<ErrosAuth>({})
   const [isLoading, setIsLoading] = useState(false)
   const [temLivro, setTemLivro] = React.useState('TemLivro')
-  const { dadosCadastro } = useContext(CadastroContext)
+  const { dadosCadastro, limparDados } = useContext(CadastroContext)
   const opcoesLivro = [
     { value: 'TemLivro', label: t('cadastro.opcoesLivro.TemLivro') },
     { value: 'NaoTemLivro', label: t('cadastro.opcoesLivro.NaoTemLivro') },
@@ -47,6 +47,7 @@ const DadosAutenticacao = () => {
         idioma: idiomaAtual
       })
       logEvent('sign_up')
+      limparDados()
     } catch (e) {
       setErros(getMessageFromCode(e.code))
     }
@@ -69,6 +70,7 @@ const DadosAutenticacao = () => {
       textoBotao={t('cadastro.pronto')}
       onButtonClick={handleClickPronto}
       loading={isLoading}
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>
