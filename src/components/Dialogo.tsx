@@ -22,7 +22,7 @@ const Dialogo = ({
         <Dialog.Title>{titulo}</Dialog.Title>
         <Dialog.Content>{conteudo}</Dialog.Content>
         <Dialog.Actions>
-          <Button onPress={onConfirma}>{textoBotaoConfirma}</Button>
+          <Button onPress={onConfirma} testID="testID" accessibilityLabel="testID">{textoBotaoConfirma}</Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>

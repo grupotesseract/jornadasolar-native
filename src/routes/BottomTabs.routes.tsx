@@ -47,7 +47,10 @@ function BottomTabs() {
         <Screen
           name="Diario"
           component={Diario}
+          
           options={{
+            tabBarTestID:'menuInferiorRegistros',
+            tabBarAccessibilityLabel:'menuInferiorRegistros', 
             tabBarLabel: t('menuInferior.registros'),
             tabBarIcon: ({ color }) => <IconeRegistros color={color} />
           }}
@@ -56,6 +59,8 @@ function BottomTabs() {
           name="Graficos"
           component={Graficos}
           options={{
+            tabBarTestID:'menuInferiorGraficos',
+            tabBarAccessibilityLabel:'menuInferiorGraficos',
             tabBarLabel: t('menuInferior.graficos'),
             tabBarIcon: ({ color }) => <IconeGraficos color={color} />
           }}
@@ -63,7 +68,9 @@ function BottomTabs() {
         <Screen
           name="Meditacoes"
           component={Meditacoes}
-          options={{
+          options={{ 
+            tabBarAccessibilityLabel:'menuInferiorMeditacoes',
+            tabBarTestID:'menuInferiorMeditacoes',
             tabBarLabel: t('menuInferior.meditacoes'),
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="spa" size={24} color={color} />
@@ -74,6 +81,8 @@ function BottomTabs() {
           name="Perfil"
           component={Perfil}
           options={{
+            tabBarTestID:'menuInferiorPerfil',
+            tabBarAccessibilityLabel:'menuInferiorPerfil',
             tabBarLabel: t('menuInferior.perfil'),
             tabBarIcon: ({ color }) => (
               <Ionicons name="person-outline" size={24} color={color} />

@@ -6,11 +6,12 @@ import { theme } from '../../theme'
 interface Props {
   texto: string
   onPress: () => void
+  testID?: string
 }
 
-const TextButton = ({ texto, onPress }: Props) => {
+const TextButton = ({ texto, onPress, testID }: Props) => {
   return (
-    <Text onPress={onPress} style={styles.texto}>
+    <Text onPress={onPress} style={styles.texto} testID={testID} accessibilityLabel={testID} >
       {texto}
     </Text>
   )

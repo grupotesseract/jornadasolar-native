@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/core'
 
 interface Props {
   destino?: any
+  testID?: string
 }
 
 const BotaoVoltar = ({ destino }: Props) => {
@@ -21,7 +22,7 @@ const BotaoVoltar = ({ destino }: Props) => {
     }
   }
   return (
-    <Pressable onPress={handlePress} style={styles.botao}>
+    <Pressable onPress={handlePress} testID={"BotaoVoltar"} accessibilityLabel={"BotaoVoltar"} style={styles.botao}>
       <MaterialCommunityIcons
         name="arrow-left"
         size={22}

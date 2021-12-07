@@ -130,7 +130,7 @@ const ModalEdicao = ({
             <Surface style={styles.modal}>
               <ScrollView>
                 <View style={styles.header}>
-                  <Pressable style={styles.fechar} onPress={handleFecha}>
+                  <Pressable style={styles.fechar} onPress={handleFecha} testID="handleFecha" accessibilityLabel="handleFecha">
                     <MaterialCommunityIcons
                       name="close"
                       color={theme.colors.text}
@@ -142,6 +142,7 @@ const ModalEdicao = ({
                   <TextButton
                     texto={t('comum.concluir')}
                     onPress={handleConfirma}
+                    testID="handleConfirma"                    
                   />
                 </View>
                 <View style={styles.form}>

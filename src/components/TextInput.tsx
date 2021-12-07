@@ -32,6 +32,7 @@ const TextInput = ({
         keyboardType={keyboardType}
         style={{ backgroundColor: 'transparent' }}
         testID={testID}
+        accessibilityLabel={testID}
       />
       {!!erro && (
         <HelperText type="error" visible={!!erro} testID={`${testID}Helper`}>

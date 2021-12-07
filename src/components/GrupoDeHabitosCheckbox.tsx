@@ -111,7 +111,8 @@ const GrupoDeHabitosCheckbox = ({
           <View style={styles.botaoEditar}>
             <TextButton
               texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
-              onPress={toggleEmEdicao}
+              onPress={toggleEmEdicao} 
+              testID="toggleEmEdicao"
             />
           </View>
         )}
@@ -121,6 +122,7 @@ const GrupoDeHabitosCheckbox = ({
               key={habito.nome}
               habito={habito}
               onPress={handlePressHabito}
+              testID="handlePressHabito"              
               onPressLabel={handleStartEdit}
               isEmEdicao={isEmEdicao}
               isChecked={habitosSelecionados.some(
@@ -129,7 +131,7 @@ const GrupoDeHabitosCheckbox = ({
             />
           ))}
           {grupoDeHabitos.habitos.length < 6 && !isCadastro && (
-            <BotaoNovoHabito onPress={handleStartEdit} loading={isLoading} />
+            <BotaoNovoHabito onPress={handleStartEdit} testID="handleStartEdit" loading={isLoading} />
           )}
         </View>
       </Card.Content>

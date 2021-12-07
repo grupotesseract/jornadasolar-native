@@ -15,6 +15,7 @@ interface Props {
   data: Date
   onSalvar?: () => Promise<void>
   botaoSecundario?: ReactNode
+  testID?: string
 }
 
 const EdicaoDiario = ({
@@ -48,7 +49,7 @@ const EdicaoDiario = ({
     >
       <ScrollView>
         <View style={styles.botoesTopo}>
-          <BotaoVoltar />
+          <BotaoVoltar testID="botaoVoltar"/>
           {botaoSecundario}
         </View>
         <Text style={styles.data}>

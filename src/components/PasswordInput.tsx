@@ -35,6 +35,7 @@ const PasswordInput = ({ label, erro, value, onChangeText, testID }: Props) => {
           />
         }
         testID={testID}
+        accessibilityLabel={testID}
       />
       {!!erro && (
         <HelperText type="error" visible={!!erro} testID={`${testID}Helper`}>

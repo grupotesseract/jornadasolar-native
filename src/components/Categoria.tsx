@@ -10,15 +10,16 @@ interface Props {
   categoria: Categorias
   onPress: () => void
   conteudo?: ReactNode
+  testID?: string 
 }
 
-const Categoria = ({ categoria, conteudo, onPress }: Props) => {
+const Categoria = ({ categoria, conteudo, onPress, testID }: Props) => {
   const tipo = categoria.toLowerCase()
   const BotaoPreencher = () => {
     return (
       <Text>
         <Emoji nome="lapis" />{' '}
-        <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} />
+        <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} testID={testID} />
       </Text>
     )
   }
