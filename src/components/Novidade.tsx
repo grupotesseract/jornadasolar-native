@@ -9,10 +9,12 @@ import { INovidade } from '../entities/Novidade'
 import GetNovidadeValida from '../services/novidades/GetNovidadeValida'
 import DispensarNovidade from '../services/user/DispensarNovidade'
 import { t } from 'i18n-js'
+import { tsParenthesizedType } from '@babel/types'
 
 interface Props {
   path: Telas
   isFocused: boolean
+  testID?: string
 }
 
 const Novidade = ({ path, isFocused }: Props) => {
@@ -67,6 +69,8 @@ const Novidade = ({ path, isFocused }: Props) => {
               icon="close"
               size={18}
               onPress={handleOnClose}
+              testID="handleOnClose"
+              accessibilityLabel="handleOnClose"
             />
           </View>
           <Text style={styles.descricao}>{novidade?.descricao}</Text>

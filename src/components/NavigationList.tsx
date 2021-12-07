@@ -7,7 +7,8 @@ interface INavigationItem {
   icone?: ReactNode
   texto: string
   onPress?: () => void
-  iconeSecundario?: ReactNode
+  iconeSecundario?: ReactNode 
+  testID?: string   
 }
 
 interface INavigationListProps {
@@ -26,6 +27,8 @@ const NavigationList = ({ itens }: INavigationListProps) => {
       left={() => <Text style={styles.icone}>{item.icone}</Text>}
       right={() => <Text style={styles.icone}>{item.iconeSecundario}</Text>}
       onPress={item.onPress}
+      testID={item.testID}
+      accessibilityLabel={item.testID}
     />
   )
 

@@ -9,6 +9,7 @@ import { idiomaAtual, idiomasSuportados, setLocale } from '../i18n'
 interface Props {
   isOpen: boolean
   onFecha: () => void
+  testID?: string
 }
 
 const ModalMudancaLinguagem = ({ isOpen, onFecha }: Props) => {
@@ -29,7 +30,7 @@ const ModalMudancaLinguagem = ({ isOpen, onFecha }: Props) => {
         animationType="slide"
         transparent
       >
-        <Pressable onPress={onFecha} style={styles.container}>
+        <Pressable onPress={onFecha} testID="testID" style={styles.container}>
           <Surface style={styles.modal}>
             <Text style={styles.titulo}>{t('cadastro.selecioneIdioma')}</Text>
             <RadioButton.Group
