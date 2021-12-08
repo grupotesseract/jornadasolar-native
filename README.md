@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="#instalação">Instalação</a>  
+  <a href="#instalação">Instalação</a>
 </p>
 
 ## Instalação
@@ -32,6 +32,13 @@ Use o expo-cli para rodar o Metro Bundler
 ```shell
 expo start
 ```
+
+Será necessário incluir os seguintes arquivos para conexão com o Firebase:
+
+- .env
+- google-services.json
+- GoogleService-Info.plist
+  Eles podem ser obtidos no console do firebase do projeto
 
 Use um smartphone com o aplicativo do expo para rodar o app durante o desenvolvimento. Para isso instale o Expo Go no smartphone e leia o QR code no metro bundler ou no terminal após rodar o comando acima.
 

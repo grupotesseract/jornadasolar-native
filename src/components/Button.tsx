@@ -29,6 +29,7 @@ const Button = ({
       loading={loading}
       icon={icon}
       testID={testID}
+      accessibilityLabel={testID}
       disabled={loading}
     >
       {children}

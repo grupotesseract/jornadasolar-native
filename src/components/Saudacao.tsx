@@ -24,7 +24,7 @@ const Saudacao = ({ nome }: Props) => {
   }, [])
 
   return (
-    <Text style={styles.titulo}>
+    <Text testID="saudacao" accessibilityLabel="saudacao" style={styles.titulo}>
       {t(`diario.${saudacao}`)}, {nome}
     </Text>
   )
