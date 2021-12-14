@@ -125,8 +125,8 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
           <FAB
             icon={iconePlayPause}
             onPress={handlePlayPause}
-            testID="testID"
-            accessibilityLabel="testID"
+            testID="botaoPlay"
+            accessibilityLabel="botaoPlay"
             color={theme.colors.secondary}
           />
           <Slider

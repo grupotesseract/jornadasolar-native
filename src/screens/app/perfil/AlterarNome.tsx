@@ -36,11 +36,13 @@ const AlterarNome = ({ navigation }: AppNavigationProps) => {
         textoBotao={t('comum.salvar')}
         exibirBotao={exibirBotao}
         onButtonClick={handleSalvar}
+        testIdBotao="botaoSalvar"
       >
         <TextInput
           label={t('perfil.nome')}
           value={nome}
           onChangeText={handleChangeNome}
+          testID="inputNome"
         />
       </Layout>
     </View>

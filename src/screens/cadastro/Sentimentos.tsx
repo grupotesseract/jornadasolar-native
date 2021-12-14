@@ -29,6 +29,7 @@ const Sentimentos = ({ navigation }: HomeNavigationProps) => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       textoBotao={t('cadastro.continuar')}
+      testIdBotao="botaoContinuar"
     >
       <ScrollView>
         <Titulo>{t('cadastro.vamosAjudar')}</Titulo>

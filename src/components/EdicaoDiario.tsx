@@ -15,8 +15,7 @@ interface Props {
   data: Date
   onSalvar?: () => Promise<void>
   botaoSecundario?: ReactNode
-  testID?: string
-}
+  }
 
 const EdicaoDiario = ({
   navigation,
@@ -45,11 +44,12 @@ const EdicaoDiario = ({
       textoBotao={t('comum.salvar')}
       exibirBotao
       onButtonClick={handleSalvar}
+      testIdBotao='botaoSalvarDiario'
       iconeBotao="check"
     >
       <ScrollView>
         <View style={styles.botoesTopo}>
-          <BotaoVoltar testID="botaoVoltar"/>
+          <BotaoVoltar />
           {botaoSecundario}
         </View>
         <Text style={styles.data}>

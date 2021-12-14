@@ -8,8 +8,7 @@ import { useNavigation } from '@react-navigation/core'
 
 interface Props {
   destino?: any
-  testID?: string
-}
+  }
 
 const BotaoVoltar = ({ destino }: Props) => {
   const { t } = i18n

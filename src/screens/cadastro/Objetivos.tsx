@@ -43,6 +43,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       textoBotao={t('cadastro.continuar')}
+      testIdBotao="botaoContinuar"
     >
       <ScrollView>
         <Titulo>{t('cadastro.prazerConhecer', { nome })}</Titulo>
@@ -53,7 +54,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps) => {
               key={opcao}
               value={opcao}
               texto={t(`cadastro.objetivos.${opcao}`)}
-              onPress={handleChangeSelected}
+              onPress={handleChangeSelected}              
             />
           ))}
         </View>

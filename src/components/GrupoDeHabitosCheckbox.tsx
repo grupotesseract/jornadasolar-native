@@ -24,7 +24,7 @@ interface Props {
 
   onHabitoAtualizado?: (IItemEdicao) => Promise<void>
   userId?: string
-}
+  }
 
 const GrupoDeHabitosCheckbox = ({
   grupoDeHabitos,
@@ -121,8 +121,7 @@ const GrupoDeHabitosCheckbox = ({
             <HabitoCheckbox
               key={habito.nome}
               habito={habito}
-              onPress={handlePressHabito}
-              testID="handlePressHabito"              
+              onPress={handlePressHabito}                        
               onPressLabel={handleStartEdit}
               isEmEdicao={isEmEdicao}
               isChecked={habitosSelecionados.some(
@@ -131,7 +130,7 @@ const GrupoDeHabitosCheckbox = ({
             />
           ))}
           {grupoDeHabitos.habitos.length < 6 && !isCadastro && (
-            <BotaoNovoHabito onPress={handleStartEdit} testID="handleStartEdit" loading={isLoading} />
+            <BotaoNovoHabito onPress={handleStartEdit} loading={isLoading} />
           )}
         </View>
       </Card.Content>

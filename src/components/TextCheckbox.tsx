@@ -23,6 +23,8 @@ const TextCheckbox = ({ value, texto, onPress }: ItemProps) => {
     <Pressable
       style={[styles.botao, isChecked && styles.botaoSelecionado]}
       onPress={handlePress}
+      testID={texto}
+      accessibilityLabel={texto}
     >
       <TextWrapper style={styles.texto}>{texto}</TextWrapper>
     </Pressable>

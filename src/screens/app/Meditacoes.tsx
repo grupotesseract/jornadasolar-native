@@ -38,6 +38,7 @@ const Meditacoes = ({ navigation }: AppNavigationProps) => {
           <FAB icon="play" color={theme.colors.secondary} style={styles.fab} />
         )}
         onPress={() => navigation.navigate('Player', { id: item.id })}
+        testID={"meditacao"+item.nome}
       />
     </Surface>
   )

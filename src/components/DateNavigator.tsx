@@ -31,15 +31,15 @@ const DateNavigator = ({
 
   return (
     <View style={styles.container}>
-      <IconButton icon="chevron-left" onPress={handleVoltar} testID="handleVoltar" accessibilityLabel="handleVoltar" />
+      <IconButton icon="chevron-left" onPress={handleVoltar} testID="botaoVoltar" accessibilityLabel="botaoVoltar" />
       <Text style={styles.nomeMes}>
         {format(date, formatoData, { locale: dateLocale })}
       </Text>
       <IconButton
         icon="chevron-right"
         onPress={handleProximo}
-        testID="handleProximo"
-        accessibilityLabel="handleProximo"
+        testID="botaoProximo"
+        accessibilityLabel="botaoProximo"
         disabled={isUltimoPasso(date)}
       />
     </View>

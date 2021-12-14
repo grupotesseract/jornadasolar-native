@@ -19,7 +19,7 @@ const Categoria = ({ categoria, conteudo, onPress, testID }: Props) => {
     return (
       <Text>
         <Emoji nome="lapis" />{' '}
-        <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} testID={testID} />
+        <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} testID="BotaoPreencher"/>
       </Text>
     )
   }

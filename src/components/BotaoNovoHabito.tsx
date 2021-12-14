@@ -8,10 +8,9 @@ import { theme } from '../../theme'
 interface ItemProps {
   onPress: () => void
   loading?: boolean
-  testID?: string
-}
+  }
 
-const BotaoNovoHabito = ({ onPress, loading = false, testID , }: ItemProps) => {
+const BotaoNovoHabito = ({ onPress, loading = false, }: ItemProps) => {
   const handlePress = () => {
     onPress() 
   }
@@ -23,7 +22,7 @@ const BotaoNovoHabito = ({ onPress, loading = false, testID , }: ItemProps) => {
           <ActivityIndicator color={theme.colors.secondary} size="small" />
         </View>
       ) : (
-        <Pressable testID={"botaoNovoHabito"} accessibilityLabel={"botaoNovoHabito"} style={styles.botao} onPress={handlePress}>
+        <Pressable testID="botaoNovoHabito" accessibilityLabel="botaoNovoHabito" style={styles.botao} onPress={handlePress}>
           <MaterialIcons name="add" size={30} />
         </Pressable>
       )}

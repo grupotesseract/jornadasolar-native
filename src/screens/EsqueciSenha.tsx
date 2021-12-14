@@ -40,6 +40,7 @@ const EsqueciSenha = () => {
       textoBotao={t('recuperarSenha.enviar')}
       onButtonClick={handleEnviar}
       loading={isLoading}
+      testIdBotao="botaoEnviar"
     >
       <ScrollView>
         <Titulo>
@@ -52,6 +53,7 @@ const EsqueciSenha = () => {
           erro={erro.email}
           onChangeText={handleChangeEmail}
           keyboardType="email-address"
+          testID="inputEmail"
         />
         <HelperText type="info" visible={sucesso}>
           {t('recuperarSenha.linkEnviado', { email })}
