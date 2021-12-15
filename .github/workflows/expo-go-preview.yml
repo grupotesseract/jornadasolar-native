@@ -12,6 +12,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - name: Decode needed files
+        run: |
+          echo "${{ secrets.DEV_SERVICES_JSON }}" | base64 --d > google-services.json
+          echo "${{ secrets.DEV_SERVICES_PLIST }}" | base64 -d  > GoogleService-Info.plist
       - name: Set up Expo
         uses: expo/expo-github-action@v5
         with:
@@ -20,10 +24,6 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
         run: yarn install
-      - name: Decode needed files
-        run: |
-          base64 -d ${{ secrets.DEV_SERVICES_JSON }} > google-services.json
-          base64 -d ${{ secrets.DEV_SERVICES_PLIST }} > GoogleService-Info.plist
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
         with:
