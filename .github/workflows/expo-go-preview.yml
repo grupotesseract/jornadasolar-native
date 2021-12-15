@@ -23,7 +23,7 @@ jobs:
       - name: Decode needed files
         run: |
           base64 -d ${{ secrets.DEV_SERVICES_JSON }} > google-services.json
-          base64 -d. ${{ secrets.DEV_SERVICES_PLIST }} > GoogleService-Info.plist
+          base64 -d ${{ secrets.DEV_SERVICES_PLIST }} > GoogleService-Info.plist
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
         with:
