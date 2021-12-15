@@ -20,10 +20,14 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
         run: yarn install
+      - name: Decode needed files
+        run: |
+          base64 -D ${{ secrets.DEV_SERVICES_JSON }} > google-services.json
+          base64 -D ${{ secrets.DEV_SERVICES_PLIST }} > GoogleService-Info.plist
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
         with:
-          channel: pr-${{ github.event.number }}          
+          channel: pr-${{ github.event.number }}
           project-flavor: expo-go
         id: preview
       - name: Comment deployment link
