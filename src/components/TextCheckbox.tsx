@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 import { Text, Title } from 'react-native-paper'
 import { theme } from '../../theme'
@@ -7,15 +6,14 @@ import { theme } from '../../theme'
 interface ItemProps {
   texto: string
   onPress: (value: any) => void
+  isChecked: boolean
   value: any
 }
 
-const TextCheckbox = ({ value, texto, onPress }: ItemProps) => {
-  const [isChecked, setIsChecked] = useState(false)
+const TextCheckbox = ({ value, texto, isChecked, onPress }: ItemProps) => {
   const TextWrapper = isChecked ? Title : Text
 
   const handlePress = () => {
-    setIsChecked(!isChecked)
     onPress(value)
   }
 

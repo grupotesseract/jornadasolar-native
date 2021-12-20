@@ -8,9 +8,11 @@ import { useNavigation } from '@react-navigation/core'
 
 interface Props {
   destino?: any
-  }
+  semTexto?: boolean
+  marginLeft?: number
+}
 
-const BotaoVoltar = ({ destino }: Props) => {
+const BotaoVoltar = ({ destino, semTexto = false, marginLeft }: Props) => {
   const { t } = i18n
   const navigation = useNavigation()
   const handlePress = () => {
@@ -21,13 +23,18 @@ const BotaoVoltar = ({ destino }: Props) => {
     }
   }
   return (
-    <Pressable onPress={handlePress} testID={"BotaoVoltar"} accessibilityLabel={"BotaoVoltar"} style={styles.botao}>
+    <Pressable
+      onPress={handlePress}
+      testID={'BotaoVoltar'}
+      accessibilityLabel={'BotaoVoltar'}
+      style={[styles.botao, { marginLeft }]}
+    >
       <MaterialCommunityIcons
         name="arrow-left"
         size={22}
         color={theme.colors.text}
       />
-      <Text style={styles.texto}>{t('comum.voltar')}</Text>
+      {semTexto || <Text style={styles.texto}>{t('comum.voltar')}</Text>}
     </Pressable>
   )
 }

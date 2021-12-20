@@ -1,4 +1,3 @@
-import { IUser } from '../../entities/User'
 import UsersRepository, {
   IUsersRepository
 } from '../../repositories/UsersRepository'

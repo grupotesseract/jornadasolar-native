@@ -1,9 +1,10 @@
-import 'dotenv/config';
+import 'dotenv/config'
 
 export default {
   name: 'Jornada Solar',
   slug: 'jornadasolar',
   icon: './assets/icon.png',
+  owner: 'tesseract',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -18,17 +19,17 @@ export default {
   },
   android: {
     icon: './assets/icon.png',
-    versionCode: 2,
+    versionCode: 3,
     package: 'com.grupotesseract.jornadasolar',
     googleServicesFile: './google-services.json',
     adaptiveIcon: {
-      foregroundImage: "./assets/adaptive-icon.png",
-      backgroundColor: "#000000"
+      foregroundImage: './assets/adaptive-icon.png',
+      backgroundColor: '#000000'
     }
   },
   ios: {
     icon: './assets/icon.png',
-    buildNumber: '1.0.0',
+    buildNumber: '2.0.0',
     bundleIdentifier: 'com.grupotesseract.jornadasolar',
     googleServicesFile: './GoogleService-Info.plist'
   },
@@ -38,4 +39,4 @@ export default {
     color: '#F7C92A',
     iosDisplayInForeground: true
   }
-};
+}

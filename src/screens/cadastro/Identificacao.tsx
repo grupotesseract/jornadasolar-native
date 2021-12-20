@@ -11,15 +11,17 @@ import CadastroContext from '../../context/ContextCadastro'
 import i18n from '../../i18n'
 import { HomeNavigationProps } from '../../routes/Home.routes'
 
-const Identificacao = ({ navigation }: HomeNavigationProps) => {
+const Identificacao = ({
+  navigation
+}: HomeNavigationProps): React.ReactElement => {
   const { t } = i18n
-  const { AvancoParaEtapa2 } = useContext(CadastroContext)
-  const [nome, setNome] = useState('')
+  const { salvaNome, dadosCadastro } = useContext(CadastroContext)
+  const [nome, setNome] = useState(dadosCadastro.nome)
   const [isModalAberto, setIsModalAberto] = useState(false)
   const botaoVisivel = nome.length > 0
 
   const handleContinuar = () => {
-    AvancoParaEtapa2(nome)
+    salvaNome(nome)
     navigation.navigate('Objetivos')
   }
 
@@ -41,6 +43,7 @@ const Identificacao = ({ navigation }: HomeNavigationProps) => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       testIdBotao="botaoContinuar"
+      botaoVoltar
     >
       <ScrollView contentContainerStyle={styles.container}>
         <Titulo>

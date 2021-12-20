@@ -31,6 +31,7 @@ const TextInput = ({
         value={value}
         keyboardType={keyboardType}
         style={{ backgroundColor: 'transparent' }}
+        accessibilityLabel={testID}
         testID={testID}
         accessibilityLabel={testID}
       />

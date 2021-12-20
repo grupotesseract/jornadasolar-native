@@ -45,7 +45,7 @@ async function registraTokenParaNotificacoesExternas(): Promise<string> {
       console.log('Erro ao registrar token para notificações push')
       return
     }
-    token = (await Notifications.getExpoPushTokenAsync()).data
+    token = (await Notifications.getExpoPushTokenAsync())?.data
   }
 
   if (Platform.OS === 'android') {

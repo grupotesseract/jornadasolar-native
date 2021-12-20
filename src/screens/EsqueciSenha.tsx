@@ -41,6 +41,7 @@ const EsqueciSenha = () => {
       onButtonClick={handleEnviar}
       loading={isLoading}
       testIdBotao="botaoEnviar"
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>
