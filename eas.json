@@ -8,6 +8,7 @@
       "distribution": "internal"
     },
     "preview": {
+      "releaseChannel": "stage",
       "distribution": "internal"
     },
     "preview_apk": {
@@ -21,6 +22,11 @@
     "production": {
       "android": {
         "track": "production"
+      }
+    },
+    "preview": {
+      "android": {
+        "track": "internal"
       }
     }
   }
