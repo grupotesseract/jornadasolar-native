@@ -12,6 +12,7 @@ import GetAllMeditacoes from '../../services/meditacoes/GetAllMeditacoes'
 import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
 import { useFocusEffect } from '@react-navigation/core'
+import format from 'date-fns/format'
 
 const Meditacoes = ({ navigation }: AppNavigationProps): React.ReactElement => {
   const [meditacoes, setMeditacoes] = useState<Array<IMeditacao>>([])
@@ -33,7 +34,7 @@ const Meditacoes = ({ navigation }: AppNavigationProps): React.ReactElement => {
     <Surface style={styles.itemLista}>
       <List.Item
         title={item.nome}
-        description={item.data.toLocaleDateString()}
+        description={format(item.data, 'dd/MM/yyyy')}
         right={() => (
           <FAB icon="play" color={theme.colors.secondary} style={styles.fab} />
         )}
