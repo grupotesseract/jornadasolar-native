@@ -1,5 +1,5 @@
 import { t } from 'i18n-js'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { FAB, List, Surface } from 'react-native-paper'
@@ -13,7 +13,7 @@ import Novidade from '../../components/Novidade'
 import Telas from '../../enums/Telas'
 import { useFocusEffect } from '@react-navigation/core'
 
-const Meditacoes = ({ navigation }: AppNavigationProps) => {
+const Meditacoes = ({ navigation }: AppNavigationProps): React.ReactElement => {
   const [meditacoes, setMeditacoes] = useState<Array<IMeditacao>>([])
   const [isFocused, setIsFocused] = useState(true)
   const getMeditacoes = async () => {
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
   },
   lista: {
     width: '100%',
-    marginTop: 12
+    marginTop: 12,
+    paddingBottom: 110
   },
   itemLista: {
     borderRadius: 4,
