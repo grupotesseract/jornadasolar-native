@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import BotaoVoltar from '../../components/BotaoVoltar'
-import Container from '../../components/Container'
 import Titulo from '../../components/Titulo'
 import { IMeditacao } from '../../entities/Meditacao'
 import { PlayerNavigationProps } from '../../routes/App.routes'
@@ -29,7 +28,7 @@ const Player = ({ route }: PlayerNavigationProps) => {
   }
 
   return (
-    <Container>
+    <ScrollView contentContainerStyle={styles.container}>
       <BotaoVoltar destino="Meditacoes" />
       {meditacao ? (
         <View style={styles.conteudo}>
@@ -50,7 +49,7 @@ const Player = ({ route }: PlayerNavigationProps) => {
       ) : (
         <Loading />
       )}
-    </Container>
+    </ScrollView>
   )
 }
 
@@ -60,6 +59,11 @@ const styles = StyleSheet.create({
   conteudo: {
     flex: 1,
     justifyContent: 'space-between'
+  },
+  container: {
+    flexGrow: 1,
+    width: '90%',
+    alignSelf: 'center'
   },
   titulo: {
     alignSelf: 'center',
@@ -72,6 +76,7 @@ const styles = StyleSheet.create({
     width: '50%',
     maxHeight: 200,
     resizeMode: 'contain',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 200
   }
 })
