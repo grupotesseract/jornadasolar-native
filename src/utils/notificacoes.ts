@@ -32,6 +32,44 @@ async function agendaNotificacaoTresDias(): Promise<void> {
   })
 }
 
+async function agendaNotificacaoSeteDias(): Promise<void> {
+  const date = add(new Date(), { days: 7 })
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: t('nomeApp'),
+      body: t('notificacoes.tresDias'),
+      data: {
+        link: 'dia',
+        params: {
+          data: format(date, 'd-M-yyy')
+        }
+      }
+    },
+    trigger: {
+      date
+    }
+  })
+}
+
+async function agendaNotificacaoQuinzeDias(): Promise<void> {
+  const date = add(new Date(), { days: 15 })
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: t('nomeApp'),
+      body: t('notificacoes.tresDias'),
+      data: {
+        link: 'dia',
+        params: {
+          data: format(date, 'd-M-yyy')
+        }
+      }
+    },
+    trigger: {
+      date
+    }
+  })
+}
+
 async function registraTokenParaNotificacoesExternas(): Promise<string> {
   let token: string
   if (Constants.isDevice) {
@@ -63,6 +101,8 @@ async function cancelaNotificacoesAgendadas(): Promise<void> {
 
 export {
   agendaNotificacaoTresDias,
+  agendaNotificacaoSeteDias,
+  agendaNotificacaoQuinzeDias,
   registraTokenParaNotificacoesExternas,
   cancelaNotificacoesAgendadas,
   Notifications

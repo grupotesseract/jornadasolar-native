@@ -4,6 +4,8 @@ import UsersRepository, {
 } from '../../repositories/UsersRepository'
 import {
   agendaNotificacaoTresDias,
+  agendaNotificacaoSeteDias, 
+  agendaNotificacaoQuinzeDias,
   cancelaNotificacoesAgendadas
 } from '../../utils/notificacoes'
 
@@ -23,6 +25,8 @@ export default class RegistrarAcesso implements IRegistrarAcesso {
     if (accessFlagsUpdated) {
       await cancelaNotificacoesAgendadas()
       await agendaNotificacaoTresDias()
+      await agendaNotificacaoSeteDias()
+      await agendaNotificacaoQuinzeDias()
     }
   }
 }
