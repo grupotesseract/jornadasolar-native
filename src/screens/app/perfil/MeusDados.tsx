@@ -7,6 +7,7 @@ import { theme } from '../../../../theme'
 import NavigationList from '../../../components/NavigationList'
 import TituloComVoltar from '../../../components/TituloComVoltar'
 import { AppNavigationProps } from '../../../routes/App.routes'
+import AlterarNome from './AlterarNome'
 
 const MeusDados = ({ navigation }: AppNavigationProps) => {
   const ChevronRight = (
@@ -25,12 +26,14 @@ const MeusDados = ({ navigation }: AppNavigationProps) => {
     {
       texto: t('perfil.alterarNome'),
       onPress: handleAlterarNome,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'alterarNome'
     },
     {
       texto: t('perfil.alterarSenha'),
       onPress: handleAlterarSenha,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'alterarSenha'
     }
   ]
   return (

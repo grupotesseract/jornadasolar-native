@@ -11,9 +11,12 @@ interface Props {
 const ButtonLink = ({ texto, onPress, testID }: Props) => {
   return (
     <View>
-      <Pressable style={styles.botao} onPress={onPress} 
-      testID={testID} 
-      accessibilityLabel={testID}>
+      <Pressable 
+      style={styles.botao}
+      onPress={onPress}
+      testID={testID}
+      accessibilityLabel={testID}
+      >
         <Text style={styles.textoBotao}>{texto}</Text>
       </Pressable>
     </View>

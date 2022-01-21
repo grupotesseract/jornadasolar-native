@@ -13,7 +13,7 @@ import { t } from 'i18n-js'
 interface Props {
   path: Telas
   isFocused: boolean
-  }
+}
 
 const Novidade = ({ path, isFocused }: Props) => {
   const { user, refreshUser } = useContext(AuthContext)

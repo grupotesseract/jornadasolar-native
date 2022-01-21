@@ -31,7 +31,12 @@ const DateNavigator = ({
 
   return (
     <View style={styles.container}>
-      <IconButton icon="chevron-left" onPress={handleVoltar} testID="botaoVoltar" accessibilityLabel="botaoVoltar" />
+      <IconButton
+        icon="chevron-left"
+        onPress={handleVoltar}
+        testID="botaoVoltarNavegacao"
+        accessibilityLabel="botaoVoltarNavegacao"
+      />
       <Text style={styles.nomeMes}>
         {format(date, formatoData, { locale: dateLocale })}
       </Text>

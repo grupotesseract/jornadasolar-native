@@ -17,7 +17,7 @@ const HabitoCheckbox = ({
   habito,
   onPress,
   isChecked,
-  isEmEdicao = false, 
+  isEmEdicao = false,
   onPressLabel
 }: ItemProps) => {
   const handlePress = () => {
@@ -43,8 +43,11 @@ const HabitoCheckbox = ({
         </Text>
       </Pressable>
 
-      <Pressable onPress={handlePressLabel} testID={"habitoLabel"+habito.nome}
-      accessibilityLabel={"habitoLabel"+habito.nome}>
+      <Pressable
+      onPress={handlePressLabel}
+      testID={"habitoLabel"+habito.nome}
+      accessibilityLabel={"habitoLabel"+habito.nome}
+      >
         <Caption style={styles.texto}>
           {isEmEdicao && <Emoji nome="lapis" />} {habito.nome}
         </Caption>

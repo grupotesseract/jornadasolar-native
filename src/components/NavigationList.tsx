@@ -7,8 +7,8 @@ interface INavigationItem {
   icone?: ReactNode
   texto: string
   onPress?: () => void
-  iconeSecundario?: ReactNode 
-  testID?: string   
+  iconeSecundario?: ReactNode
+  testID?: string
 }
 
 interface INavigationListProps {

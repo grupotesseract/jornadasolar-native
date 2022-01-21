@@ -24,7 +24,7 @@ interface Props {
 
   onHabitoAtualizado?: (IItemEdicao) => Promise<void>
   userId?: string
-  }
+}
 
 const GrupoDeHabitosCheckbox = ({
   grupoDeHabitos,
@@ -48,7 +48,7 @@ const GrupoDeHabitosCheckbox = ({
   }, [grupoHabitosSelecionados])
 
   const handlePressHabito = (habito: IHabito, wasChecked: boolean) => {
-    let novoGrupo = { ...grupoHabitosSelecionados }
+    const novoGrupo = { ...grupoHabitosSelecionados }
     if (wasChecked) {
       const novosSelecionados = habitosSelecionados.filter(
         selecionado => habito.id !== selecionado.id
@@ -111,8 +111,8 @@ const GrupoDeHabitosCheckbox = ({
           <View style={styles.botaoEditar}>
             <TextButton
               texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
-              onPress={toggleEmEdicao} 
-              testID="toggleEmEdicao"
+              onPress={toggleEmEdicao}
+              testID={'toggleEmEdicao' + grupoDeHabitos.nome}
             />
           </View>
         )}
@@ -121,7 +121,7 @@ const GrupoDeHabitosCheckbox = ({
             <HabitoCheckbox
               key={habito.nome}
               habito={habito}
-              onPress={handlePressHabito}                        
+              onPress={handlePressHabito}
               onPressLabel={handleStartEdit}
               isEmEdicao={isEmEdicao}
               isChecked={habitosSelecionados.some(

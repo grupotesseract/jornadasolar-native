@@ -47,7 +47,6 @@ function BottomTabs() {
         <Screen
           name="Diario"
           component={Diario}
-          
           options={{
             tabBarTestID:'menuInferiorRegistros',
             tabBarAccessibilityLabel:'menuInferiorRegistros', 

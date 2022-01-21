@@ -23,8 +23,8 @@ const ToggleButton = ({ botoes, checked }: Props) => {
           mode={checked === botao.value ? 'contained' : 'text'}
           style={styles.botao}
           onPress={botao.onPress}
-          testID="testID"
-          accessibilityLabel="testID"
+          testID="botaoGrafico"
+          accessibilityLabel="botaoGrafico"
         >
           <Text
             style={[
