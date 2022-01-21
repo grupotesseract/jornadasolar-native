@@ -95,7 +95,8 @@ const pt = {
   aceitePolitica: {
     respeitamos: 'Respeitamos sua privacidade.',
     declaracao:
-      'Ao utilizar este app, você aceita a utilização do armazenamento local para melhorarmos a sua experiência.',
+      'Ao utilizar este app, você aceita a utilização do armazenamento ' +
+      'local para melhorarmos a sua experiência.',
     conheca: 'Conheça nossa Política de privacidade',
     botao: 'Ok, entendi'
   },
@@ -167,6 +168,12 @@ const pt = {
     notificacoes: 'Notificações',
     ajuda: 'Ajuda',
     textoAjuda: 'Precisa de ajuda? Envie um e-mail para jornadasolar@gmail.com',
+    ativarPremium: 'Ativar Premium',
+    premiumAtivo: 'Parabéns! Você é Premium',
+    tituloPremium: 'Parabéns',
+    textoPremium:
+      'Por ter comprado o livro da Jornada Solar 2022, você ganhou' +
+      ' um mês de acesso Premium',
     sair: 'Sair',
     ok: 'Ok',
     notificaEventos: 'Eventos do Jornada Solar',

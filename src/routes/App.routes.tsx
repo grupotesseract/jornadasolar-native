@@ -8,11 +8,14 @@ import Sentimentos from '../screens/app/Sentimentos'
 import Habitos from '../screens/app/Habitos'
 import Anotacoes from '../screens/app/Anotacoes'
 import Player from '../screens/app/Player'
-import { BottomTabs } from './BottomTabs.routes'
+import { BottomTabs, BottomTabsParams } from './BottomTabs.routes'
 import AlterarSenha from '../screens/app/perfil/AlterarSenha'
 import MeusDados from '../screens/app/perfil/MeusDados'
 import Notificacoes from '../screens/app/perfil/Notificacoes'
 import AlterarNome from '../screens/app/perfil/AlterarNome'
+import Premium from '../screens/app/perfil/Premium'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { CompositeScreenProps } from '@react-navigation/core'
 
 type AppStackParams = {
   Abas: undefined
@@ -25,11 +28,17 @@ type AppStackParams = {
   AlterarNome: undefined
   AlterarSenha: undefined
   Notificacoes: undefined
+  Premium: { origem?: string }
 }
 
 type AppNavigationProps = NativeStackScreenProps<AppStackParams, 'Abas'>
 type DiaNavigationProps = NativeStackScreenProps<AppStackParams, 'Dia'>
 type PlayerNavigationProps = NativeStackScreenProps<AppStackParams, 'Player'>
+type RootStackScreenProps<Screen extends keyof AppStackParams> =
+  CompositeScreenProps<
+    NativeStackScreenProps<AppStackParams, Screen>,
+    BottomTabScreenProps<BottomTabsParams>
+  >
 
 const { Navigator, Screen } = createNativeStackNavigator<AppStackParams>()
 
@@ -46,6 +55,7 @@ function AppRoutes() {
       <Screen name="AlterarNome" component={AlterarNome} />
       <Screen name="AlterarSenha" component={AlterarSenha} />
       <Screen name="Notificacoes" component={Notificacoes} />
+      <Screen name="Premium" component={Premium} />
     </Navigator>
   )
 }
@@ -55,5 +65,6 @@ export {
   AppStackParams,
   AppNavigationProps,
   DiaNavigationProps,
-  PlayerNavigationProps
+  PlayerNavigationProps,
+  RootStackScreenProps
 }

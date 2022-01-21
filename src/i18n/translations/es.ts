@@ -89,6 +89,14 @@ const es = {
     anotacoes: 'Escribe sobre tu día',
     verMais: 'Ver más'
   },
+  aceitePolitica: {
+    respeitamos: 'Respetamos su privacidad.',
+    declaracao:
+      'Al utilizar esta aplicación, aceptas que utilicemos el' +
+      ' almacenamiento local para mejorar tu experiencia.',
+    conheca: 'Conozca nuestra política de privacidad',
+    botao: 'OK, lo tengo'
+  },
   signos: {
     capricornio: 'Capricornio',
     aquario: 'Acuario',
@@ -158,6 +166,12 @@ const es = {
     ajuda: 'Ayuda',
     textoAjuda:
       '¿Necesita ayuda? Envíe un correo electrónico a jornadasolar@gmail.com',
+    ativarPremium: 'Activar Premium',
+    premiumAtivo: 'Enhorabuena. Usted es Premium',
+    tituloPremium: 'Enhorabuena',
+    textoPremium:
+      'Por haber comprado el libro Jornada Solar 2022, has ganado' +
+      ' un mes de acceso Premium',
     sair: 'Salir',
     ok: 'Ok',
     notificaEventos: 'Eventos de la Jornada Solar',

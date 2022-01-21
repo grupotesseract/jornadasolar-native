@@ -89,7 +89,8 @@ const en = {
   aceitePolitica: {
     respeitamos: 'We respect your privacy.',
     declaracao:
-      'By using this app, you agree to our use of local storage to improve your experience.',
+      'By using this app, you agree to our use of local storage to improve ' +
+      'your experience.',
     conheca: 'Learn about our Privacy Policy',
     botao: 'Ok, I get it'
   },
@@ -161,6 +162,12 @@ const en = {
     notificacoes: 'Notifications',
     ajuda: 'Help',
     textoAjuda: 'Need help? Send an email to jornadasolar@gmail.com',
+    ativarPremium: 'Activate Premium',
+    premiumAtivo: 'Congratulations! You are Premium',
+    tituloPremium: 'Congratulations',
+    textoPremium:
+      'For buying the Solar Journey 2022 book, you win' +
+      ' one month of Premium access',
     sair: 'Sign Out',
     ok: 'Ok',
     notificaEventos: 'Solar Journey Events',
