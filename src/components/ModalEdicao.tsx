@@ -125,12 +125,17 @@ const ModalEdicao = ({
       >
         <View style={styles.container}>
           <KeyboardAvoidingView
-            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           >
             <Surface style={styles.modal}>
               <ScrollView>
                 <View style={styles.header}>
-                  <Pressable style={styles.fechar} onPress={handleFecha}>
+                  <Pressable
+                    style={styles.fechar}
+                    onPress={handleFecha}
+                    testID="BotaoFecha"
+                    accessibilityLabel="BotaoFecha"
+                  >
                     <MaterialCommunityIcons
                       name="close"
                       color={theme.colors.text}
@@ -142,6 +147,7 @@ const ModalEdicao = ({
                   <TextButton
                     texto={t('comum.concluir')}
                     onPress={handleConfirma}
+                    testID="textoConfirma"
                   />
                 </View>
                 <View style={styles.form}>
@@ -150,12 +156,14 @@ const ModalEdicao = ({
                     value={item.emoji}
                     onChangeText={handleChangeEmoji}
                     erro={erro?.emoji}
+                    testID="edicaoEmoji"
                   />
                   <TextInput
                     label={labelNome}
                     value={item.nome}
                     onChangeText={handleChangeNome}
                     erro={erro?.nome}
+                    testID="textoNomeMuda"
                   />
                 </View>
               </ScrollView>

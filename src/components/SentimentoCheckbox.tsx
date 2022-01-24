@@ -12,11 +12,12 @@ interface ItemProps {
   sentimento?: Sentimento
   onPress: (sentimento: ISentimento) => void
   checked?: boolean
+  testID?: string
 }
 
 const SentimentoCheckbox = ({
   sentimento,
-  onPress,
+  onPress,testID, 
   checked = false,
   isEmEdicao = false
 }: ItemProps) => {
@@ -32,6 +33,8 @@ const SentimentoCheckbox = ({
         !isEmEdicao && styles.grow
       ]}
       onPress={handlePress}
+      testID={testID}
+      accessibilityLabel={testID}
     >
       {sentimento ? (
         <>

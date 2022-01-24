@@ -45,25 +45,29 @@ const Perfil = ({ navigation }: AppNavigationProps) => {
       icone: <Emoji nome="perfil" />,
       texto: t('perfil.meusDados'),
       onPress: handleMeusDados,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'meusDados'
     },
     {
       icone: <Emoji nome="sino" />,
       texto: t('perfil.notificacoes'),
       onPress: handleNotificacoes,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'Notificacoes'
     },
     {
       icone: <Emoji nome="duvida" />,
       texto: t('perfil.ajuda'),
       onPress: abrirDialogo,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'ajuda'
     },
     {
       icone: <Emoji nome="sair" />,
       texto: t('perfil.sair'),
       onPress: handleSair,
-      iconeSecundario: ChevronRight
+      iconeSecundario: ChevronRight,
+      testID: 'sair'
     }
   ]
 

@@ -48,7 +48,7 @@ const GrupoDeHabitosCheckbox = ({
   }, [grupoHabitosSelecionados])
 
   const handlePressHabito = (habito: IHabito, wasChecked: boolean) => {
-    let novoGrupo = { ...grupoHabitosSelecionados }
+    const novoGrupo = { ...grupoHabitosSelecionados }
     if (wasChecked) {
       const novosSelecionados = habitosSelecionados.filter(
         selecionado => habito.id !== selecionado.id
@@ -112,6 +112,7 @@ const GrupoDeHabitosCheckbox = ({
             <TextButton
               texto={isEmEdicao ? t('comum.concluir') : t('comum.editar')}
               onPress={toggleEmEdicao}
+              testID={'toggleEmEdicao' + grupoDeHabitos.nome}
             />
           </View>
         )}

@@ -72,22 +72,29 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
                 locale: dateLocale
               })}
             </Caption>
-            <TextButton texto={t('diario.verMais')} onPress={handleVerMais} />
+            <TextButton
+            texto={t('diario.verMais')}
+            onPress={handleVerMais}
+            testID="botaoVerMais"
+            />
           </View>
           <Categoria
             categoria={Categorias.Sentimentos}
             conteudo={ConteudoSentimentos}
             onPress={handleSentimentos}
+            testID="preencheSentimentos"
           />
           <Categoria
             categoria={Categorias.Habitos}
             conteudo={ConteudoHabitos}
             onPress={handleHabitos}
+            testID="preencheHabitos"
           />
           <Categoria
             categoria={Categorias.Anotacoes}
             conteudo={ConteudoAnotacoes}
             onPress={handleAnotacoes}
+            testID="preencheAnotacoes"
           />
         </Card.Content>
       </Card>

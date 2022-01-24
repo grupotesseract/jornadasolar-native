@@ -97,6 +97,7 @@ const AlterarSenha = ({ navigation }: AppNavigationProps) => {
         textoBotao={t('comum.salvar')}
         exibirBotao
         onButtonClick={handleSalvar}
+        testIdBotao="botaoSalvar"
         loading={isLoading}
       >
         <ScrollView>
@@ -104,18 +105,21 @@ const AlterarSenha = ({ navigation }: AppNavigationProps) => {
             label={t('perfil.senha')}
             value={senhaAtual}
             onChangeText={handleChangeSenhaAtual}
+            testID="inputSenhaAtual"
             erro={erros.senha}
           />
           <PasswordInput
             label={t('perfil.novaSenha')}
             value={senhaNova}
             onChangeText={handleChangeNovaSenha}
+            testID="inputNovaSenha"
             erro={erros.senhaNova}
           />
           <PasswordInput
             label={t('perfil.confirmaSenha')}
             value={confirmaSenhaNova}
             onChangeText={handleChangeConfirmacao}
+            testID="inputSenhaConfirma"
             erro={erros.confirmacao}
           />
         </ScrollView>

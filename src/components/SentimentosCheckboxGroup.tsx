@@ -122,6 +122,7 @@ const SentimentosCheckboxGroup = ({
               isEmEdicao={isEmEdicao}
               sentimento={opcao}
               onPress={handleChangeSelected}
+              testID={"botaoSentimento"+opcao.nome}
               checked={idsSelecionados.includes(opcao.id) && !isEmEdicao}
             />
           ))}
@@ -130,6 +131,7 @@ const SentimentosCheckboxGroup = ({
               key="novo"
               isEmEdicao={isEmEdicao}
               onPress={handleChangeSelected}
+              testID="botaoNovoSentimento"
               checked={false}
             />
           )}

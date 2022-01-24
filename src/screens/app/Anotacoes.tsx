@@ -67,6 +67,8 @@ const Anotacoes = ({ navigation, route }: DiaNavigationProps) => {
                 underlineColorAndroid="transparent"
                 value={anotacoes}
                 onChangeText={handleChangeTexto}
+                testID="inputAnotacoes"
+                accessibilityLabel="inputAnotacoes"
               />
             </View>
           </Card.Content>

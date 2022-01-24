@@ -45,10 +45,12 @@ const ModalAceiteLgpd = () => {
               <TextButton
                 texto={t('aceitePolitica.conheca')}
                 onPress={handleVerPolitica}
+                testID="BotaoVerPolitica"                
               />
             </View>
             <Button
               onPress={handlePressOk}
+              testID="BotaoOk"
               mode="contained"
               style={styles.okButton}
             >

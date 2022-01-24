@@ -70,6 +70,7 @@ const DadosAutenticacao = (): React.ReactElement => {
       textoBotao={t('cadastro.pronto')}
       onButtonClick={handleClickPronto}
       loading={isLoading}
+      testIdBotao="cadastroPronto"
       botaoVoltar
     >
       <ScrollView>
@@ -84,12 +85,14 @@ const DadosAutenticacao = (): React.ReactElement => {
             erro={erros.email}
             onChangeText={handleChangeEmail}
             keyboardType="email-address"
+            testID="inputEmail"
           />
           <PasswordInput
             label={t('cadastro.senha')}
             value={senha}
             erro={erros.senha}
             onChangeText={handleChangeSenha}
+            testID="inputSenha"
           />
         </View>
         <View style={styles.container}>
@@ -98,6 +101,7 @@ const DadosAutenticacao = (): React.ReactElement => {
             <RadioButton.Group
               onValueChange={newValue => setTemLivro(newValue)}
               value={temLivro}
+            
             >
               {opcoesLivro.map(opcao => {
                 return (
@@ -109,6 +113,8 @@ const DadosAutenticacao = (): React.ReactElement => {
                     labelStyle={styles.texto}
                     mode="android"
                     style={styles.radio}
+                    testID={"radioButton"+opcao.value}
+                    accessibilityLabel={"radioButton"+opcao.value}
                   />
                 )
               })}

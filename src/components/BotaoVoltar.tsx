@@ -23,7 +23,12 @@ const BotaoVoltar = ({ destino, semTexto = false, marginLeft }: Props) => {
     }
   }
   return (
-    <Pressable onPress={handlePress} style={[styles.botao, { marginLeft }]}>
+    <Pressable
+      onPress={handlePress}
+      testID={'BotaoVoltar'}
+      accessibilityLabel={'BotaoVoltar'}
+      style={[styles.botao, { marginLeft }]}
+    >
       <MaterialCommunityIcons
         name="arrow-left"
         size={22}

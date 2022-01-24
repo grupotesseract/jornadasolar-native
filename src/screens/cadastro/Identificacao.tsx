@@ -42,6 +42,7 @@ const Identificacao = ({
       textoBotao={t('cadastro.continuar')}
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
+      testIdBotao="botaoContinuar"
       botaoVoltar
     >
       <ScrollView contentContainerStyle={styles.container}>
@@ -53,11 +54,13 @@ const Identificacao = ({
           label={t('cadastro.perguntaNome')}
           value={nome}
           onChangeText={handleChangeNome}
+          testID="inputNome"
         />
         <View style={styles.botaoIdioma}>
           <TextButton
             texto={t('cadastro.mudarIdioma')}
             onPress={handleAbrirModal}
+            testID="botaoAbreModal"
           />
         </View>
       </ScrollView>

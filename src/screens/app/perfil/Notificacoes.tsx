@@ -53,6 +53,8 @@ const Notificacoes = ({ navigation }: AppNavigationProps) => {
         />
       )}
       onPress={() => toggleNotificacao(item.id)}
+      testID={'Opcao' + item.nome}
+      accessibilityLabel={'Opcao' + item.nome}
     />
   )
 
@@ -72,7 +74,9 @@ const Notificacoes = ({ navigation }: AppNavigationProps) => {
         ListFooterComponent={Divisor}
       />
       <View style={styles.botao}>
-        <Button onPress={handleSalvar}>{t('comum.salvar')}</Button>
+        <Button onPress={handleSalvar} testID="botaoSalvar">
+          {t('comum.salvar')}
+        </Button>
       </View>
     </View>
   )

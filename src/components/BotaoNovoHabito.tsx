@@ -10,7 +10,7 @@ interface ItemProps {
   loading?: boolean
 }
 
-const BotaoNovoHabito = ({ onPress, loading = false }: ItemProps) => {
+const BotaoNovoHabito = ({ onPress, loading = false, }: ItemProps) => {
   const handlePress = () => {
     onPress()
   }
@@ -22,7 +22,12 @@ const BotaoNovoHabito = ({ onPress, loading = false }: ItemProps) => {
           <ActivityIndicator color={theme.colors.secondary} size="small" />
         </View>
       ) : (
-        <Pressable style={styles.botao} onPress={handlePress}>
+        <Pressable
+        testID="botaoNovoHabito"
+        accessibilityLabel="botaoNovoHabito"
+        style={styles.botao}
+        onPress={handlePress}
+        >
           <MaterialIcons name="add" size={30} />
         </Pressable>
       )}
