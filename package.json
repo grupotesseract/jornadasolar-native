@@ -5,7 +5,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest",
+    "test": "jest jest",
     "test:watch": "yarn test --watchAll",
     "test:appium": "jest appium"
   },
