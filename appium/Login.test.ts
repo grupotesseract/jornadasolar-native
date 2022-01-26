@@ -1,7 +1,6 @@
 const wdio = require('webdriverio')
 
 jest.setTimeout(60000)
-let client
 
 const capabilities = {
   platformName: 'android',

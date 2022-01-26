@@ -38,6 +38,7 @@ const setLocale = (localeCode: string) => {
   if (idiomasSuportados.includes(localeCode)) {
     i18n.locale = localeCode
     idiomaAtual = localeCode
+    dateLocale = dateFnsLocaleMap[idiomaAtual]
   }
 }
 
