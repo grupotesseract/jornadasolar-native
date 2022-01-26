@@ -12,9 +12,10 @@ import TextButton from './TextButton'
 interface Props {
   navigation: any
   diario: IRegistro
+  loading?: boolean
 }
 
-const CardRegistroDoDia = ({ diario, navigation }: Props) => {
+const CardRegistroDoDia = ({ diario, navigation, loading = false }: Props) => {
   const { t } = i18n
   const data = format(diario.date, 'd-M-yyyy')
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
@@ -66,37 +67,31 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
     <View>
       <Card style={styles.card}>
         <Card.Content>
-          <View style={styles.header}>
-            <Caption style={styles.data}>
-              {format(diario.date, t('comum.formatoDataExtenso'), {
-                locale: dateLocale
-              })}
-            </Caption>
-            <TextButton
-            texto={t('diario.verMais')}
-            onPress={handleVerMais}
-            testID="botaoVerMais"
-            />
-          </View>
           <Categoria
             categoria={Categorias.Sentimentos}
             conteudo={ConteudoSentimentos}
             onPress={handleSentimentos}
+            loading={loading}
             testID="preencheSentimentos"
           />
           <Categoria
             categoria={Categorias.Habitos}
             conteudo={ConteudoHabitos}
             onPress={handleHabitos}
+            loading={loading}
             testID="preencheHabitos"
           />
           <Categoria
             categoria={Categorias.Anotacoes}
             conteudo={ConteudoAnotacoes}
             onPress={handleAnotacoes}
+            loading={loading}
             testID="preencheAnotacoes"
           />
         </Card.Content>
+        <View style={styles.footer}>
+          <TextButton texto={t('diario.verMais')} onPress={handleVerMais} />
+        </View>
       </Card>
     </View>
   )
@@ -105,19 +100,11 @@ const CardRegistroDoDia = ({ diario, navigation }: Props) => {
 export default CardRegistroDoDia
 
 const styles = StyleSheet.create({
-  data: {
-    textTransform: 'uppercase'
-  },
-  header: {
-    flexDirection: 'row',
+  footer: {
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 12
+    marginVertical: 12
   },
   card: {
     marginVertical: 10
-  },
-  itens: {
-    fontWeight: 'bold'
   }
 })
