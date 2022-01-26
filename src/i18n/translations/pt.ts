@@ -90,12 +90,14 @@ const pt = {
     sentimentos: 'Preencher sentimentos',
     habitos: 'Preencher hábitos',
     anotacoes: 'Escrever sobre seu dia',
-    verMais: 'Ver mais'
+    verMais: 'Ver mais',
+    seusRegistros: 'Seus Registros'
   },
   aceitePolitica: {
     respeitamos: 'Respeitamos sua privacidade.',
     declaracao:
-      'Ao utilizar este app, você aceita a utilização do armazenamento local para melhorarmos a sua experiência.',
+      'Ao utilizar este app, você aceita a utilização do armazenamento ' +
+      'local para melhorarmos a sua experiência.',
     conheca: 'Conheça nossa Política de privacidade',
     botao: 'Ok, entendi'
   },

@@ -87,7 +87,8 @@ const es = {
     sentimentos: 'Rellenar sentimientos',
     habitos: 'Rellenar hábitos',
     anotacoes: 'Escribe sobre tu día',
-    verMais: 'Ver más'
+    verMais: 'Ver más',
+    seusRegistros: 'Tus Registros'
   },
   signos: {
     capricornio: 'Capricornio',

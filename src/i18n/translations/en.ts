@@ -84,12 +84,14 @@ const en = {
     sentimentos: 'Fill in feelings',
     habitos: 'Fill in habits',
     anotacoes: 'Write about your day',
-    verMais: 'More'
+    verMais: 'More',
+    seusRegistros: 'Your entries'
   },
   aceitePolitica: {
     respeitamos: 'We respect your privacy.',
     declaracao:
-      'By using this app, you agree to our use of local storage to improve your experience.',
+      'By using this app, you agree to our use of local storage to improve ' +
+      'your experience.',
     conheca: 'Learn about our Privacy Policy',
     botao: 'Ok, I get it'
   },
