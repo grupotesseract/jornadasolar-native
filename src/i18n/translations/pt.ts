@@ -87,6 +87,8 @@ const pt = {
       sol: 'Sol',
       final: 'está no signo de %{signo} e a Lua está na fase %{faseDaLua}.'
     },
+    mensagemSol: 'O Sol está no signo de %{signo}',
+    mensagemLua: 'A Lua está na fase %{faseDaLua}',
     sentimentos: 'Preencher sentimentos',
     habitos: 'Preencher hábitos',
     anotacoes: 'Escrever sobre seu dia',

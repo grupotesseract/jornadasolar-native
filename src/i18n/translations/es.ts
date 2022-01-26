@@ -84,6 +84,8 @@ const es = {
       final:
         'está en el signo de %{signo} y la Luna está en la fase %{faseDaLua}.'
     },
+    mensagemSol: 'El Sol está en el signo de %{signo}',
+    mensagemLua: 'La Luna está en la fase %{faseDaLua}',
     sentimentos: 'Rellenar sentimientos',
     habitos: 'Rellenar hábitos',
     anotacoes: 'Escribe sobre tu día',

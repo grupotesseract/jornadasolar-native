@@ -75,12 +75,8 @@ const en = {
     bomDia: 'Good Morning',
     boaTarde: 'Good Afternoon',
     boaNoite: 'Good evening',
-    mensagem: {
-      inicio: 'Today the ',
-      sol: 'Sun',
-      final:
-        'is in the sign of %{signo} and the Moon is in its %{faseDaLua} phase.'
-    },
+    mensagemSol: 'The Sun is in the sign of %{signo}',
+    mensagemLua: 'The Moon is in its %{faseDaLua}  phase',
     sentimentos: 'Fill in feelings',
     habitos: 'Fill in habits',
     anotacoes: 'Write about your day',
