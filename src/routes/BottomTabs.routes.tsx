@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import {
   BottomTabScreenProps,
@@ -7,8 +8,7 @@ import {
   useSafeAreaInsets,
   SafeAreaProvider
 } from 'react-native-safe-area-context'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Ionicons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import Diario from '../screens/app/Diario'
 import Graficos from '../screens/app/Graficos'
 import Meditacoes from '../screens/app/Meditacoes'
@@ -48,8 +48,8 @@ function BottomTabs() {
           name="Diario"
           component={Diario}
           options={{
-            tabBarTestID:'menuInferiorRegistros',
-            tabBarAccessibilityLabel:'menuInferiorRegistros', 
+            tabBarTestID: 'menuInferiorRegistros',
+            tabBarAccessibilityLabel: 'menuInferiorRegistros',
             tabBarLabel: t('menuInferior.registros'),
             tabBarIcon: ({ color }) => <IconeRegistros color={color} />
           }}
@@ -58,8 +58,8 @@ function BottomTabs() {
           name="Graficos"
           component={Graficos}
           options={{
-            tabBarTestID:'menuInferiorGraficos',
-            tabBarAccessibilityLabel:'menuInferiorGraficos',
+            tabBarTestID: 'menuInferiorGraficos',
+            tabBarAccessibilityLabel: 'menuInferiorGraficos',
             tabBarLabel: t('menuInferior.graficos'),
             tabBarIcon: ({ color }) => <IconeGraficos color={color} />
           }}
@@ -67,9 +67,9 @@ function BottomTabs() {
         <Screen
           name="Meditacoes"
           component={Meditacoes}
-          options={{ 
-            tabBarAccessibilityLabel:'menuInferiorMeditacoes',
-            tabBarTestID:'menuInferiorMeditacoes',
+          options={{
+            tabBarAccessibilityLabel: 'menuInferiorMeditacoes',
+            tabBarTestID: 'menuInferiorMeditacoes',
             tabBarLabel: t('menuInferior.meditacoes'),
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="spa" size={24} color={color} />
@@ -80,8 +80,8 @@ function BottomTabs() {
           name="Perfil"
           component={Perfil}
           options={{
-            tabBarTestID:'menuInferiorPerfil',
-            tabBarAccessibilityLabel:'menuInferiorPerfil',
+            tabBarTestID: 'menuInferiorPerfil',
+            tabBarAccessibilityLabel: 'menuInferiorPerfil',
             tabBarLabel: t('menuInferior.perfil'),
             tabBarIcon: ({ color }) => (
               <Ionicons name="person-outline" size={24} color={color} />

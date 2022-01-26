@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet } from 'react-native'
 import { Text } from 'react-native-paper'
 import { theme } from '../../theme'
 import i18n from '../i18n'
@@ -8,7 +8,7 @@ interface Props {
   nome: string
 }
 
-const Saudacao = ({ nome }: Props) => {
+const Saudacao = ({ nome }: Props): React.ReactElement => {
   const { t } = i18n
   const [saudacao, setSaudacao] = useState(null)
 

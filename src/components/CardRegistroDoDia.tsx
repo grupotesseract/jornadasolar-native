@@ -1,21 +1,27 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { format } from 'date-fns'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Caption, Card, Text } from 'react-native-paper'
+import { Card, Text } from 'react-native-paper'
 import { IRegistro } from '../entities/Registro'
 import Categorias from '../enums/Categorias'
-import i18n, { dateLocale } from '../i18n'
+import i18n from '../i18n'
+import { AppStackParams } from '../routes/App.routes'
 import Categoria from './Categoria'
 import EmojiComNome from './EmojiComNome'
 import TextButton from './TextButton'
 
 interface Props {
-  navigation: any
+  navigation: NativeStackNavigationProp<AppStackParams, 'Abas'>
   diario: IRegistro
   loading?: boolean
 }
 
-const CardRegistroDoDia = ({ diario, navigation, loading = false }: Props) => {
+const CardRegistroDoDia = ({
+  diario,
+  navigation,
+  loading = false
+}: Props): React.ReactElement => {
   const { t } = i18n
   const data = format(diario.date, 'd-M-yyyy')
   const sentimentos = diario.sentimentos?.length ? diario.sentimentos : null
