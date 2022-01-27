@@ -6,9 +6,8 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
   style={
     Array [
       Object {
-        "alignSelf": "center",
         "flex": 1,
-        "width": "80%",
+        "width": "100%",
       },
       Object {
         "paddingBottom": 0,
@@ -17,8 +16,44 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
   }
 >
   <View
+    accessibilityLabel="BotaoVoltar"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginLeft": 6,
+          "marginTop": 14,
+        },
+        Object {
+          "marginLeft": 12,
+        },
+      ]
+    }
+    testID="BotaoVoltar"
+  >
+    <Text />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "flex": 1,
+          "width": "80%",
+        },
         Object {
           "flex": 1,
           "paddingBottom": 80,
@@ -167,6 +202,7 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
                   }
                 >
                   <TextInput
+                    accessibilityLabel="inputEmail"
                     allowFontScaling={true}
                     editable={true}
                     keyboardType="email-address"
@@ -297,6 +333,7 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
                   }
                 >
                   <TextInput
+                    accessibilityLabel="inputSenha"
                     allowFontScaling={true}
                     editable={true}
                     multiline={false}
@@ -418,7 +455,9 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
           </View>
           <View>
             <View
+              accessibilityLabel="botaoEsqueciSenha"
               accessible={true}
+              collapsable={false}
               focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -494,10 +533,11 @@ exports[`Teste de componente: Tela Login renderiza igual ao último snapshot 1`]
         }
       >
         <View
+          accessibilityLabel="botaoEntrar"
           accessibilityRole="button"
           accessibilityState={
             Object {
-              "disabled": undefined,
+              "disabled": false,
             }
           }
           accessible={true}

@@ -94,7 +94,7 @@ exports[`Teste de componente: Tela Home renderiza igual ao último snapshot 1`] 
     >
       versão
        
-      0.8.6
+      1.1.0
     </Text>
   </View>
   <View
@@ -174,10 +174,11 @@ exports[`Teste de componente: Tela Home renderiza igual ao último snapshot 1`] 
         }
       >
         <View
+          accessibilityLabel="botaoCadastro"
           accessibilityRole="button"
           accessibilityState={
             Object {
-              "disabled": undefined,
+              "disabled": false,
             }
           }
           accessible={true}
@@ -284,10 +285,11 @@ exports[`Teste de componente: Tela Home renderiza igual ao último snapshot 1`] 
         }
       >
         <View
+          accessibilityLabel="botaoLogin"
           accessibilityRole="button"
           accessibilityState={
             Object {
-              "disabled": undefined,
+              "disabled": false,
             }
           }
           accessible={true}

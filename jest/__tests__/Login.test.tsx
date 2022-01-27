@@ -2,6 +2,7 @@ import React from 'react'
 import Login from '../../src/screens/Login'
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { navigationTestProps } from './utils'
+import { NavigationContainer } from '@react-navigation/native'
 
 const mockSignInCall = jest.fn().mockImplementation((email, senha) => {
   if (!email) throw { code: 'auth/invalid-email' }
@@ -19,7 +20,11 @@ describe('Teste de componente: Tela Login', () => {
   let login: any
   beforeEach(() => {
     props = navigationTestProps({})
-    login = render(<Login {...props} />)
+    login = render(
+      <NavigationContainer>
+        <Login {...props} />
+      </NavigationContainer>
+    )
     mockSignInCall.mockClear()
   })
 
