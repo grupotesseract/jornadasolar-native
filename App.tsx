@@ -16,10 +16,10 @@ import './src/i18n'
 import { Routes } from './src/routes'
 import { AuthProvider } from './src/context/AuthContext'
 import * as Notifications from 'expo-notifications'
-import { Subscription } from '@unimodules/react-native-adapter'
+import { Subscription } from 'expo-modules-core'
 import * as Linking from 'expo-linking'
 
-export default function App() {
+export default function App(): React.ReactElement {
   const [fontsLoaded, error] = useFonts({
     NunitoSans_300Light,
     NunitoSans_400Regular,

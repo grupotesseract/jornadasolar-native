@@ -31,16 +31,22 @@ export default class UpdateUserTokens implements IUpdateUserTokens {
   }
 
   async remove(userId: string): Promise<void> {
-    const token = await Notifications.getExpoPushTokenAsync()
-    const user = await this.userRepository.getById(userId)
-    const novosTokens = user.tokens?.filter(
-      userToken => userToken !== token.data
-    )
-    if (token && novosTokens) {
-      this.userRepository.update({
-        id: userId,
-        attributes: { tokens: novosTokens }
-      })
+    try {
+      const token = (await Notifications.getExpoPushTokenAsync()).data
+      if (token) {
+        const user = await this.userRepository.getById(userId)
+        const novosTokens = user.tokens?.filter(
+          userToken => userToken !== token
+        )
+        this.userRepository.update({
+          id: userId,
+          attributes: { tokens: novosTokens }
+        })
+      }
+    } catch (e) {
+      throw new Error(
+        'Ocorreu um erro inesperado ao remover o token para notificações: ' + e
+      )
     }
   }
 }
