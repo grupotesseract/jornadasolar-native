@@ -55,8 +55,12 @@ const DadosAutenticacao = (): React.ReactElement => {
   }
 
   const handleChangeEmail = (input: string) => {
-    setEmail(input.trim().toLowerCase())
+    setEmail(input.trim())
     setErros({ ...erros, email: '' })
+  }
+
+  const handleEmailPerdeFoco = () => {
+    setEmail(email.toLowerCase())
   }
 
   const handleChangeSenha = (input: string) => {
@@ -86,6 +90,7 @@ const DadosAutenticacao = (): React.ReactElement => {
             onChangeText={handleChangeEmail}
             keyboardType="email-address"
             testID="inputEmail"
+            onBlur={handleEmailPerdeFoco}
           />
           <PasswordInput
             label={t('cadastro.senha')}
@@ -101,7 +106,6 @@ const DadosAutenticacao = (): React.ReactElement => {
             <RadioButton.Group
               onValueChange={newValue => setTemLivro(newValue)}
               value={temLivro}
-            
             >
               {opcoesLivro.map(opcao => {
                 return (
@@ -113,8 +117,8 @@ const DadosAutenticacao = (): React.ReactElement => {
                     labelStyle={styles.texto}
                     mode="android"
                     style={styles.radio}
-                    testID={"radioButton"+opcao.value}
-                    accessibilityLabel={"radioButton"+opcao.value}
+                    testID={'radioButton' + opcao.value}
+                    accessibilityLabel={'radioButton' + opcao.value}
                   />
                 )
               })}

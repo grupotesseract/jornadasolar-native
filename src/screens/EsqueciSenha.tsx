@@ -10,13 +10,17 @@ import i18n from '../i18n'
 import SendPasswordResetEmail from '../services/user/SendPasswordResetEmail'
 import { ErrosAuth, getMessageFromCode } from '../utils/getMessageFromCode'
 
-const EsqueciSenha = () => {
+const EsqueciSenha = (): React.ReactElement => {
   const [email, setEmail] = useState('')
   const [erro, setErro] = useState<ErrosAuth>({})
   const [sucesso, setSucesso] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const handleChangeEmail = (input: string) => {
-    setEmail(input.trim().toLowerCase())
+    setEmail(input.trim())
+  }
+
+  const handleEmailPerdeFoco = () => {
+    setEmail(email.toLowerCase())
   }
 
   const handleEnviar = async () => {
@@ -55,6 +59,7 @@ const EsqueciSenha = () => {
           onChangeText={handleChangeEmail}
           keyboardType="email-address"
           testID="inputEmail"
+          onBlur={handleEmailPerdeFoco}
         />
         <HelperText type="info" visible={sucesso}>
           {t('recuperarSenha.linkEnviado', { email })}

@@ -7,7 +7,8 @@ interface Props {
   label: string
   erro?: string
   value: string
-  onChangeText?: (((text: string) => void) & Function) | undefined
+  onChangeText?: (text: string) => void | undefined
+  onBlur?: () => void
   keyboardType?: KeyboardTypeOptions
   testID?: string
 }
@@ -18,8 +19,9 @@ const TextInput = ({
   value,
   onChangeText,
   keyboardType = 'default',
-  testID
-}: Props) => {
+  testID,
+  onBlur
+}: Props): React.ReactElement => {
   return (
     <View>
       <InputLabel texto={label} erro={!!erro} />
@@ -32,7 +34,8 @@ const TextInput = ({
         keyboardType={keyboardType}
         style={{ backgroundColor: 'transparent' }}
         accessibilityLabel={testID}
-        testID={testID}        
+        testID={testID}
+        onBlur={onBlur}
       />
       {!!erro && (
         <HelperText type="error" visible={!!erro} testID={`${testID}Helper`}>
