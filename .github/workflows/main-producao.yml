@@ -16,6 +16,7 @@ env:
   AUTH_DOMAIN: ${{ secrets.PROD_PROJECT_ID }}.firebasedev.com
   DATABASE_URL: https://${{ secrets.PROD_PROJECT_ID }}.firebaseio.com/
   STORAGE_BUCKET: ${{ secrets.PROD_PROJECT_ID }}.appspot.com
+  EXPO_APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.EXPO_APPLE_APP_SPECIFIC_PASSWORD }}
 jobs:
   build:
     name: Create build and submit
@@ -40,4 +41,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Create eas build
-        run: eas build --profile production --platform android --non-interactive --auto-submit
+        run: eas build --profile production --platform all --non-interactive
+      - name: Submit to Playstore
+        run: eas submit -p android --latest --non-interactive
+      - name: Submit to Appstore
+        run: eas submit -p ios --latest --non-interactive
