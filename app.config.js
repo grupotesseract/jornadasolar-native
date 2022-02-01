@@ -22,7 +22,7 @@ export default {
   },
   android: {
     icon: './assets/icon.png',
-    versionCode: 3,
+    versionCode: 4,
     package: 'com.grupotesseract.jornadasolar',
     googleServicesFile: './google-services.json',
     adaptiveIcon: {
@@ -32,7 +32,7 @@ export default {
   },
   ios: {
     icon: './assets/icon.png',
-    buildNumber: '2.0.0',
+    buildNumber: '3.0.0',
     bundleIdentifier: 'com.grupotesseract.jornadasolar',
     googleServicesFile: './GoogleService-Info.plist'
   },
