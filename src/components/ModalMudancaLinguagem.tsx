@@ -29,7 +29,11 @@ const ModalMudancaLinguagem = ({ isOpen, onFecha }: Props) => {
         animationType="slide"
         transparent
       >
-        <Pressable onPress={onFecha} style={styles.container}>
+        <Pressable
+          onPress={onFecha}
+          testID="botaoFechaModal"
+          style={styles.container}
+        >
           <Surface style={styles.modal}>
             <Text style={styles.titulo}>{t('cadastro.selecioneIdioma')}</Text>
             <RadioButton.Group
@@ -46,6 +50,8 @@ const ModalMudancaLinguagem = ({ isOpen, onFecha }: Props) => {
                     labelStyle={styles.texto}
                     mode="android"
                     style={styles.radio}
+                    testID={'radioButton' + opcao}
+                    accessibilityLabel={'radioButton' + opcao}
                   />
                 )
               })}

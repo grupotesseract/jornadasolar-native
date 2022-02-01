@@ -67,6 +67,8 @@ const Novidade = ({ path, isFocused }: Props) => {
               icon="close"
               size={18}
               onPress={handleOnClose}
+              testID="botaoFechaNovidade"
+              accessibilityLabel="botaoFechaNovidade"
             />
           </View>
           <Text style={styles.descricao}>{novidade?.descricao}</Text>

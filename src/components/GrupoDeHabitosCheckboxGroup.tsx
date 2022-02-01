@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
 import { IGrupoDeHabitos } from '../entities/GrupoDeHabitos'
 import { getGruposDeHabitosIniciais } from '../utils/getGruposDeHabitos'
@@ -20,7 +19,7 @@ const GrupoDeHabitosCheckboxGroup = ({
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [opcoes, setOpcoes] = useState<IGrupoDeHabitos[]>([])
-  
+
   const getGrupos = async () => {
     const gruposModelo = await getGruposDeHabitosIniciais(userId)
     setOpcoes(gruposModelo)

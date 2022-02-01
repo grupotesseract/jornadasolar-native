@@ -13,7 +13,10 @@ export default {
   web: {
     config: {
       firebase: {
-        measurementId: process.env.MEASUREMENT_ID
+        measurementId:
+          process.env.EAS_BUILD_PROFILE === 'production'
+            ? process.env.MEASUREMENT_ID
+            : process.env.DEV_MEASUREMENT_ID
       }
     }
   },

@@ -11,7 +11,7 @@ interface ItemProps {
   isChecked: boolean
   isEmEdicao?: boolean
   onPressLabel?: (Habito: IHabito) => void
-}
+  }
 
 const HabitoCheckbox = ({
   habito,
@@ -35,13 +35,19 @@ const HabitoCheckbox = ({
       <Pressable
         style={[styles.botao, isChecked && styles.botaoSelecionado]}
         onPress={handlePress}
+        testID={"botaoHabito"+habito.nome}
+        accessibilityLabel={"botaoHabito"+habito.nome}
       >
         <Text style={styles.emoji}>
           {habito.emoji && <Emoji emoji={habito.emoji} />}
         </Text>
       </Pressable>
 
-      <Pressable onPress={handlePressLabel}>
+      <Pressable
+      onPress={handlePressLabel}
+      testID={"habitoLabel"+habito.nome}
+      accessibilityLabel={"habitoLabel"+habito.nome}
+      >
         <Caption style={styles.texto}>
           {isEmEdicao && <Emoji nome="lapis" />} {habito.nome}
         </Caption>

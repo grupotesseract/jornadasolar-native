@@ -6,9 +6,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { theme } from '../../theme'
 import AuthContext from '../context/AuthContext'
 import AceitarPoliticaPrivacidade from '../services/user/AceitarPoliticaPrivacidade'
+import UpdateUserTokens from '../services/user/UpdateUserTokens'
 import TextButton from './TextButton'
 
-const ModalAceiteLgpd = () => {
+const ModalAceiteLgpd = (): React.ReactElement => {
   const { userId } = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(true)
   const insets = useSafeAreaInsets()
@@ -19,6 +20,7 @@ const ModalAceiteLgpd = () => {
 
   const handlePressOk = async () => {
     await new AceitarPoliticaPrivacidade().call(userId)
+    await new UpdateUserTokens().add(userId)
     fechaModal()
   }
 
@@ -45,10 +47,13 @@ const ModalAceiteLgpd = () => {
               <TextButton
                 texto={t('aceitePolitica.conheca')}
                 onPress={handleVerPolitica}
+                testID="BotaoVerPolitica"
               />
             </View>
             <Button
               onPress={handlePressOk}
+              testID="BotaoOk"
+              accessibilityLabel="BotaoOk"
               mode="contained"
               style={styles.okButton}
             >

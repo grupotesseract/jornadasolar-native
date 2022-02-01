@@ -44,6 +44,7 @@ const Habitos = ({ navigation }: HomeNavigationProps): React.ReactElement => {
       textoBotao={t('cadastro.faltaUmPasso')}
       onButtonClick={handleContinuar}
       exibirBotao={botaoVisivel}
+      testIdBotao="botaoContinuar"
       botaoVoltar
     >
       <ScrollView>

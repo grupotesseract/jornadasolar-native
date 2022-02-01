@@ -30,6 +30,7 @@ const Sentimentos = ({
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       textoBotao={t('cadastro.continuar')}
+      testIdBotao="botaoContinuar"
       botaoVoltar
     >
       <ScrollView>

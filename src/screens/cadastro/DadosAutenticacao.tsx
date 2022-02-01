@@ -55,8 +55,12 @@ const DadosAutenticacao = (): React.ReactElement => {
   }
 
   const handleChangeEmail = (input: string) => {
-    setEmail(input.trim().toLowerCase())
+    setEmail(input.trim())
     setErros({ ...erros, email: '' })
+  }
+
+  const handleEmailPerdeFoco = () => {
+    setEmail(email.toLowerCase())
   }
 
   const handleChangeSenha = (input: string) => {
@@ -70,6 +74,7 @@ const DadosAutenticacao = (): React.ReactElement => {
       textoBotao={t('cadastro.pronto')}
       onButtonClick={handleClickPronto}
       loading={isLoading}
+      testIdBotao="cadastroPronto"
       botaoVoltar
     >
       <ScrollView>
@@ -84,12 +89,15 @@ const DadosAutenticacao = (): React.ReactElement => {
             erro={erros.email}
             onChangeText={handleChangeEmail}
             keyboardType="email-address"
+            testID="inputEmail"
+            onBlur={handleEmailPerdeFoco}
           />
           <PasswordInput
             label={t('cadastro.senha')}
             value={senha}
             erro={erros.senha}
             onChangeText={handleChangeSenha}
+            testID="inputSenha"
           />
         </View>
         <View style={styles.container}>
@@ -109,6 +117,8 @@ const DadosAutenticacao = (): React.ReactElement => {
                     labelStyle={styles.texto}
                     mode="android"
                     style={styles.radio}
+                    testID={'radioButton' + opcao.value}
+                    accessibilityLabel={'radioButton' + opcao.value}
                   />
                 )
               })}

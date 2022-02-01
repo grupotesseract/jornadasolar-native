@@ -76,7 +76,7 @@ const CardDetalheCategoria = ({
         <Card.Content>
           <View style={styles.header}>
             <Text>{t(`comum.${categoria.toLowerCase()}`)}:</Text>
-            <TextButton texto={t('comum.editar')} onPress={handleEditar} />
+            <TextButton texto={t('comum.editar')} onPress={handleEditar} testID={"botaoEditar"+categoria} />
           </View>
           <View style={styles.conteudo}>
             <ConteudoCard />

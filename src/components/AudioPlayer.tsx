@@ -12,13 +12,20 @@ interface Props {
   onPlayChange: (boolean) => void
 }
 
-const AudioPlayer = ({ source, onPlayChange }: Props) => {
+const AudioPlayer = ({ source, onPlayChange }: Props): React.ReactElement => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [erro, setErro] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duracao, setDuracao] = useState(0)
   const iconePlayPause = isPlaying ? 'pause' : 'play'
   const [sound, setSound] = useState(new Audio.Sound())
+
+  const setAudioMode = async () => {
+    await Audio.setAudioModeAsync({
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true
+    })
+  }
 
   const loadSound = async () => {
     sound
@@ -52,6 +59,7 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
   }, [isPlaying])
 
   useEffect(() => {
+    setAudioMode()
     loadSound().then(() =>
       sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate)
     )
@@ -125,6 +133,8 @@ const AudioPlayer = ({ source, onPlayChange }: Props) => {
           <FAB
             icon={iconePlayPause}
             onPress={handlePlayPause}
+            testID="botaoPlay"
+            accessibilityLabel="botaoPlay"
             color={theme.colors.secondary}
           />
           <Slider

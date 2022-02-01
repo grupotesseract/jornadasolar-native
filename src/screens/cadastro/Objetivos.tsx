@@ -40,6 +40,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps): React.ReactElement => {
       exibirBotao={botaoVisivel}
       onButtonClick={handleContinuar}
       textoBotao={t('cadastro.continuar')}
+      testIdBotao="botaoContinuar"
       botaoVoltar
     >
       <ScrollView>
@@ -52,7 +53,7 @@ const Objetivos = ({ navigation }: HomeNavigationProps): React.ReactElement => {
               value={opcao}
               isChecked={dadosCadastro.objetivos.includes(opcao)}
               texto={t(`cadastro.objetivos.${opcao}`)}
-              onPress={handleChangeSelected}
+              onPress={handleChangeSelected}              
             />
           ))}
         </View>
