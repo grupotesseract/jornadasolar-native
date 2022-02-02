@@ -11,6 +11,7 @@ import CreateOrUpdateRegistro from '../services/registros/CreateOrUpdateRegistro
 import GetUserSentimentos from '../services/user/GetUserSentimentos'
 import UserFactory, { IUserFactory } from '../factories/UserFactory'
 import { isSameDay } from 'date-fns'
+import GetAllCanais from '../services/notificacoes/getAllCanais'
 
 interface ICreateParameters {
   nome: string
@@ -20,6 +21,7 @@ interface ICreateParameters {
   temLivro: string
   sentimentos: Array<string>
   gruposDeHabitos: Array<IGrupoDeHabitos>
+  idioma: string
 }
 
 interface IUpdateParameters {
@@ -29,8 +31,8 @@ interface IUpdateParameters {
 export interface IUsersRepository {
   add(params): Promise<IUser>
   getById(id: string): Promise<IUser>
-  update(params): boolean
-  updateAccessFlags(user: IUser): void
+  update(params: IUpdateParameters): boolean
+  updateAccessFlags(user: IUser): boolean
 }
 
 export default class UsersRepository implements IUsersRepository {
@@ -49,15 +51,21 @@ export default class UsersRepository implements IUsersRepository {
     objetivos,
     temLivro,
     sentimentos,
-    gruposDeHabitos
+    gruposDeHabitos,
+    idioma
   }: ICreateParameters): Promise<IUser> {
     const now = firebase.firestore.FieldValue.serverTimestamp()
 
     // Cria usuário no firebase auth
     const { user } = await auth.createUserWithEmailAndPassword(email, senha)
+    await auth.signOut()
     await user.updateProfile({
       displayName: nome
     })
+
+    // Inscreve o usuário em todos os canais de notificação
+    const canais = await new GetAllCanais().call()
+    const idsCanais = canais.map(canal => canal.id)
 
     // Cria usuário na collection user
     const data = {
@@ -68,11 +76,14 @@ export default class UsersRepository implements IUsersRepository {
       created_at: now,
       updated_at: now,
       lastAccess: now,
-      countAccess: 1
+      countAccess: 1,
+      canaisDeNotificacao: idsCanais,
+      idioma
     }
     await this.collection.doc(user.uid).set(data)
 
-    // Cria subcollection de gruposDeHabitos com subcollection de habitos na collection user
+    // Cria subcollection de gruposDeHabitos com subcollection de habitos
+    // na collection user
     const gruposDeHabitosModelos =
       await new GetAllGruposDeHabitosModelos().call()
     gruposDeHabitosModelos.forEach(async grupoDeHabitoModelo => {
@@ -82,7 +93,8 @@ export default class UsersRepository implements IUsersRepository {
       })
     })
 
-    // Busca grupos de hábitos do usuário e atualiza o gruposDeHabitos que vão pro registro com os ids
+    // Busca grupos de hábitos do usuário e atualiza os gruposDeHabitos que vão
+    // pro registro com os ids
     const gruposDeHabitosDoUsuario = await GetUserGruposDeHabitos(user.uid)
     const gruposDeHabitosAtualizados = gruposDeHabitos.map(grupoDeHabito => {
       const grupoDoUsuario = gruposDeHabitosDoUsuario.find(
@@ -121,7 +133,8 @@ export default class UsersRepository implements IUsersRepository {
       })
     })
 
-    // Busca sentimentos do usuário e atualiza o sentimentos que vão pro registro com os ids
+    // Busca sentimentos do usuário e atualiza os sentimentos que vão pro
+    // registro com os ids
     const sentimentosDoUsuario = await new GetUserSentimentos(user.uid).call()
     const sentimentosAtualizado = sentimentos.map(sentimento => {
       const sentimentoUsuario = sentimentosDoUsuario.find(
@@ -138,6 +151,7 @@ export default class UsersRepository implements IUsersRepository {
       gruposDeHabitos: gruposDeHabitosAtualizados
     })
 
+    await auth.signInWithEmailAndPassword(email, senha)
     return new User({
       id: user.uid,
       nome,
@@ -160,14 +174,24 @@ export default class UsersRepository implements IUsersRepository {
 
   update({ id, attributes }: IUpdateParameters): boolean {
     try {
+      const now = firebase.firestore.FieldValue.serverTimestamp()
+      attributes.updated_at = now
+
       this.collection.doc(id).update(attributes)
+
+      if (attributes.nome) {
+        const user = auth.currentUser
+        user.updateProfile({
+          displayName: attributes.nome as string
+        })
+      }
       return true
     } catch (e) {
       throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
     }
   }
 
-  updateAccessFlags(user: IUser): void {
+  updateAccessFlags(user: IUser): boolean {
     const hoje = new Date()
     const mesmoDia = isSameDay(hoje, user.lastAccess)
 
@@ -188,5 +212,6 @@ export default class UsersRepository implements IUsersRepository {
         throw new Error('Ocorreu um erro inesperado ao atualizar usuário.' + e)
       }
     }
+    return !mesmoDia
   }
 }

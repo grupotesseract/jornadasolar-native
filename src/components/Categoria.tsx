@@ -1,20 +1,23 @@
 import React, { ReactNode } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
+import Categorias from '../enums/Categorias'
 import i18n from '../i18n'
 import Emoji from './Emoji'
 import TextButton from './TextButton'
 
 interface Props {
-  tipo: 'sentimentos' | 'habitos' | 'anotacoes'
+  categoria: Categorias
   onPress: () => void
   conteudo?: ReactNode
+  testID?: string
 }
 
-const Categoria = ({ tipo, conteudo, onPress }: Props) => {
+const Categoria = ({ categoria, conteudo, onPress, testID }: Props) => {
+  const tipo = categoria.toLowerCase()
   const BotaoPreencher = () => {
     return (
-      <Text>
+      <Text testID={testID} accessibilityLabel={testID}>
         <Emoji nome="lapis" />{' '}
         <TextButton texto={t(`diario.${tipo}`)} onPress={onPress} />
       </Text>
@@ -26,9 +29,7 @@ const Categoria = ({ tipo, conteudo, onPress }: Props) => {
   return (
     <View style={styles.linha}>
       <Text style={styles.itens}>{t(`comum.${tipo}`)}:</Text>
-      <View style={styles.conteudo}>
-        {conteudo ? conteudo : <BotaoPreencher />}
-      </View>
+      <View style={styles.conteudo}>{conteudo || <BotaoPreencher />}</View>
     </View>
   )
 }

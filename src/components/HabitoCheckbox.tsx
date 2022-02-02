@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import { Caption, Text } from 'react-native-paper'
 import { theme } from '../../theme'
@@ -8,27 +7,51 @@ import Emoji from './Emoji'
 
 interface ItemProps {
   habito: IHabito
-  onPress: (Habito: IHabito) => void
-}
-
-const HabitoCheckbox = ({ habito, onPress }: ItemProps) => {
-  const [isChecked, setIsChecked] = useState(false)
-
-  const handlePress = () => {
-    setIsChecked(!isChecked)
-    onPress(habito)
+  onPress: (Habito: IHabito, wasChecked: boolean) => void
+  isChecked: boolean
+  isEmEdicao?: boolean
+  onPressLabel?: (Habito: IHabito) => void
   }
+
+const HabitoCheckbox = ({
+  habito,
+  onPress,
+  isChecked,
+  isEmEdicao = false,
+  onPressLabel
+}: ItemProps) => {
+  const handlePress = () => {
+    onPress(habito, isChecked)
+  }
+
+  const handlePressLabel = () => {
+    if (onPressLabel && isEmEdicao) {
+      onPressLabel(habito)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Pressable
         style={[styles.botao, isChecked && styles.botaoSelecionado]}
         onPress={handlePress}
+        testID={"botaoHabito"+habito.nome}
+        accessibilityLabel={"botaoHabito"+habito.nome}
       >
         <Text style={styles.emoji}>
           {habito.emoji && <Emoji emoji={habito.emoji} />}
         </Text>
       </Pressable>
-      <Caption style={styles.texto}>{habito.nome}</Caption>
+
+      <Pressable
+      onPress={handlePressLabel}
+      testID={"habitoLabel"+habito.nome}
+      accessibilityLabel={"habitoLabel"+habito.nome}
+      >
+        <Caption style={styles.texto}>
+          {isEmEdicao && <Emoji nome="lapis" />} {habito.nome}
+        </Caption>
+      </Pressable>
     </View>
   )
 }
@@ -53,5 +76,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary
   },
   emoji: { fontSize: 18 },
-  texto: { textAlign: 'center', marginTop: 5, marginBottom: 16, width: '100%' }
+  texto: {
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 16
+  }
 })

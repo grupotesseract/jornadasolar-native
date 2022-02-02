@@ -5,12 +5,18 @@ import { Text } from 'react-native-paper'
 interface Props {
   texto: string
   onPress: () => void
+  testID?: string
 }
 
-const ButtonLink = ({ texto, onPress }: Props) => {
+const ButtonLink = ({ texto, onPress, testID }: Props) => {
   return (
     <View>
-      <Pressable style={styles.botao} onPress={onPress}>
+      <Pressable 
+      style={styles.botao}
+      onPress={onPress}
+      testID={testID}
+      accessibilityLabel={testID}
+      >
         <Text style={styles.textoBotao}>{texto}</Text>
       </Pressable>
     </View>

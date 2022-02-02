@@ -12,6 +12,7 @@ type Parameters = {
   temLivro: string
   sentimentos: Array<string>
   gruposDeHabitos: Array<IGrupoDeHabitos>
+  idioma: string
 }
 
 interface ICreate {
@@ -26,6 +27,7 @@ export default class CreateUser implements ICreate {
   }
 
   async call(params: Parameters): Promise<IUser> {
-    return await this.usersRepository.add(params)
+    const user = await this.usersRepository.add(params)
+    return user
   }
 }

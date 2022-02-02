@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 20,
     lineHeight: 27,
-    marginTop: 24,
-    marginBottom: 16
+    marginTop: 16,
+    marginBottom: 8
   }
 })

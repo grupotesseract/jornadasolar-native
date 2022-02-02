@@ -12,7 +12,7 @@ import ButtonLink from '../components/ButtonLink'
 import SignInUser from '../services/user/SignInUser'
 import { ErrosAuth, getMessageFromCode } from '../utils/getMessageFromCode'
 
-const Login = ({ navigation }: HomeNavigationProps) => {
+const Login = ({ navigation }: HomeNavigationProps): React.ReactElement => {
   const { t } = i18n
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
@@ -30,8 +30,12 @@ const Login = ({ navigation }: HomeNavigationProps) => {
   }
 
   const handleChangeEmail = (input: string) => {
-    setEmail(input.trim().toLowerCase())
+    setEmail(input.trim())
     setErros({ ...erros, email: '' })
+  }
+
+  const handleEmailPerdeFoco = () => {
+    setEmail(email.toLowerCase())
   }
 
   const handleChangeSenha = (input: string) => {
@@ -49,6 +53,8 @@ const Login = ({ navigation }: HomeNavigationProps) => {
       textoBotao={t('login.entrar')}
       onButtonClick={handleLogin}
       loading={isLoading}
+      testIdBotao="botaoEntrar"
+      botaoVoltar
     >
       <ScrollView>
         <Titulo>
@@ -62,16 +68,20 @@ const Login = ({ navigation }: HomeNavigationProps) => {
             erro={erros.email}
             onChangeText={handleChangeEmail}
             keyboardType="email-address"
+            testID="inputEmail"
+            onBlur={handleEmailPerdeFoco}
           />
           <PasswordInput
             label={t('login.senha')}
             value={senha}
             erro={erros.senha}
             onChangeText={handleChangeSenha}
+            testID="inputSenha"
           />
           <ButtonLink
             texto={t('login.esqueciSenha')}
             onPress={handleEsqueciSenha}
+            testID="botaoEsqueciSenha"
           />
         </View>
       </ScrollView>

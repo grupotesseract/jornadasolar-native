@@ -1,11 +1,11 @@
-import { ISentimento } from '../../entities/Sentimento'
+import Sentimento from '../../entities/Sentimento'
 import UserSentimentosRepository, {
   IUserSentimentosRepository
 } from '../../repositories/UserSentimentosRepository'
 import GetAllSentimentosModelos from '../sentimentosModelos/GetAllSentimentosModelos'
 
 interface IGetUserSentimentos {
-  call(): Promise<Array<ISentimento>>
+  call(): Promise<Array<Sentimento>>
 }
 export default class GetUserSentimentos implements IGetUserSentimentos {
   private repository: IUserSentimentosRepository
@@ -13,7 +13,7 @@ export default class GetUserSentimentos implements IGetUserSentimentos {
     this.repository = new UserSentimentosRepository(userId)
   }
 
-  async call(): Promise<Array<ISentimento>> {
+  async call(): Promise<Array<Sentimento>> {
     const SentimentosDoUsuario = await this.repository.getAll()
     const usuarioTemSentimentos = SentimentosDoUsuario.length > 0
 

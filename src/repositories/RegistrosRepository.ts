@@ -19,8 +19,9 @@ interface IUpdateParameters extends ICreateParameters {
 }
 
 export interface IRegistrosRepository {
-  add(params): boolean
-  update(params): boolean
+  add(params): Promise<void>
+  update(params): Promise<void>
+  getByDate(userId, date): Promise<IRegistro>
   getByDateRange(
     userId: string,
     startDate: Date,
@@ -35,23 +36,34 @@ export default class RegistrosRepository implements IRegistrosRepository {
     this.collection = firestore.collection('diario')
   }
 
-  add(attributes: ICreateParameters): boolean {
+  async add(attributes: ICreateParameters): Promise<void> {
     try {
-      this.collection.add(attributes)
-      return true
+      await this.collection.add(attributes)
     } catch (e) {
       throw new Error('Ocorreu um erro inesperado ao criar o registro do dia.')
     }
   }
 
-  update({ id, attributes }: IUpdateParameters): boolean {
+  async update({ id, attributes }: IUpdateParameters): Promise<void> {
     try {
-      this.collection.doc(id).update(attributes)
-      return true
+      await this.collection.doc(id).update(attributes)
     } catch {
       throw new Error(
         'Ocorreu um erro inesperado ao atualizar o registro do dia.'
       )
+    }
+  }
+
+  async getByDate(userId: string, date: Date): Promise<IRegistro> {
+    const Registros = await this.getByDateRange(
+      userId,
+      startOfDay(date),
+      endOfDay(date)
+    )
+    if (Registros) {
+      return Registros[0]
+    } else {
+      return null
     }
   }
 
@@ -79,39 +91,46 @@ export default class RegistrosRepository implements IRegistrosRepository {
       querySnapshot.forEach(RegistroSnapshot => {
         const registrosData = RegistroSnapshot.data()
 
-        const gruposDeHabitosDoRegistro = (
-          registrosData.gruposDeHabitos || []
-        ).map(grupoDehabito => {
+        const gruposDeHabitosDoRegistro = []
+        registrosData.gruposDeHabitos?.forEach(grupoDehabito => {
           const grupoDeHabitoDoUsuario = gruposdeHabitosTemplate.find(
             grupoDehabitoDoTemplate =>
               grupoDehabitoDoTemplate.nome.toLowerCase() ===
                 grupoDehabito.nome.toLowerCase() ||
               grupoDehabitoDoTemplate.id === grupoDehabito.id
           )
-          const habitos =
-            grupoDehabito.habitos?.map(habito => {
-              return grupoDeHabitoDoUsuario.habitos.find(
+          if (grupoDeHabitoDoUsuario) {
+            const habitos = []
+            grupoDehabito.habitos?.forEach(habito => {
+              const habitoDoUsuario = grupoDeHabitoDoUsuario.habitos.find(
                 habitoDoUsuario =>
                   habitoDoUsuario.id === habito ||
                   habitoDoUsuario.nome.toLowerCase() === habito.toLowerCase()
               )
-            }) || []
-          return new GrupoDeHabitos({
-            id: grupoDeHabitoDoUsuario.id || '',
-            nome: grupoDehabito.nome,
-            habitos: habitos
-          })
+              if (habitoDoUsuario) {
+                habitos.push(habitoDoUsuario)
+              }
+            })
+
+            gruposDeHabitosDoRegistro.push(
+              new GrupoDeHabitos({
+                id: grupoDeHabitoDoUsuario.id || '',
+                nome: grupoDehabito.nome,
+                habitos: habitos
+              })
+            )
+          }
         })
 
-        const sentimentosDoRegistro = (registrosData.sentimentos || []).map(
-          sentimento => {
+        const sentimentosDoRegistro = (registrosData.sentimentos || [])
+          .map(sentimento => {
             const sentimentoDoUsuario = sentimentosTemplate.find(
               template =>
                 template.nome === sentimento || template.id === sentimento
             )
             return sentimentoDoUsuario
-          }
-        )
+          })
+          .filter(sentimento => !!sentimento)
 
         const registros = new Registro({
           id: RegistroSnapshot.id,
