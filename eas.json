@@ -9,7 +9,10 @@
     },
     "preview": {
       "releaseChannel": "stage",
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "buildType": "app-bundle"
+      }
     },
     "preview_apk": {
       "android": {
